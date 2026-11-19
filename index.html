@@ -9,6 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
+
 :root{
   --navy:#102048;--navy-deep:#09102a;--navy-mid:#18265a;--navy-soft:#26386b;
   --gold:#D4AF37;--gold-soft:#fff3c4;--gold-dark:#b8901c;--gold-hover:#c9a42e;
@@ -650,6 +651,71 @@ input[type=range]{width:100%;accent-color:var(--navy);height:24px}
   padding:8px 10px;font-size:14px;font-weight:700;color:var(--navy);
 }
 
+
+
+/* Coach shot entry */
+.shot-entry-launch{margin-top:12px;padding-top:10px;border-top:1px solid var(--line)}
+.shot-entry-meta{font-size:12.5px;font-weight:700;color:var(--navy);margin:0 0 8px}
+.mismatch-flag{color:#9b2c2c;font-weight:800}
+.shot-side-toggle{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px 0 6px}
+.shot-side-toggle button{
+  border:1.5px solid var(--line);background:#fff;color:var(--navy);border-radius:12px;
+  padding:10px 8px;font-weight:800;font-size:13.5px;font-family:inherit;
+}
+.shot-side-toggle button b{display:inline-block;margin-left:4px;color:var(--muted);font-weight:800}
+.shot-side-toggle button.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+.shot-side-toggle button.on b{color:var(--gold)}
+.shot-side-note{margin:0 0 8px}
+svg.pitch.entry-pitch .entry-dot{cursor:pointer}
+svg.pitch.entry-pitch .entry-dot .dot-n{
+  font-size:6.5px;font-family:var(--display);fill:#102048;text-anchor:middle;pointer-events:none;letter-spacing:0;
+}
+.entry-legend{display:flex;flex-wrap:wrap;gap:10px 14px;align-items:center;margin:8px 2px 10px;font-size:12px;color:var(--muted);font-weight:700}
+.entry-legend .dot{display:inline-block;width:10px;height:10px;border-radius:50%;background:#fff;border:1.5px solid var(--navy);vertical-align:middle;margin-right:4px}
+.entry-legend .dot.goal{background:var(--gold);box-shadow:0 0 0 2px #fff, 0 0 0 3px var(--navy);width:11px;height:11px}
+.zone-count-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:10px}
+.zone-count{background:#fff;border:1px solid var(--line);border-radius:10px;padding:8px 8px 7px;text-align:center}
+.zone-count .zid{font-family:var(--display);font-size:11px;letter-spacing:.06em;color:var(--navy)}
+.zone-count .zn{font-size:10px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.03em}
+.zone-count .zc{font-family:var(--display);font-size:18px;color:var(--navy);line-height:1.1;margin-top:2px}
+.shot-tot-grid{margin-top:4px}
+.shot-draft{margin-top:12px}
+.shot-out-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:6px 0 12px}
+.chip-btn{
+  border:1.5px solid var(--line);background:#fff;color:var(--navy);border-radius:12px;
+  padding:10px 8px;font-weight:800;font-size:13.5px;font-family:inherit;
+}
+.chip-btn.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+.shot-draft-fields{display:grid;gap:10px}
+.shot-draft-actions{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:12px}
+.btn-text{background:none;border:0;color:var(--muted);font-weight:800;font-family:inherit;padding:8px 6px}
+.btn-text.danger{color:#9b2c2c}
+.entry-shot-list{display:flex;flex-direction:column;gap:8px;margin-top:6px}
+.entry-shot-row{display:flex;align-items:center;gap:8px;background:var(--mist);border-radius:12px;padding:6px 8px 6px 6px}
+.entry-shot-row.on{outline:2px solid var(--gold)}
+.entry-shot-row .shot-main{display:flex;align-items:center;gap:8px;flex:1;background:none;border:0;text-align:left;font-family:inherit;padding:2px;color:inherit;min-width:0}
+.entry-shot-row .body{display:flex;flex-direction:column;min-width:0}
+.entry-shot-row .body strong{font-size:13.5px;color:var(--navy)}
+.entry-shot-row .body small{font-size:11.5px;color:var(--muted);font-weight:700}
+.zone-pill{display:inline-grid;place-items:center;min-width:36px;height:36px;border-radius:9px;color:#fff;font-weight:800;font-size:12px;font-family:var(--display)}
+.zone-pill.z1{background:#c44536}.zone-pill.z2{background:#e07a2f}.zone-pill.z3{background:#c49a08;color:#102048}
+.zone-pill.z4{background:#2e6bb0}.zone-pill.z5{background:#2a5fa0}.zone-pill.z6{background:#3e6b52}
+.shot-del{border:0;background:none;color:#9b2c2c;font-weight:800;font-size:12px;font-family:inherit;padding:6px 4px}
+.veo-card .veo-toggle{width:100%;display:flex;align-items:center;justify-content:space-between;background:none;border:0;padding:0;font-family:inherit;text-align:left;cursor:pointer}
+.veo-card .veo-toggle h3{margin:0}
+.veo-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:8px 0 12px}
+.veo-checks{display:grid;gap:6px}
+.veo-compare{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:6px;align-items:center;background:var(--mist);border-radius:10px;padding:8px 10px;font-size:12.5px;font-weight:700;color:var(--navy)}
+.veo-compare .k{display:block;font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+.veo-compare.mismatch{background:#fdecec;outline:1px solid #e8b4b4}
+.veo-flags{background:#fdecec;border-radius:10px;padding:10px 12px;margin-top:10px;color:#9b2c2c;font-size:12.5px;font-weight:700}
+.veo-flags p{margin:0 0 6px}.veo-flags p:last-child{margin:0}
+.veo-flag-summary{margin:8px 0 0;font-size:12.5px}
+@media (min-width:720px){
+  .zone-count-grid{grid-template-columns:repeat(6,1fr)}
+  .veo-grid{grid-template-columns:repeat(3,1fr)}
+}
+
 </style>
 </head>
 <body>
@@ -659,7 +725,7 @@ window.SCFC_CREST = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJQAAADACAYAA
 (function(){
 "use strict";
 
-const STORAGE = "scfc-pp-portal-v8";
+const STORAGE = "scfc-pp-portal-v9";
 const CREST = window.SCFC_CREST;
 
 const POS = {
@@ -1717,9 +1783,10 @@ const DEFAULT_TEAM_ID = "u15g";
    Secured Possessions per xG show "Waiting on xG calibration".
 
    Once every zone has a number, those two metrics are computed
-   automatically from the zones of logged shots:
+   automatically from the zones of coach-entered team shots (Shot entry,
+   Our shots). Player match-log shots are not used for team xG.
 
-     match xG              = sum of the conversion value for each logged shot
+     match xG              = sum of the conversion value for each of our entered shots
      Attacking Flow        = secured possessions × match xG ÷ match minutes
      Possessions per xG    = secured possessions ÷ match xG
 
@@ -2145,6 +2212,536 @@ const POS_PROFILES = {
   }
 };
 
+
+/* =============================================================================
+   COACH SHOT ENTRY
+   -----------------------------------------------------------------------------
+   Team-level shot locations, entered weekly from the Veo match report.
+   Our shots: locations come from Veo's shot map and are entered by hand.
+   Shots against: Veo does not provide opponent locations, so these are
+   self-recorded.
+
+   Match xG (once XG_CONVERSIONS is fully calibrated) is the sum of the
+   zone values of "Our shots" and feeds Attacking Flow and Possessions per xG.
+   Shot Flow and AVPs per Shot are unchanged (fixture shot totals; received
+   AVPs only).
+   ============================================================================= */
+const SHOT_ENTRY_OUTCOMES = [
+  { id:"Goal", label:"Goal" },
+  { id:"On target", label:"On target" },
+  { id:"Off target", label:"Off target" },
+  { id:"Blocked", label:"Blocked" }
+];
+const SHOT_ZONE_BOX = {
+  Z1:{x:74,y:14,w:52,h:22},
+  Z2:{x:74,y:44,w:52,h:22},
+  Z3:{x:74,y:74,w:52,h:22},
+  Z4:{x:32,y:18,w:34,h:74},
+  Z5:{x:134,y:18,w:34,h:74},
+  Z6:{x:16,y:108,w:168,h:28}
+};
+
+function emptyVeoTotals(){
+  return { attemptsUs:"", attemptsThem:"", goalsUs:"", goalsThem:"", poss:"", passes:"", passSucc:"", passAcc:"", duels:"" };
+}
+function emptyShotRecord(){
+  return { us:[], against:[], veo: emptyVeoTotals() };
+}
+function shotPoint(zone, salt){
+  const b = SHOT_ZONE_BOX[zone] || SHOT_ZONE_BOX.Z6;
+  let n = 0;
+  String(salt||zone).split("").forEach(function(c){ n = (n*33 + c.charCodeAt(0)) >>> 0; });
+  const fx = ((n % 70) + 15) / 100;
+  const fy = ((((n / 70) | 0) % 70) + 15) / 100;
+  return { x: +(b.x + b.w * fx).toFixed(1), y: +(b.y + b.h * fy).toFixed(1) };
+}
+function seedShot(id, zone, outcome, minute, playerId, no){
+  const pt = shotPoint(zone, id);
+  const rec = { id:id, zone:zone, outcome:outcome, minute:minute, x:pt.x, y:pt.y };
+  if(playerId) rec.playerId = playerId;
+  if(no!=null && no!=="") rec.no = no;
+  return rec;
+}
+
+const SEED_SHOTS = {
+  M001: {
+    us: [
+      seedShot("m001-us-1", "Z6", "Blocked", 19, "quinn", 10),
+      seedShot("m001-us-2", "Z3", "Off target", 54, "maya", 9)
+    ],
+    against: [
+      seedShot("m001-ag-1", "Z4", "Off target", 12, "", ""),
+      seedShot("m001-ag-2", "Z2", "Goal", 33, "", 9),
+      seedShot("m001-ag-3", "Z1", "On target", 58, "", 11),
+      seedShot("m001-ag-4", "Z6", "Blocked", 67, "", "")
+    ],
+    veo: { attemptsUs:2, attemptsThem:4, goalsUs:0, goalsThem:1, poss:47, passes:312, passSucc:241, passAcc:77, duels:38 }
+  },
+  M002: {
+    us: [
+      seedShot("m002-us-1", "Z2", "Goal", 8, "maya", 9),
+      seedShot("m002-us-2", "Z3", "On target", 17, "quinn", 10),
+      seedShot("m002-us-3", "Z5", "Off target", 22, "harper", 7),
+      seedShot("m002-us-4", "Z1", "Goal", 31, "maya", 9),
+      seedShot("m002-us-5", "Z6", "Blocked", 39, "avery", 8),
+      seedShot("m002-us-6", "Z3", "Off target", 44, "quinn", 10),
+      seedShot("m002-us-7", "Z4", "On target", 51, "harper", 7),
+      seedShot("m002-us-8", "Z2", "Off target", 58, "maya", 9),
+      seedShot("m002-us-9", "Z5", "Blocked", 66, "camille", 11)
+    ],
+    against: [
+      seedShot("m002-ag-1", "Z6", "Off target", 14, "", ""),
+      seedShot("m002-ag-2", "Z4", "Blocked", 27, "", 3),
+      seedShot("m002-ag-3", "Z3", "Goal", 49, "", 9),
+      seedShot("m002-ag-4", "Z2", "On target", 62, "", 10)
+    ],
+    veo: { attemptsUs:10, attemptsThem:4, goalsUs:2, goalsThem:1, poss:53, passes:348, passSucc:271, passAcc:78, duels:44 }
+  }
+};
+
+function normalizeVeo(v){
+  v = v || {};
+  const out = emptyVeoTotals();
+  Object.keys(out).forEach(function(k){
+    out[k] = (v[k]===0 || v[k]) ? v[k] : "";
+  });
+  return out;
+}
+function normalizeEntryShot(s){
+  if(!s || !s.zone) return null;
+  const pt = (s.x!=null && s.y!=null) ? { x:+s.x, y:+s.y } : shotPoint(s.zone, s.id||s.zone);
+  const rec = {
+    id: s.id || ("sh-"+Date.now().toString(36)+Math.floor(Math.random()*1000).toString(36)),
+    zone: s.zone,
+    outcome: s.outcome || "Off target",
+    minute: (s.minute===0 || s.minute) ? +s.minute : "",
+    x: pt.x, y: pt.y
+  };
+  if(s.playerId) rec.playerId = s.playerId;
+  if(s.no!=null && s.no!=="") rec.no = s.no;
+  return rec;
+}
+function normalizeShotRecord(raw){
+  const rec = emptyShotRecord();
+  raw = raw || {};
+  rec.us = (raw.us||[]).map(normalizeEntryShot).filter(Boolean);
+  rec.against = (raw.against||[]).map(normalizeEntryShot).filter(Boolean);
+  rec.veo = normalizeVeo(raw.veo);
+  return rec;
+}
+function shotRecord(mid){
+  if(!data.shots) data.shots = {};
+  if(!data.shots[mid]) data.shots[mid] = emptyShotRecord();
+  data.shots[mid] = normalizeShotRecord(data.shots[mid]);
+  return data.shots[mid];
+}
+function matchShots(mid, side){
+  const rec = shotRecord(mid);
+  return (side==="against" ? rec.against : rec.us).slice();
+}
+function shotOnTarget(s){ return s && (s.outcome==="Goal" || s.outcome==="On target"); }
+function shotInside(s){ return s && s.zone && s.zone!=="Z6"; }
+function shotTotals(list){
+  list = list || [];
+  const byZone = { Z1:0,Z2:0,Z3:0,Z4:0,Z5:0,Z6:0 };
+  let on=0, goals=0, inside=0, outside=0;
+  list.forEach(function(s){
+    if(byZone[s.zone]!=null) byZone[s.zone]++;
+    if(shotOnTarget(s)) on++;
+    if(s.outcome==="Goal") goals++;
+    if(shotInside(s)) inside++; else outside++;
+  });
+  return { attempts:list.length, onTarget:on, goals:goals, inside:inside, outside:outside, byZone:byZone };
+}
+function entryXgSum(list){
+  if(!xgCalibrated()) return null;
+  let xg=0, n=0;
+  (list||[]).forEach(function(s){
+    const v = XG_CONVERSIONS[s.zone];
+    if(v==null || !isFinite(+v)) return;
+    xg += +v;
+    n++;
+  });
+  return { xg:xg, n:n };
+}
+function veoNum(v){
+  if(v===0) return 0;
+  if(v==null || v==="") return null;
+  const n = +v;
+  return isFinite(n) ? n : null;
+}
+function veoMismatches(mid){
+  const rec = shotRecord(mid);
+  const us = shotTotals(rec.us);
+  const ag = shotTotals(rec.against);
+  const f = fixture(mid);
+  const flags = [];
+  const vu = veoNum(rec.veo.attemptsUs), vt = veoNum(rec.veo.attemptsThem);
+  const gu = veoNum(rec.veo.goalsUs), gt = veoNum(rec.veo.goalsThem);
+  if(vu!=null && vu!==us.attempts) flags.push("Veo reports "+vu+" of our attempts; "+us.attempts+" entered here.");
+  if(vt!=null && vt!==ag.attempts) flags.push("Veo reports "+vt+" shots against; "+ag.attempts+" entered here.");
+  if(gu!=null && gu!==us.goals) flags.push("Veo reports "+gu+" of our goals; "+us.goals+" entered here.");
+  if(gt!=null && gt!==ag.goals) flags.push("Veo reports "+gt+" goals against; "+ag.goals+" entered here.");
+  if(f && f.status==="played" && +f.shots!==us.attempts) flags.push("Fixture total is "+(+f.shots||0)+" of our attempts; "+us.attempts+" entered here.");
+  if(f && f.status==="played" && +f.goals!==us.goals) flags.push("Fixture score has "+(+f.goals||0)+" of our goals; "+us.goals+" entered here.");
+  return flags;
+}
+function shotPlayerLabel(s, teamId){
+  if(s.playerId){
+    const p = PLAYERS.find(function(x){ return x.id===s.playerId; });
+    if(p) return "#"+p.no+" "+fullName(p);
+  }
+  if(s.no!=null && s.no!=="") return "#"+s.no;
+  return "";
+}
+function nextShotId(){
+  return "sh-"+Date.now().toString(36)+"-"+Math.floor(Math.random()*46656).toString(36);
+}
+
+function shotEntryPitchSVG(opts){
+  opts = opts||{};
+  const sel = opts.selected || null;
+  const shots = opts.shots || [];
+  function z(id, d, fill){
+    return '<path data-entry-zone="'+id+'" class="zone'+(sel===id?" sel":"")+'" d="'+d+'" fill="'+fill+'" tabindex="0" role="button" aria-label="Add shot in '+id+'"></path>';
+  }
+  const dots = shots.map(function(s, i){
+    const goal = s.outcome==="Goal";
+    const r = goal ? 5.4 : 3.7;
+    const label = (s.no!=null && s.no!=="") ? String(s.no) : "";
+    return '<g class="entry-dot'+(goal?" goal":"")+'" data-act="edit-entry-shot" data-id="'+esc(s.id)+'" role="button" tabindex="0" aria-label="'+(goal?"Goal":"Shot")+" in "+s.zone+'">' +
+      (goal ? '<circle cx="'+s.x+'" cy="'+s.y+'" r="'+(r+2.6)+'" fill="none" stroke="#fff" stroke-width="1.5"/>' : "") +
+      '<circle cx="'+s.x+'" cy="'+s.y+'" r="'+r+'" fill="'+(goal?"#D4AF37":"#fff")+'" stroke="#102048" stroke-width="1"/>' +
+      (label ? '<text class="dot-n" x="'+s.x+'" y="'+(s.y+2.6)+'">'+esc(label)+"</text>" : "") +
+    "</g>";
+  }).join("");
+  return '<svg class="pitch entry-pitch" viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg" aria-label="Shot entry zone map" data-entry-pitch="1">' +
+    '<rect x="0" y="0" width="200" height="150" fill="#1a6b3c" rx="4"/>' +
+    '<path data-entry-zone="Z6" class="zone'+(sel==="Z6"?" sel":"")+'" fill="#3e6b52" d="M8,8 H192 V142 H8 Z M28,10 H172 V100 H28 Z" fill-rule="evenodd" tabindex="0" role="button" aria-label="Add shot in Z6"></path>' +
+    z("Z4","M28,10 H70 V100 H28 Z","#2e6bb0") +
+    z("Z5","M130,10 H172 V100 H130 Z","#2a5fa0") +
+    z("Z3","M70,70 H130 V100 H70 Z","#e2b009") +
+    z("Z2","M70,40 H130 V70 H70 Z","#e07a2f") +
+    z("Z1","M70,10 H130 V40 H70 Z","#c44536") +
+    '<g fill="none" stroke="rgba(255,255,255,.85)" stroke-width="1.2" pointer-events="none">' +
+      '<rect x="8" y="8" width="184" height="134"/>' +
+      '<rect x="28" y="10" width="144" height="90"/>' +
+      '<rect x="70" y="10" width="60" height="30"/>' +
+      '<path d="M70,100 Q100,128 130,100"/>' +
+      '<rect x="85" y="4" width="30" height="6"/>' +
+    "</g>" +
+    '<g class="zone-labels" pointer-events="none">' +
+      '<text x="100" y="28">Z1</text><text class="zlbl" x="100" y="36">FIRST 6</text>' +
+      '<text x="100" y="56">Z2</text><text class="zlbl" x="100" y="64">SECOND 6</text>' +
+      '<text x="100" y="86">Z3</text><text class="zlbl" x="100" y="94">THIRD 6</text>' +
+      '<text x="49" y="56">Z4</text><text class="zlbl" x="49" y="64">LEFT</text>' +
+      '<text x="151" y="56">Z5</text><text class="zlbl" x="151" y="64">RIGHT</text>' +
+      '<text x="100" y="126">Z6</text><text class="zlbl" x="100" y="134">OUTSIDE THE BOX</text>' +
+    "</g>" +
+    dots +
+  "</svg>";
+}
+
+function shotEntryCardFooter(f){
+  const rec = shotRecord(f.id);
+  const us = rec.us.length, ag = rec.against.length;
+  const flags = veoMismatches(f.id);
+  return '<div class="shot-entry-launch">' +
+    '<p class="hint">Shot entry is used weekly with the Veo match report. Our shot locations come from Veo\'s shot map (entered by hand). Veo does not give opponent locations, so shots against are self-recorded.</p>' +
+    '<div class="shot-entry-meta">'+us+" our shot"+(us===1?"":"s")+" \u00b7 "+ag+" against"+(flags.length?' \u00b7 <span class="mismatch-flag">Veo check</span>':"")+"</div>" +
+    '<button type="button" class="btn btn-navy btn-block" data-act="open-shot-entry" data-id="'+esc(f.id)+'">Shot entry</button></div>';
+}
+
+function renderShotDraft(mid, side, teamId){
+  const d = ui.shotDraft;
+  if(!d) return "";
+  const z = ZONES.find(function(x){ return x.id===d.zone; });
+  const editing = !!d.id;
+  const roster = playersOf(teamId);
+  return '<div class="card shot-draft" id="shot-draft">' +
+    '<div class="card-head"><h3>'+(editing?"Edit shot":"Add shot")+'</h3><span class="badge-navy badge">'+esc(d.zone||"")+"</span></div>" +
+    '<p class="hint" style="margin-top:0">'+(z?esc(z.name)+" \u2014 "+esc(z.desc):"Choose an outcome to save this shot.")+"</p>" +
+    '<div class="fld-label">Outcome</div>' +
+    '<div class="shot-out-grid">' +
+      SHOT_ENTRY_OUTCOMES.map(function(o){
+        return '<button type="button" class="chip-btn'+(d.outcome===o.id?" on":"")+'" data-act="entry-outcome" data-val="'+o.id+'">'+esc(o.label)+"</button>";
+      }).join("") +
+    "</div>" +
+    '<div class="shot-draft-fields">' +
+      '<label class="fld"><span>Minute (optional)</span><input type="number" name="entry-minute" min="0" max="120" inputmode="numeric" value="'+(d.minute===0||d.minute?d.minute:"")+'" placeholder="e.g. 24"></label>' +
+      (side==="us"
+        ? '<label class="fld"><span>Player (optional)</span><select name="entry-player"><option value="">No player</option>' +
+            roster.map(function(p){ return '<option value="'+p.id+'" '+(d.playerId===p.id?"selected":"")+">#"+p.no+" "+esc(fullName(p))+"</option>"; }).join("") +
+          "</select></label>"
+        : '<label class="fld"><span>Shirt number (optional)</span><input type="text" name="entry-no" inputmode="numeric" value="'+esc(d.no!=null?d.no:"")+'" placeholder="e.g. 9"></label>') +
+    "</div>" +
+    '<div class="shot-draft-actions">' +
+      '<button type="button" class="btn btn-navy" data-act="save-entry-shot">'+(editing?"Save changes":"Add shot")+"</button>" +
+      '<button type="button" class="btn btn-text" data-act="cancel-entry-shot">Cancel</button>' +
+      (editing ? '<button type="button" class="btn btn-text danger" data-act="del-entry-shot" data-id="'+esc(d.id)+'">Delete</button>' : "") +
+    "</div></div>";
+}
+
+function renderVeoCard(mid){
+  const rec = shotRecord(mid);
+  const v = rec.veo;
+  const us = shotTotals(rec.us);
+  const ag = shotTotals(rec.against);
+  const flags = veoMismatches(mid);
+  const open = !!ui.veoOpen;
+  function row(label, entered, veoKey, usSide){
+    const vn = veoNum(v[veoKey]);
+    const mismatch = vn!=null && vn!==entered;
+    return '<div class="veo-compare'+(mismatch?" mismatch":"")+'"><div class="lbl">'+esc(label)+"</div>" +
+      '<div class="entered"><span class="k">Entered</span> '+entered+"</div>" +
+      '<div class="veo"><span class="k">Veo</span> '+(vn==null?"\u2014":vn)+"</div></div>";
+  }
+  return '<div class="card veo-card">' +
+    '<button type="button" class="card-head veo-toggle" data-act="toggle-veo" aria-expanded="'+(open?"true":"false")+'"><h3>Veo totals (optional)</h3><span class="badge-muted badge">'+(open?"Hide":"Show")+"</span></button>" +
+    (open ? (
+      '<p class="hint">Paste the headline numbers from the Veo match report as a check against what you have entered. Mismatches in shot counts are flagged; they are not overwritten.</p>' +
+      '<div class="veo-grid">' +
+        '<label class="fld"><span>Attempts (us)</span><input type="number" data-act="veo-field" data-key="attemptsUs" min="0" inputmode="numeric" value="'+esc(v.attemptsUs)+'"></label>' +
+        '<label class="fld"><span>Attempts (them)</span><input type="number" data-act="veo-field" data-key="attemptsThem" min="0" inputmode="numeric" value="'+esc(v.attemptsThem)+'"></label>' +
+        '<label class="fld"><span>Goals (us)</span><input type="number" data-act="veo-field" data-key="goalsUs" min="0" inputmode="numeric" value="'+esc(v.goalsUs)+'"></label>' +
+        '<label class="fld"><span>Goals (them)</span><input type="number" data-act="veo-field" data-key="goalsThem" min="0" inputmode="numeric" value="'+esc(v.goalsThem)+'"></label>' +
+        '<label class="fld"><span>Possession %</span><input type="number" data-act="veo-field" data-key="poss" min="0" max="100" inputmode="numeric" value="'+esc(v.poss)+'"></label>' +
+        '<label class="fld"><span>Passes</span><input type="number" data-act="veo-field" data-key="passes" min="0" inputmode="numeric" value="'+esc(v.passes)+'"></label>' +
+        '<label class="fld"><span>Successful passes</span><input type="number" data-act="veo-field" data-key="passSucc" min="0" inputmode="numeric" value="'+esc(v.passSucc)+'"></label>' +
+        '<label class="fld"><span>Pass accuracy %</span><input type="number" data-act="veo-field" data-key="passAcc" min="0" max="100" inputmode="numeric" value="'+esc(v.passAcc)+'"></label>' +
+        '<label class="fld"><span>Duels</span><input type="number" data-act="veo-field" data-key="duels" min="0" inputmode="numeric" value="'+esc(v.duels)+'"></label>' +
+      "</div>" +
+      '<div class="veo-checks">' +
+        row("Our attempts", us.attempts, "attemptsUs") +
+        row("Shots against", ag.attempts, "attemptsThem") +
+        row("Our goals", us.goals, "goalsUs") +
+        row("Goals against", ag.goals, "goalsThem") +
+      "</div>" +
+      (flags.length ? '<div class="veo-flags">'+flags.map(function(f){ return "<p>"+esc(f)+"</p>"; }).join("")+"</div>" : '<p class="hint">No shot-count mismatches'+(veoNum(v.attemptsUs)==null && veoNum(v.attemptsThem)==null?" \u2014 add Veo totals to compare":"")+".</p>")
+    ) : (flags.length ? '<p class="veo-flag-summary mismatch-flag">'+flags.length+" shot-count mismatch"+(flags.length===1?"":"es")+" \u2014 open to review.</p>" : "")) +
+  "</div>";
+}
+
+function renderShotEntry(){
+  const mid = ui.shotMatch;
+  const f = fixture(mid);
+  if(!f){
+    ui.shotMatch = null;
+    return renderSummary();
+  }
+  const tid = f.teamId || coachScopeTeamId();
+  const team = teamById(tid);
+  const side = ui.shotSide==="against" ? "against" : "us";
+  ui.shotSide = side;
+  const rec = shotRecord(mid);
+  const list = side==="against" ? rec.against : rec.us;
+  const tot = shotTotals(list);
+  const draftZone = ui.shotDraft && ui.shotDraft.zone;
+  const calibrated = xgCalibrated();
+  const xgRow = entryXgSum(rec.us);
+  const zoneName = function(id){ const z = ZONES.find(function(x){ return x.id===id; }); return z ? z.name : id; };
+  return '<div class="page-title"><div><h2>Shot entry</h2><p>'+esc(team?team.name:"Team")+" \u00b7 "+(f.home?"vs":"at")+" "+esc(f.opp)+'</p></div><span class="badge">Sample</span></div>' +
+    '<button type="button" class="btn btn-sm btn-outline back" data-act="close-shot-entry" style="margin-bottom:10px">'+ICO.back+" Back to matches</button>" +
+    '<div class="card" style="margin-bottom:12px"><div class="card-head"><h3>'+esc(f.id)+" \u00b7 "+(f.home?"vs":"at")+" "+esc(f.opp)+'</h3><span class="badge-navy badge">'+esc(f.result||"\u2014")+"</span></div>" +
+      '<p class="hint" style="margin-top:-4px;margin-bottom:0">'+fmtDate(f.date)+" \u00b7 "+esc(f.venue)+" \u00b7 "+f.minutes+" min \u00b7 used weekly with the Veo match report</p></div>" +
+    '<div class="shot-side-toggle" role="tablist">' +
+      '<button type="button" class="'+(side==="us"?"on":"")+'" data-act="shot-side" data-val="us" role="tab" aria-selected="'+(side==="us"?"true":"false")+'">Our shots <b>'+rec.us.length+"</b></button>" +
+      '<button type="button" class="'+(side==="against"?"on":"")+'" data-act="shot-side" data-val="against" role="tab" aria-selected="'+(side==="against"?"true":"false")+'">Shots against <b>'+rec.against.length+"</b></button>" +
+    "</div>" +
+    '<p class="hint shot-side-note">'+(side==="us"?"Enter locations from the Veo shot map for our attempts.":"Veo has no opponent shot map \u2014 record shots against yourself as you review the film.")+"</p>" +
+    '<div class="pitch-wrap" data-entry-pitch="1">'+shotEntryPitchSVG({ selected:draftZone, shots:list })+"</div>" +
+    '<div class="entry-legend"><span><i class="dot"></i> Attempt</span><span><i class="dot goal"></i> Goal</span><span>Z1\u2013Z5 inside the box \u00b7 Z6 outside</span></div>' +
+    '<div class="zone-count-grid">' +
+      XG_ZONES.map(function(id){
+        return '<div class="zone-count"><div class="zid">'+id+'</div><div class="zn">'+esc(zoneName(id))+'</div><div class="zc">'+tot.byZone[id]+"</div></div>";
+      }).join("") +
+    "</div>" +
+    '<div class="grid-4 shot-tot-grid">' +
+      '<div class="stat"><div class="num">'+tot.attempts+'</div><div class="lbl">Attempts</div></div>' +
+      '<div class="stat"><div class="num">'+tot.onTarget+'</div><div class="lbl">On target</div></div>' +
+      '<div class="stat gold"><div class="num">'+tot.goals+'</div><div class="lbl">Goals</div></div>' +
+      '<div class="stat navy"><div class="num">'+tot.inside+' / '+tot.outside+'</div><div class="lbl">In / out of box</div></div>' +
+    "</div>" +
+    (calibrated && xgRow
+      ? '<p class="notice" style="margin-top:12px">Match xG (our shots) <strong>'+xgRow.xg.toFixed(2)+"</strong> from "+xgRow.n+" calibrated zone value"+(xgRow.n===1?"":"s")+". This feeds Attacking Flow and Possessions per xG.</p>"
+      : '<p class="notice" style="margin-top:12px">xG not calibrated yet \u2013 counting shots by zone. Attacking Flow and Possessions per xG will use these shots once every zone value is filled in.</p>') +
+    '<p class="hint">Our shot locations come from Veo\'s shot map and are entered by hand. Veo does not give opponent locations, so shots against are self-recorded. Tap a zone to add a shot. Fictional sample data.</p>' +
+    renderShotDraft(mid, side, tid) +
+    '<div class="card" style="margin-top:12px"><div class="card-head"><h3>'+(side==="us"?"Our shots":"Shots against")+'</h3><span class="badge-muted badge">'+list.length+"</span></div>" +
+      (list.length ? '<div class="entry-shot-list">'+list.slice().sort(function(a,b){
+          const am=a.minute===0||a.minute?+a.minute:999, bm=b.minute===0||b.minute?+b.minute:999;
+          return am-bm;
+        }).map(function(s){
+          const who = shotPlayerLabel(s, tid);
+          const min = (s.minute===0||s.minute) ? s.minute+"'" : "";
+          return '<div class="entry-shot-row'+(ui.shotDraft&&ui.shotDraft.id===s.id?" on":"")+'">' +
+            '<button type="button" class="shot-main" data-act="edit-entry-shot" data-id="'+esc(s.id)+'"><span class="zone-pill '+s.zone.toLowerCase()+'">'+esc(s.zone)+'</span><span class="body"><strong>'+esc(s.outcome)+"</strong><small>"+[min, who, zoneName(s.zone)+(shotInside(s)?"":" \u00b7 outside")].filter(Boolean).join(" \u00b7 ")+"</small></span></button>" +
+            '<button type="button" class="shot-del" data-act="del-entry-shot" data-id="'+esc(s.id)+'" aria-label="Delete shot">Delete</button></div>';
+        }).join("")+"</div>"
+        : '<p class="hint">No shots on this list yet. Tap a zone on the map to add one.</p>') +
+    "</div>" +
+    renderVeoCard(mid);
+}
+
+function syncShotDraftFromDom(){
+  if(!ui.shotDraft) return;
+  const minEl = document.querySelector('input[name="entry-minute"]');
+  const pEl = document.querySelector('select[name="entry-player"]');
+  const nEl = document.querySelector('input[name="entry-no"]');
+  if(minEl){ const v=minEl.value.trim(); ui.shotDraft.minute = v==="" ? "" : +v; }
+  if(pEl){ ui.shotDraft.playerId = pEl.value || ""; }
+  if(nEl){ ui.shotDraft.no = nEl.value.trim(); }
+}
+
+function startShotDraft(zone, existing){
+  if(existing){
+    ui.shotDraft = {
+      id: existing.id,
+      zone: existing.zone,
+      outcome: existing.outcome,
+      minute: existing.minute,
+      playerId: existing.playerId||"",
+      no: existing.no!=null?existing.no:""
+    };
+  }else{
+    ui.shotDraft = { id:"", zone:zone, outcome:"", minute:"", playerId:"", no:"" };
+  }
+}
+
+function saveShotDraft(){
+  syncShotDraftFromDom();
+  const d = ui.shotDraft;
+  if(!d || !d.zone){ toast("Tap a zone first"); return; }
+  if(!d.outcome){ toast("Mark the outcome"); return; }
+  const mid = ui.shotMatch;
+  const side = ui.shotSide==="against" ? "against" : "us";
+  const rec = shotRecord(mid);
+  const list = rec[side];
+  let playerId = d.playerId || "";
+  let no = d.no;
+  if(side==="us" && playerId){
+    const p = PLAYERS.find(function(x){ return x.id===playerId; });
+    if(p) no = p.no;
+  }
+  if(d.id){
+    const i = list.findIndex(function(s){ return s.id===d.id; });
+    if(i>=0){
+      const prev = list[i];
+      const pt = (prev.zone===d.zone) ? { x:prev.x, y:prev.y } : shotPoint(d.zone, prev.id);
+      list[i] = normalizeEntryShot({ id:prev.id, zone:d.zone, outcome:d.outcome, minute:d.minute, playerId:playerId, no:no, x:pt.x, y:pt.y });
+    }
+  }else{
+    const id = nextShotId();
+    const pt = shotPoint(d.zone, id);
+    list.push(normalizeEntryShot({ id:id, zone:d.zone, outcome:d.outcome, minute:d.minute, playerId:playerId, no:no, x:pt.x, y:pt.y }));
+  }
+  rec[side] = list;
+  data.shots[mid] = rec;
+  saveData();
+  ui.shotDraft = null;
+  toast("Shot saved");
+  render();
+}
+
+function deleteEntryShot(id){
+  const mid = ui.shotMatch;
+  if(!mid || !id) return;
+  const rec = shotRecord(mid);
+  rec.us = rec.us.filter(function(s){ return s.id!==id; });
+  rec.against = rec.against.filter(function(s){ return s.id!==id; });
+  data.shots[mid] = rec;
+  saveData();
+  if(ui.shotDraft && ui.shotDraft.id===id) ui.shotDraft = null;
+  toast("Shot removed");
+  render();
+}
+
+function saveVeoField(key, value){
+  const mid = ui.shotMatch;
+  if(!mid || !key) return;
+  const rec = shotRecord(mid);
+  rec.veo[key] = value==="" ? "" : (isFinite(+value) ? +value : value);
+  data.shots[mid] = rec;
+  saveData();
+}
+
+function handleShotEntryClick(t, ev){
+  if(t.hasAttribute("data-entry-zone")){
+    ev.preventDefault();
+    if(ui.shotDraft) syncShotDraftFromDom();
+    const zone = t.getAttribute("data-entry-zone");
+    startShotDraft(zone, null);
+    render();
+    const box = document.getElementById("shot-draft");
+    if(box) box.scrollIntoView({ block:"nearest" });
+    return true;
+  }
+  const act = t.getAttribute("data-act");
+  if(act==="open-shot-entry"){
+    ui.shotMatch = t.getAttribute("data-id");
+    ui.shotSide = "us";
+    ui.shotDraft = null;
+    ui.veoOpen = false;
+    ui.page = "summary";
+    render(); window.scrollTo(0,0); return true;
+  }
+  if(act==="close-shot-entry"){
+    ui.shotMatch = null; ui.shotDraft = null; render(); window.scrollTo(0,0); return true;
+  }
+  if(act==="shot-side"){
+    if(ui.shotDraft) syncShotDraftFromDom();
+    ui.shotSide = t.getAttribute("data-val")==="against" ? "against" : "us";
+    ui.shotDraft = null;
+    render(); return true;
+  }
+  if(act==="entry-outcome"){
+    if(!ui.shotDraft) return true;
+    ui.shotDraft.outcome = t.getAttribute("data-val");
+    syncShotDraftFromDom();
+    render(); return true;
+  }
+  if(act==="save-entry-shot"){ saveShotDraft(); return true; }
+  if(act==="cancel-entry-shot"){ ui.shotDraft=null; render(); return true; }
+  if(act==="edit-entry-shot"){
+    const id = t.getAttribute("data-id");
+    const rec = shotRecord(ui.shotMatch);
+    let found = rec.us.find(function(s){ return s.id===id; });
+    let side = "us";
+    if(!found){ found = rec.against.find(function(s){ return s.id===id; }); side = "against"; }
+    if(!found) return true;
+    ui.shotSide = side;
+    startShotDraft(found.zone, found);
+    render();
+    const box = document.getElementById("shot-draft");
+    if(box) box.scrollIntoView({ block:"nearest" });
+    return true;
+  }
+  if(act==="del-entry-shot"){
+    deleteEntryShot(t.getAttribute("data-id"));
+    return true;
+  }
+  if(act==="toggle-veo"){
+    ui.veoOpen = !ui.veoOpen;
+    render(); return true;
+  }
+  return false;
+}
+
+function handleShotEntryChange(ev){
+  const t = ev.target;
+  if(t.matches("input[data-act='veo-field'], input[data-act=\"veo-field\"]")){
+    saveVeoField(t.getAttribute("data-key"), t.value);
+    render();
+    return true;
+  }
+  if(t.matches('select[name="entry-player"], input[name="entry-minute"], input[name="entry-no"]')){
+    syncShotDraftFromDom();
+    return true;
+  }
+  return false;
+}
+
+
 function deepClone(o){ return JSON.parse(JSON.stringify(o)); }
 
 function buildSeed(){
@@ -2152,7 +2749,7 @@ function buildSeed(){
   PLAYERS.forEach(p => { idp[p.id] = deepClone(SEED_IDP[p.id] || genericIdp(p)); });
   const logs = {};
   PLAYERS.forEach(p => { logs[p.id] = deepClone(SEED_LOGS[p.id] || []); });
-  return { idp, logs, possessions: deepClone(SEED_POSSESSIONS), fixtures: deepClone(FIXTURES), positions: deepClone(SEED_POSITIONS) };
+  return { idp, logs, possessions: deepClone(SEED_POSSESSIONS), fixtures: deepClone(FIXTURES), positions: deepClone(SEED_POSITIONS), shots: deepClone(SEED_SHOTS) };
 }
 
 function loadData(){
@@ -2166,7 +2763,8 @@ function loadData(){
       logs: Object.assign(seed.logs, d.logs||{}),
       possessions: Object.assign(seed.possessions, d.possessions||{}),
       fixtures: d.fixtures && d.fixtures.length ? d.fixtures : seed.fixtures,
-      positions: Object.assign(deepClone(seed.positions), d.positions||{})
+      positions: Object.assign(deepClone(seed.positions), d.positions||{}),
+      shots: Object.assign(deepClone(seed.shots), d.shots||{})
     };
   }catch(e){ return buildSeed(); }
 }
@@ -4062,6 +4660,7 @@ function renderCoachPlayer(){
 }
 
 function renderSummary(){
+  if(ui.shotMatch) return renderShotEntry();
   const tid = coachScopeTeamId();
   const team = teamById(tid);
   const roster = playersOf(tid);
@@ -4082,6 +4681,7 @@ function renderSummary(){
         '<p class="hint" style="margin-top:8px">'+f.shots+" shots \u00b7 "+f.goals+" goals \u00b7 "+logged+" of "+roster.length+" players logged \u00b7 Shot Flow = "+t.secured+" x "+f.shots+" / "+f.minutes+"</p>" +
         renderAttackingMetrics(f.id, { season:true, teamId:tid }) +
         (function(){ const ta = teamAvpMatch(f.id); return renderAvpGauge(ta, { team:true, title:"Team AVP per 90", scope:f.id+" \u00b7 official match minutes "+f.minutes+(ta.official?" \u00b7 sheet "+ta.created+" created, "+ta.received+" received":""), logged:ta.logged }); })() +
+        shotEntryCardFooter(f) +
       "</div>";
     }).join("") +
     (tid==="u15g" ? '<p class="notice">M001 vs Flash (Oct 8, 2026) is the worked example: 105 secured, 122 unsecured, 2 shots, 0 goals, 70 minutes, Shot Flow 3.00, Possessions per Shot 52.5, AVPs per Shot 1.5 (3 received \u00f7 2 shots), possession security 46.3%.</p>' : "");
@@ -4227,14 +4827,8 @@ function teamShotsLogged(mid){
 }
 function matchXg(mid){
   if(!xgCalibrated()) return null;
-  let xg=0, n=0;
-  teamShotsLogged(mid).forEach(function(s){
-    const v = XG_CONVERSIONS[s.zone];
-    if(v==null || !isFinite(+v)) return;
-    xg += +v;
-    n++;
-  });
-  return { xg:xg, n:n };
+  const row = entryXgSum(matchShots(mid, "us"));
+  return row || { xg:0, n:0 };
 }
 function attackingMetrics(mid){
   const f = fixture(mid);
@@ -4353,7 +4947,7 @@ function renderAttackingMetrics(mid, opts){
     '<p class="hint" style="margin-top:8px">AVPs per Shot = RECEIVED AVPs only (Received\u2013Between + Received\u2013Behind) \u00f7 shots. Created AVPs are not included in this ratio' +
       (noShots ? "." : " \u00b7 "+m.avpReceived+" received \u00f7 "+m.shots+" shot"+(m.shots===1?"":"s")+".") +
       (m.avpOfficial ? " Team totals for this match come from the official sheet ("+m.avpCreated+" created, "+m.avpReceived+" received)." : "") +
-      (m.calibrated ? " xG is the sum of the calibrated zone values of logged shots." : "") +
+      (m.calibrated ? " xG is the sum of the calibrated zone values of our shots in Shot entry." : "") +
     "</p></div>";
 }
 function renderSeasonAttacking(teamId){
@@ -4854,17 +5448,19 @@ function bind(){
   document.addEventListener("input", onInput);
   document.addEventListener("change", onChange);
   document.addEventListener("keydown", function(ev){
-    if(ev.key==="Escape"){ ui.switcher=false; ui.more=false; ui.vid=null; ui.pointVid=null; ui.benchInfo=false; render(); }
+    if(ev.key==="Escape"){ if(ui.shotDraft){ ui.shotDraft=null; render(); return; } ui.switcher=false; ui.more=false; ui.vid=null; ui.pointVid=null; ui.benchInfo=false; render(); }
   });
 }
 
 function onClick(ev){
-  const t = ev.target.closest("[data-act], [data-zone], .sheet-backdrop, .vid-modal, .rate button, .stepper button");
+  const t = ev.target.closest("[data-act], [data-zone], [data-entry-zone], .sheet-backdrop, .vid-modal, .rate button, .stepper button");
   if(!t){
     if(ui.switcher && !ev.target.closest(".player-switch")){ ui.switcher=false; render(); }
     return;
   }
   const act = t.getAttribute("data-act");
+
+  if(handleShotEntryClick(t, ev)) return;
 
   if(t.classList.contains("sheet-backdrop")){ ui.more=false; render(); return; }
   if(act==="close-vid" || act==="close-point-vid" || act==="close-bench-info"){
@@ -4927,12 +5523,13 @@ function onClick(ev){
     const page = t.getAttribute("data-page");
     if(page==="more"){ ui.more=true; render(); return; }
     ui.page=page; ui.more=false; ui.switcher=false; ui.logMode=null; ui.draft=null;
+    if(page!=="summary"){ ui.shotMatch=null; ui.shotDraft=null; }
     if(page==="squad"){ ui.coachPlayerId=null; ui.coachTeamId=null; }
     render(); window.scrollTo(0,0); return;
   }
   if(act==="close-more"){ ui.more=false; render(); return; }
   if(act==="reset"){
-    data = buildSeed(); applyPositions(); saveData(); ui.more=false; ui.logMode=null; ui.draft=null;
+    data = buildSeed(); applyPositions(); saveData(); ui.more=false; ui.logMode=null; ui.draft=null; ui.shotMatch=null; ui.shotDraft=null;
     toast("Sample data restored"); render(); return;
   }
   if(act==="new-log"){ openLog(null); window.scrollTo(0,0); return; }
@@ -5095,6 +5692,7 @@ function onInput(ev){
   }
 }
 function onChange(ev){
+  if(handleShotEntryChange(ev)) return;
   const sl = ev.target.closest("input[data-act='idp-slider']");
   if(sl){ saveData(); toast("Progress updated"); return; }
   if(ev.target.matches("select[data-act='poss-match']")){
@@ -5136,9 +5734,18 @@ function onChange(ev){
     const latest = latestPlayed(ui.coachTeamId);
     ui.coachMatch = latest ? latest.id : null;
     ui.possMatch = ui.coachMatch || ui.possMatch;
+    if(ui.shotMatch){
+      const sf = fixture(ui.shotMatch);
+      if(!sf || sf.teamId!==ui.coachTeamId){ ui.shotMatch=null; ui.shotDraft=null; }
+    }
     render();
   }
 }
+
+ui.shotMatch = ui.shotMatch || null;
+ui.shotSide = ui.shotSide || "us";
+ui.shotDraft = ui.shotDraft || null;
+ui.veoOpen = !!ui.veoOpen;
 
 bind();
 render();
@@ -5150,7 +5757,6 @@ window.SCFCPortal = {
   ui: ui
 };
 })();
-
 </script>
 </body>
 </html>

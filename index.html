@@ -622,15 +622,27 @@ input[type=range]{width:100%;accent-color:var(--navy);height:24px}
 .att-trend.good{background:var(--success-bg);color:var(--success)}
 .att-trend.bad{background:var(--danger-bg);color:var(--danger)}
 .att-trend.flat{background:var(--mist);color:var(--muted)}
-.att-season-list{display:grid;gap:8px}
-.att-season-row{display:grid;grid-template-columns:1fr auto auto;gap:8px;align-items:center;font-size:13px}
-.att-season-row .name{font-weight:700;color:var(--navy)}
+.att-season-list{display:grid;gap:10px}
+.att-season-row{display:grid;grid-template-columns:88px 1fr 1fr;gap:4px 8px;align-items:center;font-size:13px}
+.att-season-row .name{grid-column:1 / -1;font-weight:700;color:var(--navy)}
+.att-season-row .spark-wrap{grid-column:1;justify-self:start}
 .att-season-row .avg,.att-season-row .latest{color:var(--ink);text-align:right}
 .att-season-row .k{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-right:4px}
-.att-season-row .avg.wait{color:var(--info);font-weight:700;font-size:12px;grid-column:2 / -1}
+.att-season-row .avg.wait{color:var(--info);font-weight:700;font-size:12.5px;grid-column:1 / -1;text-align:left}
+.att-season-row .hl-matches{grid-column:1 / -1}
+.hl-moment{margin-top:12px}
+.hl-moment:first-child{margin-top:0}
+.hl-kicker{font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);background:var(--navy);display:inline-block;border-radius:6px;padding:3px 8px;margin-bottom:6px}
+.att-metric.span-2{grid-column:1 / -1}
+.spark-wrap{display:flex;align-items:center;min-height:28px}
+.spark{display:block}
+.spark-empty{display:inline-block;width:88px;height:28px}
+.hl-matches{font-size:11px;color:var(--muted);line-height:1.45;font-variant-numeric:tabular-nums}
+.hl-matches .dot{margin:0 5px;color:var(--faint)}
+.att-metric .num.wait{font-size:15px;letter-spacing:.02em;line-height:1.2}
 @media (max-width:360px){
   .att-season-row{grid-template-columns:1fr 1fr;gap:2px 8px}
-  .att-season-row .name{grid-column:1 / -1}
+  .att-season-row .name,.att-season-row .spark-wrap,.att-season-row .hl-matches{grid-column:1 / -1}
 }
 
 /* Assign positions */
@@ -1708,7 +1720,7 @@ const TEAMSNAP = {
     { id:"u17g", name:"U17 Girls PP", short:"U17", ageBand:"U17" }
   ],
   players: [
-    /* U15 Girls PP — original sample squad (logs, M001 Shot Flow example).
+    /* U15 Girls PP — original sample squad (logs, M001 Veo worked example).
        pos on these records is a seed default only; TeamSnap cannot store
        positions. App-managed assignments live in SEED_POSITIONS / data.positions. */
     { id:"eden",    teamId:"u15g", first:"Eden",    last:"Walsh",   pos:"GK",     no:1  },
@@ -1821,16 +1833,16 @@ const DEFAULT_TEAM_ID = "u15g";
    Expected goals (xG) per shot from each SCFC shot zone (Z1–Z6).
 
    Leave each value null until the club has calibrated the six-zone model
-   from collected shots. While any value is null, Attacking Flow and
-   Secured Possessions per xG show "Waiting on xG calibration".
+   from collected shots. While any value is null, xG per shot and
+   xG per secured possession show "xG not calibrated".
 
    Once every zone has a number, those two metrics are computed
    automatically from the zones of coach-entered team shots (Shot entry,
    Our shots). Player match-log shots are not used for team xG.
 
-     match xG              = sum of the conversion value for each of our entered shots
-     Attacking Flow        = secured possessions × match xG ÷ match minutes
-     Possessions per xG    = secured possessions ÷ match xG
+     match xG                  = sum of the conversion value for each of our entered shots
+     xG per shot               = match xG ÷ our shots
+     xG per secured possession = match xG ÷ Veo secured possessions (4+ strings)
 
    Example (do not invent values here):
      Z1: 0.45,  Z2: 0.22,  Z3: 0.12,  Z4: 0.08,  Z5: 0.08,  Z6: 0.04
@@ -2034,7 +2046,7 @@ const TUTORIALS = [
   { id:"t3", title:"Shot zones Z1-Z6", dur:"5:10", blurb:"The SCFC Shot Zone Map: First 6, Second 6, Third 6, left and right edges, plus Z6 for attempts from outside the box. Four outcomes: Goal, Saved, Blocked, Off Target." },
   { id:"t4", title:"Building your IDP", dur:"7:15", blurb:"Writing goals across technical, tactical, physical and psychological pillars. Targets, weekly actions, and how term reviews work." },
   { id:"t5", title:"Living Dominant, Assertive, Connected", dur:"5:40", blurb:"What the club identity looks like in each position, and how to rate yourself after a match without inflating the numbers." },
-  { id:"t6", title:"Team panel and Shot Flow", dur:"6:30", blurb:"How coaches enter Veo pass strings on the Team panel, how secured possessions (4+ pass strings) are counted, and how Shot Flow is calculated." },
+  { id:"t6", title:"Team panel and headline metrics", dur:"6:30", blurb:"How coaches enter Veo pass strings on the Team panel, how secured possessions (4+ pass strings) are counted, and how headline metrics (secured rate, shots per secured, shot quality, opponent-half regains) are calculated." },
   { id:"t7", title:"Using Veo clips to reflect", dur:"4:55", blurb:"Paste a clip link into your match log. What to look for, and how coaches will use the same clip in your IDP conversation." }
 ];
 
@@ -2250,9 +2262,8 @@ const POS_PROFILES = {
    self-recorded.
 
    Match xG (once XG_CONVERSIONS is fully calibrated) is the sum of the
-   zone values of "Our shots" and feeds Attacking Flow and Possessions per xG.
-   Shot Flow and AVPs per Shot are unchanged (fixture shot totals; received
-   AVPs only).
+   zone values of "Our shots" and feeds xG per shot and xG per secured
+   possession. AVPs per Shot is unchanged (received AVPs only).
    ============================================================================= */
 const SHOT_ENTRY_OUTCOMES = [
   { id:"Goal", label:"Goal" },
@@ -2616,8 +2627,8 @@ function renderShotEntry(){
       '<div class="stat navy"><div class="num">'+tot.inside+' / '+tot.outside+'</div><div class="lbl">In / out of box</div></div>' +
     "</div>" +
     (calibrated && xgRow
-      ? '<p class="notice" style="margin-top:12px">Match xG (our shots) <strong>'+xgRow.xg.toFixed(2)+"</strong> from "+xgRow.n+" calibrated zone value"+(xgRow.n===1?"":"s")+". This feeds Attacking Flow and Possessions per xG.</p>"
-      : '<p class="notice" style="margin-top:12px">xG not calibrated yet \u2013 counting shots by zone. Attacking Flow and Possessions per xG will use these shots once every zone value is filled in.</p>') +
+      ? '<p class="notice" style="margin-top:12px">Match xG (our shots) <strong>'+xgRow.xg.toFixed(2)+"</strong> from "+xgRow.n+" calibrated zone value"+(xgRow.n===1?"":"s")+". This feeds xG per shot and xG per secured possession.</p>"
+      : '<p class="notice" style="margin-top:12px">xG not calibrated yet \u2013 counting shots by zone. xG per shot and xG per secured possession will use these shots once every zone value is filled in.</p>') +
     '<p class="hint">Our shot locations come from Veo\'s shot map and are entered by hand. Veo does not give opponent locations, so shots against are self-recorded. Tap a zone to add a shot. Fictional sample data.</p>' +
     renderShotDraft(mid, side, tid) +
     '<div class="card" style="margin-top:12px"><div class="card-head"><h3>'+(side==="us"?"Our shots":"Shots against")+'</h3><span class="badge-muted badge">'+list.length+"</span></div>" +
@@ -2810,9 +2821,9 @@ function handleShotEntryChange(ev){
    Secured possession rate = secured ÷ total.
    Passes in strings = 2·n2 + 3·n3 + 4·n4 + 5·n5 + 6·n6 + 7·n7 + 8·n8+.
    Shots per secured uses Shot entry "Our shots" when entered, otherwise Veo
-   attempts. Shot Flow, Possessions per Shot, Attacking Flow and Possessions
-   per xG use the Veo secured figure (4+ strings). If a match has no Veo
-   panel entry, those metrics show as unavailable until it is filled in.
+   attempts. Headline metrics (secured possession rate, shots per secured,
+   xG per secured, opponent-half regains) use the Veo panel. If a match has
+   no Veo panel entry, those metrics show as unavailable until it is filled in.
    ============================================================================= */
 const GOAL_TYPES = [
   { id:"secured", label:"Secured possession (4+ passes)" },
@@ -3007,9 +3018,8 @@ function renderSeasonGoalSplit(teamId){
 }
 
 const SEED_TEAM_PANEL = {
-  /* M001 v Flash: strings chosen so 4+ = 105 and total possessions = 227,
-     matching the previous worked-example Shot Flow 3.00 and Possessions per Shot 52.5
-     (105 x 2 / 70 and 105 / 2), now sourced from the Veo panel. */
+  /* M001 v Flash: strings chosen so 4+ = 105 and total possessions = 227
+     (secured rate 46%). Worked-example figures now come from the Veo panel. */
   M001: {
     s2:40, s3:32, s4:50, s5:30, s6:15, s7:8, s8:2,
     onePass:50,
@@ -3147,7 +3157,7 @@ function renderTeamPanel(){
         metric(c.duels==null?"\u2014":c.duels, "Duels") +
         metric(c.shotsPerSecured==null?"\u2014":formatShotPerSec(c.shotsPerSecured), "Shots / secured") +
       "</div>" +
-      '<p class="hint" style="margin-top:8px">Shot Flow, Possessions per Shot, Attacking Flow and Possessions per xG on the Matches page use this Veo secured figure (4+ pass strings).</p>' +
+      '<p class="hint" style="margin-top:8px">Headline metrics on the Matches page use this Veo secured figure (4+ pass strings) for secured possession rate, shots per secured possession, and xG per secured possession.</p>' +
     "</div>" +
 
     /* 4. Goals */
@@ -3888,7 +3898,7 @@ function renderPossession(){
     ? "As a "+esc(prof(p.pos).title)+", "+esc(p.first)+" logs the <strong>"+(unitKey==="def"?"defensive":unitKey==="mid"?"midfield":"attacking")+"</strong> window only, so nothing is counted twice."
     : "A coach can enter or edit every unit's window.";
   return '<div class="page-title"><div><h2>Matches</h2><p>Secured possessions now come from the Team panel (Veo)</p></div><span class="badge">Sample</span></div>' +
-    '<div class="notice" style="margin-bottom:12px">The defensive unit logs the first 1/3, the midfield unit the middle 2/3, and the attacking unit the final 3/3. Enter secured possessions (4+ consecutive passes) and unsecured possessions for your window only. Team totals, possession security and Shot Flow combine the three windows. '+roleNote+"</div>" +
+    '<div class="notice" style="margin-bottom:12px">The defensive unit logs the first 1/3, the midfield unit the middle 2/3, and the attacking unit the final 3/3. Enter secured possessions (4+ consecutive passes) and unsecured possessions for your window only. Team totals combine the three windows. '+roleNote+"</div>" +
     '<label class="fld"><span>Match</span><select data-act="poss-match">' +
       matches.map(function(m){ return '<option value="'+m.id+'" '+(m.id===selected?"selected":"")+">"+m.id+" \u00b7 "+fmtDateShort(m.date)+" \u00b7 "+(m.home?"vs":"at")+" "+esc(m.opp)+" ("+esc(m.result||"\u2014")+ ")</option>"; }).join("") +
     "</select></label>" +
@@ -3897,7 +3907,7 @@ function renderPossession(){
         '<div class="stat"><div class="num">'+f.shots+'</div><div class="lbl">Shots (attempts)</div></div>' +
         '<div class="stat"><div class="num">'+f.goals+'</div><div class="lbl">Goals</div></div>' +
         '<div class="stat navy"><div class="num">'+esc(f.result||"\u2014")+'</div><div class="lbl">Score</div></div></div>' +
-      '<p class="hint" style="margin-top:10px">Windows for this match: Defensive '+esc(win.def.label)+' \u00b7 Midfield '+esc(win.mid.label)+' \u00b7 Attacking '+esc(win.att.label)+(isExample ? ". Sample split for M001: 32 + 48 + 25 = 105 secured, 40 + 51 + 31 = 122 unsecured. Shot Flow = 105 \u00d7 2 \u00f7 70 = <strong>3.00</strong>." : ".")+"</p>" +
+      '<p class="hint" style="margin-top:10px">Windows for this match: Defensive '+esc(win.def.label)+' \u00b7 Midfield '+esc(win.mid.label)+' \u00b7 Attacking '+esc(win.att.label)+(isExample ? ". Sample split for M001: 32 + 48 + 25 = 105 secured, 40 + 51 + 31 = 122 unsecured." : ".")+"</p>" +
     "</div>" : "") +
     '<div class="unit-grid" style="margin-top:12px">' +
       units.map(function(u){
@@ -3920,8 +3930,8 @@ function renderPossession(){
         '<div class="stat gold"><div class="num">'+t.security.toFixed(1)+'%</div><div class="lbl">Possession security</div></div>' +
         '<div class="stat navy"><div class="num">'+t.total+'</div><div class="lbl">All possessions</div></div></div>' +
       '<p class="hint" style="margin-top:8px">'+esc(units[0].name)+' '+esc(win.def.label)+' · '+esc(units[1].name)+' '+esc(win.mid.label)+' · '+esc(units[2].name)+' '+esc(win.att.label)+'</p>' +
-      '<div class="formula">Possession security = secured \u00f7 (secured + unsecured)<br><code>Shot Flow = secured possessions \u00d7 attempts / match minutes</code></div>' +
-      '<div style="text-align:center;padding:8px 0 4px"><div class="sf-big">'+sf.toFixed(2)+'</div><div class="fld-label" style="margin-top:6px">Shot Flow</div>' +
+      '<div class="formula">Possession security = secured \u00f7 (secured + unsecured)</div>' +
+      '<div style="text-align:center;padding:8px 0 4px"><div class="sf-big">'+sf.toFixed(2)+'</div><div class="fld-label" style="margin-top:6px">Secured rate</div>' +
       '<p class="hint">'+t.secured+" \u00d7 "+(f?f.shots:0)+" \u00f7 "+(f?f.minutes:0)+"</p></div></div>" + (function(){ const ta = teamAvpMatch(selected); return renderAvpGauge(ta, { team:true, title:"Team AVP per 90", scope:(f?f.id+" · official match minutes "+f.minutes:"This match"), logged:ta.logged }); })();
 }
 
@@ -3975,22 +3985,22 @@ function renderCoachPlayer(){
 
 function renderSummary(){
   const matches = playedFixtures().slice().reverse();
-  return '<div class="page-title"><div><h2>Team match summary</h2><p>Results, possession security and Shot Flow</p></div><span class="badge">Sample</span></div>' +
+  return '<div class="page-title"><div><h2>Team match summary</h2><p>Results and Veo possessions</p></div><span class="badge">Sample</span></div>' +
     matches.map(function(f){
       const t = possTotals(f.id);
       const sf = shotFlow(f.id);
       const logged = PLAYERS.filter(function(p){ return logFor(p.id,f.id); }).length;
-      return '<div class="card"><div class="card-head"><h3>'+f.id+" · "+(f.home?"vs":"at")+" "+esc(f.opp)+'</h3><span class="badge-navy badge">'+esc(f.result||"—")+"</span></div>" +
+      return '<div class="card" data-mid="'+f.id+'"><div class="card-head"><h3>'+f.id+" · "+(f.home?"vs":"at")+" "+esc(f.opp)+'</h3><span class="badge-navy badge">'+esc(f.result||"—")+"</span></div>" +
         '<p class="hint" style="margin-top:-4px;margin-bottom:10px">'+fmtDate(f.date)+" · "+esc(f.venue)+" · "+esc(f.comp)+" · "+f.minutes+" min</p>" +
         '<div class="grid-4"><div class="stat"><div class="num">'+t.secured+'</div><div class="lbl">Secured</div></div>' +
           '<div class="stat"><div class="num">'+t.unsecured+'</div><div class="lbl">Unsecured</div></div>' +
           '<div class="stat gold"><div class="num">'+t.security.toFixed(1)+'%</div><div class="lbl">Security</div></div>' +
-          '<div class="stat navy"><div class="num">'+sf.toFixed(2)+'</div><div class="lbl">Shot Flow</div></div></div>' +
-        '<p class="hint" style="margin-top:8px">'+f.shots+" shots · "+f.goals+" goals · "+logged+" of 12 players logged · Shot Flow = "+t.secured+" x "+f.shots+" / "+f.minutes+"</p>" +
+          '<div class="stat navy"><div class="num">'+sf.toFixed(2)+'</div><div class="lbl">Secured rate</div></div></div>' +
+        '<p class="hint" style="margin-top:8px">'+f.shots+" shots · "+f.goals+" goals · "+logged+" of 12 players logged</p>" +
         (function(){ const ta = teamAvpMatch(f.id); return renderAvpGauge(ta, { team:true, title:"Team AVP per 90", scope:f.id+" · official match minutes "+f.minutes, logged:ta.logged }); })() +
       "</div>";
     }).join("") +
-    '<p class="notice">M001 vs Flash (Oct 8, 2026) is the worked example: 105 secured, 122 unsecured, 2 shots, 0 goals, 70 minutes, Shot Flow 3.00, possession security 46.3%.</p>';
+    '<p class="notice">M001 vs Flash (Oct 8, 2026) is the worked example: 105 secured, 122 unsecured, 2 shots, 0 goals, 70 minutes, secured rate 46%.</p>';
 }
 
 function renderApp(){
@@ -5158,27 +5168,26 @@ function renderSummary(){
   const team = teamById(tid);
   const roster = playersOf(tid);
   const matches = playedFixtures(tid).slice().reverse();
-  return '<div class="page-title"><div><h2>Team match summary</h2><p>'+esc(team?team.name:"Team")+' \u00b7 results, Veo possessions and attacking metrics</p></div><span class="badge">Sample</span></div>' +
+  return '<div class="page-title"><div><h2>Team match summary</h2><p>'+esc(team?team.name:"Team")+' \u00b7 results, four-moments headline metrics and Veo possessions</p></div><span class="badge">Sample</span></div>' +
     renderTeamScopeBar() +
     renderSeasonAttacking(tid) +
-    renderSeasonGoalSplit(tid) +
     matches.map(function(f){
       const c = computeTeamPanel(f.id);
       const logged = roster.filter(function(p){ return logFor(p.id,f.id); }).length;
-      const sf = c.hasVeo ? shotFlow(f.id) : null;
-      return '<div class="card"><div class="card-head"><h3>'+f.id+" \u00b7 "+(f.home?"vs":"at")+" "+esc(f.opp)+'</h3><span class="badge-navy badge">'+esc(f.result||"\u2014")+"</span></div>" +
+      const m = attackingMetrics(f.id);
+      return '<div class="card" data-mid="'+f.id+'"><div class="card-head"><h3>'+f.id+" \u00b7 "+(f.home?"vs":"at")+" "+esc(f.opp)+'</h3><span class="badge-navy badge">'+esc(f.result||"\u2014")+"</span></div>" +
         '<p class="hint" style="margin-top:-4px;margin-bottom:10px">'+fmtDate(f.date)+" \u00b7 "+esc(f.venue)+" \u00b7 "+esc(f.comp)+" \u00b7 "+f.minutes+" min</p>" +
-        '<div class="grid-4"><div class="stat"><div class="num">'+(c.hasVeo?c.secured:"\u2014")+'</div><div class="lbl">Veo secured (4+)</div></div>' +
-          '<div class="stat"><div class="num">'+(c.hasVeo?c.totalPoss:"\u2014")+'</div><div class="lbl">Total possessions</div></div>' +
-          '<div class="stat gold"><div class="num">'+(c.hasVeo&&c.rate!=null?fmtPctWhole(c.rate):"\u2014")+'</div><div class="lbl">Secured rate</div></div>' +
-          '<div class="stat navy"><div class="num">'+(sf!=null?sf.toFixed(2):"\u2014")+'</div><div class="lbl">Shot Flow</div></div></div>' +
-        '<p class="hint" style="margin-top:8px">'+f.shots+" shots \u00b7 "+f.goals+" goals \u00b7 "+logged+" of "+roster.length+" players logged"+(c.hasVeo ? " \u00b7 Shot Flow = "+c.secured+" \u00d7 "+f.shots+" / "+f.minutes : " \u00b7 Needs Veo team panel")+"</p>" +
+        '<div class="grid-4"><div class="stat gold"><div class="num">'+(m.needVeo?"\u2014":fmtPctWhole(m.rate))+'</div><div class="lbl">Secured rate</div></div>' +
+          '<div class="stat"><div class="num">'+(m.needVeo?"\u2014":formatShotPerSec(m.shotsPerSecured))+'</div><div class="lbl">Shots / secured</div></div>' +
+          '<div class="stat"><div class="num">'+(m.insideShare==null?"\u2014":fmtPctWhole(m.insideShare))+'</div><div class="lbl">Inside-box shots</div></div>' +
+          '<div class="stat navy"><div class="num">'+(m.needVeo||!m.hasRegains?"\u2014":fmtPctWhole(m.oppPct))+'</div><div class="lbl">Regains opp. half</div></div></div>' +
+        '<p class="hint" style="margin-top:8px">'+f.shots+" shots \u00b7 "+f.goals+" goals \u00b7 "+logged+" of "+roster.length+" players logged"+(m.needVeo ? " \u00b7 \u2013 Needs Veo team panel" : " \u00b7 "+m.secured+" secured of "+m.totalPoss+(m.hasRegains ? " \u00b7 "+m.regainsOpp+" of "+m.regains+" regains in the opponent's half" : ""))+"</p>" +
         renderAttackingMetrics(f.id, { season:true, teamId:tid }) +
         (function(){ const ta = teamAvpMatch(f.id); return renderAvpGauge(ta, { team:true, title:"Team AVP per 90", scope:f.id+" \u00b7 official match minutes "+f.minutes+(ta.official?" \u00b7 sheet "+ta.created+" created, "+ta.received+" received":""), logged:ta.logged }); })() +
         shotEntryAndPanelFooter(f) +
       "</div>";
     }).join("") +
-    (tid==="u15g" ? '<p class="notice">M001 vs Flash (Oct 8, 2026) is the worked example, now taken from the Team panel (Veo): 105 secured possessions (4+ strings), 227 total possessions, secured rate 46%, 2 shots, 0 goals, 70 minutes, Shot Flow 3.00, Possessions per Shot 52.5, AVPs per Shot 1.5 (3 received \u00f7 2 shots).</p>' : "");
+    (tid==="u15g" ? '<p class="notice">M001 vs Flash (Oct 8, 2026) is the worked example from the Team panel (Veo): 105 secured possessions (4+ strings), 227 total possessions, secured rate 46%, 2 shots (shots per secured 0.02), inside-box share 50%, AVPs per Shot 1.5 (3 received \u00f7 2 shots). No regain figures are entered for this sample panel. M004 at Northgate is the richer Veo sample: secured rate 19%, shots per secured 0.68, inside-box share 20%, regains in the opponent\u2019s half 34% (32 of 94).</p>' : "");
 }
 
 function renderPossession(){
@@ -5201,7 +5210,7 @@ function renderSwitcher(){
 
 
 /* =========================================================================
-   Attacking metrics (Shot Flow, Attacking Flow, conversion rates)
+   Headline team metrics (four moments)
    ========================================================================= */
 
 function teamAvpSheet(mid){
@@ -5265,60 +5274,113 @@ function matchXg(mid){
   const row = entryXgSum(matchShots(mid, "us"));
   return row || { xg:0, n:0 };
 }
+
 function attackingMetrics(mid){
   const f = fixture(mid);
-  const mins = f ? +f.minutes||0 : 0;
-  const shots = f ? +f.shots||0 : 0;
-  const hasVeo = panelHasVeo(teamPanel(mid));
-  const secured = hasVeo ? (effectiveSecured(mid)||0) : null;
+  const c = computeTeamPanel(mid);
+  const hasVeo = !!(c && c.hasVeo);
   const avp = teamAvpMatch(mid);
-  const shotFlowVal = (hasVeo && mins) ? (secured * shots / mins) : null;
-  const possPerShot = (hasVeo && shots) ? (secured / shots) : null;
-  const avpPerShot = shots ? (avp.received / shots) : null;
   const calibrated = xgCalibrated();
   const xgRow = calibrated ? matchXg(mid) : null;
   const xg = xgRow ? xgRow.xg : null;
-  const attFlow = (hasVeo && calibrated && mins) ? (secured * (xg||0) / mins) : null;
-  const possPerXg = (hasVeo && calibrated && xg && xg>0) ? (secured / xg) : null;
+  const fixtureShots = f ? +f.shots||0 : 0;
+  const shots = (c && c.shots!=null) ? c.shots : fixtureShots;
+  const p = teamPanel(mid);
+  const hasRegains = hasVeo && (panelNum(p.regains)!=null || panelNum(p.regainsOpp)!=null || !!(c && c.typesUsed));
+  const split = (f && f.teamId) ? teamGoalSplit(f.teamId, mid) : { secured:0, counter:0, unset:0, total:0, list:[] };
+  const insideShare = (c && c.inside!=null && shots) ? c.insideShare : null;
   return {
     mid: mid,
     hasVeo: hasVeo,
     needVeo: !hasVeo,
-    secured: secured,
+    secured: hasVeo ? c.secured : null,
+    totalPoss: hasVeo ? c.totalPoss : null,
+    rate: hasVeo ? c.rate : null,
     shots: shots,
-    mins: mins,
-    shotFlow: shotFlowVal,
-    possPerShot: possPerShot,
+    fixtureShots: fixtureShots,
+    mins: f ? +f.minutes||0 : 0,
+    shotsPerSecured: hasVeo ? c.shotsPerSecured : null,
+    inside: (c && c.inside!=null) ? c.inside : null,
+    insideShare: insideShare,
+    hasRegains: hasRegains,
+    regains: hasRegains ? c.regains : null,
+    regainsOpp: hasRegains ? c.regainsOpp : null,
+    oppPct: hasRegains ? c.oppPct : null,
     avpTotal: avp.total,
     avpCreated: avp.created,
     avpReceived: avp.received,
-    avpPerShot: avpPerShot,
+    avpPerShot: fixtureShots ? (avp.received / fixtureShots) : null,
     avpOfficial: !!avp.official,
     calibrated: calibrated,
     xg: xg,
     xgLogged: xgRow ? xgRow.n : 0,
-    attFlow: (calibrated && mins) ? attFlow : null,
-    possPerXg: possPerXg
+    xgPerSecured: (hasVeo && calibrated && c.secured && xg!=null) ? (xg / c.secured) : null,
+    xgPerShot: (calibrated && shots && xg!=null) ? (xg / shots) : null,
+    split: split
   };
 }
 function seasonAttacking(teamId){
   const matches = playedFixtures(teamId).slice().sort(function(a,b){ return a.date<b.date?-1:a.date>b.date?1:0; });
   const rows = matches.map(function(f){ return attackingMetrics(f.id); });
-  function avg(key){
-    const xs = rows.map(function(r){ return r[key]; }).filter(function(v){ return v!=null && isFinite(v); });
+  function series(key, require){
+    return rows.map(function(r){
+      const f = fixture(r.mid);
+      let v = r[key];
+      if(require==="veo" && !r.hasVeo) v = null;
+      if(require==="regains" && !r.hasRegains) v = null;
+      return { mid:r.mid, opp:f?f.opp:r.mid, date:f?f.date:"", v: (v==null || !isFinite(v)) ? null : v };
+    });
+  }
+  function avgOf(ser){
+    const xs = ser.map(function(p){ return p.v; }).filter(function(v){ return v!=null && isFinite(v); });
     if(!xs.length) return null;
     return xs.reduce(function(a,b){ return a+b; },0)/xs.length;
   }
+  function lastDefined(ser){
+    for(let i=ser.length-1;i>=0;i--) if(ser[i].v!=null && isFinite(ser[i].v)) return ser[i];
+    return null;
+  }
+  function prevDefined(ser){
+    const last = lastDefined(ser);
+    if(!last) return null;
+    const i = ser.findIndex(function(p){ return p.mid===last.mid; });
+    for(let j=i-1;j>=0;j--) if(ser[j].v!=null && isFinite(ser[j].v)) return ser[j];
+    return null;
+  }
+  const splits = rows.map(function(r){
+    const f = fixture(r.mid);
+    return { mid:r.mid, opp:f?f.opp:r.mid, date:f?f.date:"", split:r.split||{secured:0,counter:0,total:0} };
+  });
   return {
     n: rows.length,
     rows: rows,
     latest: rows.length ? rows[rows.length-1] : null,
     prev: rows.length>1 ? rows[rows.length-2] : null,
-    avgShotFlow: avg("shotFlow"),
-    avgPossPerShot: avg("possPerShot"),
-    avgAvpPerShot: avg("avpPerShot"),
-    avgAttFlow: avg("attFlow"),
-    avgPossPerXg: avg("possPerXg")
+    seriesRate: series("rate","veo"),
+    seriesShotsPerSec: series("shotsPerSecured","veo"),
+    seriesXgPerSec: series("xgPerSecured","veo"),
+    seriesXgPerShot: series("xgPerShot"),
+    seriesInside: series("insideShare"),
+    seriesAvpPerShot: series("avpPerShot"),
+    seriesOppPct: series("oppPct","regains"),
+    splits: splits,
+    avgRate: avgOf(series("rate","veo")),
+    avgShotsPerSec: avgOf(series("shotsPerSecured","veo")),
+    avgXgPerSec: avgOf(series("xgPerSecured","veo")),
+    avgXgPerShot: avgOf(series("xgPerShot")),
+    avgInside: avgOf(series("insideShare")),
+    avgAvpPerShot: avgOf(series("avpPerShot")),
+    avgOppPct: avgOf(series("oppPct","regains")),
+    lastRate: lastDefined(series("rate","veo")),
+    prevRate: prevDefined(series("rate","veo")),
+    lastShotsPerSec: lastDefined(series("shotsPerSecured","veo")),
+    prevShotsPerSec: prevDefined(series("shotsPerSecured","veo")),
+    lastInside: lastDefined(series("insideShare")),
+    prevInside: prevDefined(series("insideShare")),
+    lastAvpPerShot: lastDefined(series("avpPerShot")),
+    prevAvpPerShot: prevDefined(series("avpPerShot")),
+    lastOppPct: lastDefined(series("oppPct","regains")),
+    prevOppPct: prevDefined(series("oppPct","regains"))
   };
 }
 function attTrend(current, previous, lowerIsBetter){
@@ -5349,74 +5411,135 @@ function renderAttValue(opts){
   const needVeo = !!opts.needVeo;
   const value = opts.value;
   const fmt = opts.fmt || fmtFlow;
-  if(needVeo) return '<div class="num empty">—</div>';
-  if(wait) return '<div class="num wait">Waiting on xG calibration</div>';
+  if(needVeo) return '<div class="num empty">\u2013</div>';
+  if(wait) return '<div class="num wait">xG not calibrated</div>';
   if(empty) return '<div class="num empty">No shots</div>';
+  if(opts.none) return '<div class="num empty">\u2014</div>';
   return '<div class="num">'+fmt(value)+"</div>";
+}
+function renderSparkline(series){
+  const pts = (series||[]).filter(function(p){ return p && p.v!=null && isFinite(p.v); });
+  if(pts.length<2) return '<span class="spark-empty" aria-hidden="true"></span>';
+  const w=88, h=28, pad=3;
+  const nums = pts.map(function(p){ return p.v; });
+  let min = Math.min.apply(null, nums), max = Math.max.apply(null, nums);
+  if(min===max){ min = min - 1; max = max + 1; }
+  const span = max - min;
+  const coords = pts.map(function(p,i){
+    const x = pad + i * (w - 2*pad) / (pts.length-1);
+    const y = h - pad - ((p.v - min) / span) * (h - 2*pad);
+    return x.toFixed(1)+","+y.toFixed(1);
+  });
+  const last = coords[coords.length-1].split(",");
+  return '<svg class="spark" viewBox="0 0 '+w+" "+h+'" width="'+w+'" height="'+h+'" aria-hidden="true"><polyline fill="none" stroke="#102048" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round" points="'+coords.join(" ")+'"/><circle cx="'+last[0]+'" cy="'+last[1]+'" r="2.3" fill="#D4AF37"/></svg>';
+}
+function renderMatchTrendList(series, fmt){
+  if(!series || !series.length) return "";
+  return '<div class="hl-matches">'+series.map(function(p){
+    const v = (p.v==null || !isFinite(p.v)) ? "\u2014" : fmt(p.v);
+    return '<span>'+esc(p.opp)+" "+v+"</span>";
+  }).join("<span class=\"dot\">\u00b7</span>")+"</div>";
+}
+function renderHeadlineTile(tile){
+  return '<div class="att-metric'+(tile.wait?" wait":"")+(tile.wide?" span-2":"")+'"><div class="att-top"><div class="lbl">'+esc(tile.name)+"</div>"+(tile.trend||"")+"</div>" +
+    renderAttValue(tile) +
+    (tile.dir ? '<div class="dir">'+tile.dir+"</div>" : "") +
+    (tile.formula ? '<div class="att-formula">'+tile.formula+"</div>" : "") +
+  "</div>";
 }
 function renderAttackingMetrics(mid, opts){
   opts = opts || {};
   const m = attackingMetrics(mid);
-  const f = fixture(mid);
   const season = opts.season && opts.teamId ? seasonAttacking(opts.teamId) : null;
-  const prev = season && season.rows ? (function(){
+  function prevVal(key, require){
+    if(!season || !season.rows) return null;
     const i = season.rows.findIndex(function(r){ return r.mid===mid; });
-    return i>0 ? season.rows[i-1] : null;
-  })() : (season && season.prev && season.latest && season.latest.mid===mid ? season.prev : null);
-  const noShots = !m.shots;
+    for(let j=i-1;j>=0;j--){
+      const r = season.rows[j];
+      if(require==="veo" && !r.hasVeo) continue;
+      if(require==="regains" && !r.hasRegains) continue;
+      const v = r[key];
+      if(v!=null && isFinite(v)) return v;
+    }
+    return null;
+  }
   const needVeo = !!m.needVeo;
-  const tiles = [
-    { key:"shotFlow", name:"Shot Flow", dir:needVeo?"Needs Veo team panel":"Higher is better", value:m.shotFlow, fmt:fmtFlow, lower:false, wait:false, empty:false, needVeo:needVeo, formula: needVeo?"":(m.secured+" \u00d7 "+m.shots+" \u00f7 "+m.mins) },
-    { key:"possPerShot", name:"Possessions per Shot", dir:needVeo?"Needs Veo team panel":"Lower is better", value:m.possPerShot, fmt:fmtRatio, lower:true, wait:false, empty:!needVeo && noShots, needVeo:needVeo, formula: (needVeo||noShots)?"":m.secured+" \u00f7 "+m.shots },
-    { key:"avpPerShot", name:"AVPs per Shot", dir:"Received AVPs only \u00b7 lower is generally better", value:m.avpPerShot, fmt:fmtRatio, lower:true, wait:false, empty:noShots, formula: noShots?"":m.avpReceived+" \u00f7 "+m.shots },
-    { key:"attFlow", name:"Attacking Flow", dir:needVeo?"Needs Veo team panel":"Higher is better", value:m.attFlow, fmt:fmtFlow, lower:false, wait:!needVeo && !m.calibrated, empty:false, needVeo:needVeo },
-    { key:"possPerXg", name:"Possessions per xG", dir:needVeo?"Needs Veo team panel":"Lower is better", value:m.possPerXg, fmt:fmtRatio, lower:true, wait:!needVeo && !m.calibrated, empty:!needVeo && m.calibrated && !(m.xg>0), needVeo:needVeo }
+  const noShots = !m.shots;
+  const waitXg = !m.calibrated;
+  const tilesAtt = [
+    { name:"Secured possession rate", value:m.rate, fmt:fmtPctWhole, needVeo:needVeo, dir:needVeo?"\u2013 Needs Veo team panel":"Transition to attack", formula: (!needVeo && m.totalPoss) ? (m.secured+" \u00f7 "+m.totalPoss+" possessions") : "", trend: renderTrend(attTrend(m.rate, prevVal("rate","veo"), false)) },
+    { name:"Shots per secured possession", value:m.shotsPerSecured, fmt:formatShotPerSec, needVeo:needVeo, empty:!needVeo && noShots, dir:needVeo?"\u2013 Needs Veo team panel":"Transition to attack", formula: (!needVeo && !noShots && m.secured) ? (m.shots+" \u00f7 "+m.secured) : "", trend: renderTrend(attTrend(m.shotsPerSecured, prevVal("shotsPerSecured","veo"), false)) },
+    { name:"xG per secured possession", value:m.xgPerSecured, fmt:fmtFlow, needVeo:needVeo, wait:!needVeo && waitXg, dir:needVeo?"\u2013 Needs Veo team panel":(waitXg?"":"Transition to attack"), formula: (!needVeo && !waitXg && m.secured) ? ("xG "+(m.xg==null?"\u2014":m.xg.toFixed(2))+" \u00f7 "+m.secured) : "", wide:false }
   ];
-  return '<div class="card att-panel" style="margin-top:12px"><div class="card-head"><h3>Attacking metrics</h3><span class="badge">Sample</span></div>' +
-    '<div class="att-grid">' +
-      tiles.map(function(tile){
-        const tr = prev ? attTrend(tile.wait||tile.empty||tile.needVeo ? null : tile.value, tile.wait||tile.needVeo?null:prev[tile.key], tile.lower) : null;
-        return '<div class="att-metric'+(tile.wait?" wait":"")+'"><div class="att-top"><div class="lbl">'+esc(tile.name)+"</div>"+renderTrend(tr)+"</div>" +
-          renderAttValue(tile) +
-          '<div class="dir">'+esc(tile.dir)+"</div>" +
-          (tile.formula ? '<div class="att-formula">'+esc(tile.formula)+"</div>" : "") +
-        "</div>";
-      }).join("") +
+  const tilesOrg = [
+    { name:"xG per shot", value:m.xgPerShot, fmt:fmtFlow, wait:waitXg, empty:!waitXg && noShots, dir:waitXg?"":"Shot quality", formula: (!waitXg && !noShots) ? ("xG "+(m.xg==null?"\u2014":m.xg.toFixed(2))+" \u00f7 "+m.shots) : "" },
+    { name:"Inside-box shot share", value:m.insideShare, fmt:fmtPctWhole, empty:noShots, none:!noShots && m.insideShare==null, dir:noShots?"No shots":"Shot quality", formula: (!noShots && m.inside!=null) ? (m.inside+" of "+m.shots+" inside the box") : "", trend: renderTrend(attTrend(m.insideShare, prevVal("insideShare"), false)) },
+    { name:"AVPs per Shot (received)", value:m.avpPerShot, fmt:fmtRatio, empty:!m.fixtureShots, dir:"Received AVPs only \u00b7 player / AO metric", formula: m.fixtureShots ? (m.avpReceived+" \u00f7 "+m.fixtureShots) : "", trend: renderTrend(attTrend(m.avpPerShot, prevVal("avpPerShot"), true)), wide:true }
+  ];
+  const tilesDef = [
+    { name:"Regains in opponent's half", value:m.oppPct, fmt:fmtPctWhole, needVeo:needVeo, none:!needVeo && !m.hasRegains, dir:needVeo?"\u2013 Needs Veo team panel":(!m.hasRegains?"No regain figures on the Veo panel":(m.regainsOpp+" of "+m.regains+" regains")), formula:"", trend: renderTrend(attTrend(m.oppPct, prevVal("oppPct","regains"), false)), wide:true }
+  ];
+  function group(kicker, tiles){
+    return '<div class="hl-moment"><div class="hl-kicker">'+esc(kicker)+"</div>" +
+      '<div class="att-grid hl-grid">'+tiles.map(renderHeadlineTile).join("")+"</div></div>";
+  }
+  return '<div class="card att-panel" style="margin-top:12px"><div class="card-head"><h3>Headline metrics</h3><span class="badge">Sample</span></div>' +
+    group("Transition to attack", tilesAtt) +
+    group("Attacking organisation", tilesOrg) +
+    group("Transition to defence", tilesDef) +
+    '<div class="hl-moment"><div class="hl-kicker">Goals</div>' +
+      (m.split && m.split.total ? renderGoalSplitCard(m.split, { always:true }) : '<p class="hint">No player-logged goals in this match. When a scorer ticks secured possession or 4 to score, the split appears here.</p>') +
     "</div>" +
-    '<p class="att-explainer">Shot Flow, Possessions per Shot, Attacking Flow and Possessions per xG use secured possessions from the Team panel (Veo) \u2014 the count of pass strings of 4 or more. Shot Flow rewards having lots of secured possessions, while Possessions per Shot shows how efficiently they are turned into attempts. Attacking Flow (secured possessions \u00d7 xG \u00f7 minutes) and Possessions per xG will appear once the six-zone xG model has been calibrated. If a match has no Veo panel entry, those possession metrics show as unavailable.</p>' +
-    '<p class="hint" style="margin-top:8px">AVPs per Shot = RECEIVED AVPs only (Received\u2013Between + Received\u2013Behind) \u00f7 shots. Created AVPs are not included in this ratio' +
-      (noShots ? "." : " \u00b7 "+m.avpReceived+" received \u00f7 "+m.shots+" shot"+(m.shots===1?"":"s")+".") +
-      (m.avpOfficial ? " Team totals for this match come from the official sheet ("+m.avpCreated+" created, "+m.avpReceived+" received)." : "") +
-      (m.calibrated ? " xG is the sum of the calibrated zone values of our shots in Shot entry." : "") +
+    '<p class="att-explainer">Secured possession rate, shots per secured possession, xG per secured possession and opponent-half regains come from the Team panel (Veo). Matches without a Veo panel show as unavailable. Shot quality uses Shot entry; xG per shot and xG per secured possession appear once all six zone values are calibrated. AVPs per Shot is a player / attacking-organisation metric: received AVPs only (Received\u2013Between + Received\u2013Behind) \u00f7 shots.' +
+      (m.avpOfficial ? " Team AVP totals for this match come from the official sheet ("+m.avpCreated+" created, "+m.avpReceived+" received)." : "") +
     "</p></div>";
+}
+function renderSeasonRow(opts){
+  const wait = !!opts.wait;
+  const tr = wait ? null : attTrend(opts.latest, opts.prev, !!opts.lower);
+  return '<div class="att-season-row"><div class="name">'+esc(opts.name)+"</div>" +
+    (wait ? '<div class="avg wait">xG not calibrated</div>' :
+      '<div class="spark-wrap">'+renderSparkline(opts.series)+"</div>" +
+      '<div class="avg"><span class="k">Avg</span> '+(opts.avg==null?"\u2014":opts.fmt(opts.avg))+"</div>" +
+      '<div class="latest"><span class="k">Latest</span> '+(opts.latest==null?"\u2014":opts.fmt(opts.latest))+" "+renderTrend(tr)+"</div>" +
+      renderMatchTrendList(opts.series, opts.fmt)) +
+  "</div>";
 }
 function renderSeasonAttacking(teamId){
   const s = seasonAttacking(teamId);
   const team = teamById(teamId);
   if(!s.n) return "";
-  const latestNeedVeo = s.latest && !s.latest.hasVeo;
-  const rows = [
-    { name:"Shot Flow", avg:s.avgShotFlow, latest:s.latest&&s.latest.shotFlow, prev:s.prev&&s.prev.shotFlow, fmt:fmtFlow, lower:false, wait:false, needVeo:latestNeedVeo },
-    { name:"Possessions per Shot", avg:s.avgPossPerShot, latest:s.latest&&s.latest.possPerShot, prev:s.prev&&s.prev.possPerShot, fmt:fmtRatio, lower:true, wait:false, empty:s.latest&&!s.latest.shots, needVeo:latestNeedVeo },
-    { name:"AVPs per Shot (received)", avg:s.avgAvpPerShot, latest:s.latest&&s.latest.avpPerShot, prev:s.prev&&s.prev.avpPerShot, fmt:fmtRatio, lower:true, wait:false, empty:s.latest&&!s.latest.shots },
-    { name:"Attacking Flow", avg:s.avgAttFlow, latest:s.latest&&s.latest.attFlow, prev:s.prev&&s.prev.attFlow, fmt:fmtFlow, lower:false, wait:!xgCalibrated(), needVeo:latestNeedVeo && xgCalibrated() },
-    { name:"Possessions per xG", avg:s.avgPossPerXg, latest:s.latest&&s.latest.possPerXg, prev:s.prev&&s.prev.possPerXg, fmt:fmtRatio, lower:true, wait:!xgCalibrated(), needVeo:latestNeedVeo && xgCalibrated() }
-  ];
-  return '<div class="card att-season" style="margin-bottom:12px"><div class="card-head"><h3>Season attacking metrics</h3><span class="badge-muted badge">'+esc(team?team.name:"Team")+" \u00b7 "+s.n+" match"+(s.n===1?"":"es")+"</span></div>" +
-    '<div class="att-season-list">' +
-      rows.map(function(r){
-        const tr = attTrend(r.wait||r.needVeo?null:r.latest, r.prev, r.lower);
-        return '<div class="att-season-row"><div class="name">'+esc(r.name)+"</div>" +
-          (r.wait
-            ? '<div class="avg wait">Waiting on xG calibration</div>'
-            : '<div class="avg"><span class="k">Avg</span> '+(r.avg==null?"\u2014":r.fmt(r.avg))+"</div>") +
-          (r.wait ? "" : '<div class="latest"><span class="k">Latest</span> '+(r.needVeo?"Needs Veo team panel":r.empty?"No shots":r.latest==null?"\u2014":r.fmt(r.latest))+" "+renderTrend(tr)+"</div>") +
-        "</div>";
-      }).join("") +
+  const seasonSplit = seasonGoalSplit(teamId);
+  function group(kicker, rows){
+    return '<div class="hl-moment"><div class="hl-kicker">'+esc(kicker)+"</div>" +
+      '<div class="att-season-list">'+rows.map(renderSeasonRow).join("")+"</div></div>";
+  }
+  const goalList = '<div class="hl-matches">'+s.splits.map(function(p){
+    const sp = p.split || {secured:0,counter:0,total:0};
+    const v = sp.total ? (sp.secured+"\u2013"+sp.counter) : "\u2014";
+    return "<span>"+esc(p.opp)+" "+v+"</span>";
+  }).join("<span class=\"dot\">\u00b7</span>")+"</div>";
+  return '<div class="card att-season" style="margin-bottom:12px"><div class="card-head"><h3>Season headline metrics</h3><span class="badge-muted badge">'+esc(team?team.name:"Team")+" \u00b7 "+s.n+" match"+(s.n===1?"":"es")+"</span></div>" +
+    group("Transition to attack", [
+      { name:"Secured possession rate", avg:s.avgRate, latest:s.lastRate&&s.lastRate.v, prev:s.prevRate&&s.prevRate.v, fmt:fmtPctWhole, lower:false, series:s.seriesRate },
+      { name:"Shots per secured possession", avg:s.avgShotsPerSec, latest:s.lastShotsPerSec&&s.lastShotsPerSec.v, prev:s.prevShotsPerSec&&s.prevShotsPerSec.v, fmt:formatShotPerSec, lower:false, series:s.seriesShotsPerSec },
+      { name:"xG per secured possession", wait:!xgCalibrated(), avg:s.avgXgPerSec, latest:null, prev:null, fmt:fmtFlow, series:s.seriesXgPerSec }
+    ]) +
+    group("Attacking organisation", [
+      { name:"xG per shot", wait:!xgCalibrated(), avg:s.avgXgPerShot, latest:null, prev:null, fmt:fmtFlow, series:s.seriesXgPerShot },
+      { name:"Inside-box shot share", avg:s.avgInside, latest:s.lastInside&&s.lastInside.v, prev:s.prevInside&&s.prevInside.v, fmt:fmtPctWhole, lower:false, series:s.seriesInside },
+      { name:"AVPs per Shot (received)", avg:s.avgAvpPerShot, latest:s.lastAvpPerShot&&s.lastAvpPerShot.v, prev:s.prevAvpPerShot&&s.prevAvpPerShot.v, fmt:fmtRatio, lower:true, series:s.seriesAvpPerShot }
+    ]) +
+    group("Transition to defence", [
+      { name:"Regains in opponent's half", avg:s.avgOppPct, latest:s.lastOppPct&&s.lastOppPct.v, prev:s.prevOppPct&&s.prevOppPct.v, fmt:fmtPctWhole, lower:false, series:s.seriesOppPct }
+    ]) +
+    '<div class="hl-moment"><div class="hl-kicker">Goals</div>' +
+      renderGoalSplitCard(seasonSplit, { always:true, empty:"No goals typed yet this season." }) +
+      '<p class="hint" style="margin-top:8px">Per match, secured possession vs 4 to score (counter).</p>' +
+      goalList +
     "</div>" +
-    '<p class="hint" style="margin-top:8px">Trends compare the latest played match with the one before it (matches without a Veo team panel are skipped). Shot Flow and Attacking Flow use Veo secured possessions and are better up; the conversion rates are better down. AVPs per Shot uses received AVPs only (Received\u2013Between + Received\u2013Behind).</p></div>';
+    '<p class="hint" style="margin-top:8px">Sparklines and averages use matches that have a figure (Veo panel for possession and regain rates; Shot entry for inside-box share). Matches without a Veo panel are shown as \u2014 on possession trends. xG metrics appear once the six-zone model is calibrated. AVPs per Shot uses received AVPs only (Received\u2013Between + Received\u2013Behind).</p></div>';
 }
-
 
 /* =========================================================================
    App-managed positions: coach assign mode + unset-position states
@@ -6268,7 +6391,9 @@ window.SCFCPortal = {
   computeTeamPanel: computeTeamPanel,
   teamGoalSplit: teamGoalSplit,
   seasonGoalSplit: seasonGoalSplit,
-  effectiveSecured: effectiveSecured
+  effectiveSecured: effectiveSecured,
+  attackingMetrics: attackingMetrics,
+  seasonAttacking: seasonAttacking
 };
 })();
 </script>

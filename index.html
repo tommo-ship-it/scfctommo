@@ -716,6 +716,49 @@ svg.pitch.entry-pitch .entry-dot .dot-n{
   .veo-grid{grid-template-columns:repeat(3,1fr)}
 }
 
+/* Team panel (Veo) + goal types */
+.grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+.tool-btns{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+.tool-btns .btn{width:100%;text-align:center}
+.panel-launch-meta{font-size:12.5px;font-weight:700;color:var(--navy);margin:0 0 4px}
+.panel-computed{margin-bottom:12px}
+.panel-computed .sublbl{display:block;font-weight:700;font-size:10px;color:var(--muted);text-transform:none;letter-spacing:0;margin-top:2px}
+.moment-card{margin-top:12px}
+.moment-kicker{font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);background:var(--navy);display:inline-block;border-radius:6px;padding:3px 8px;margin-bottom:6px}
+.moment-card h3{margin:6px 0 8px}
+.panel-fields{margin:8px 0}
+.string-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.regain-types{display:grid;grid-template-columns:minmax(70px,0.9fr) 1fr 1fr 1fr;gap:6px 8px;align-items:center;margin-top:8px}
+.regain-types .rh{font-size:10px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.regain-types .rl{font-size:11.5px;font-weight:800;color:var(--navy);line-height:1.2}
+.regain-types .fld{margin:0}
+.regain-types .fld span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
+.unit-vs-veo{background:var(--mist);border-radius:12px;padding:10px 12px;margin-top:8px}
+.unit-vs-veo p{margin:0 0 6px;font-size:13px;color:var(--navy)}
+.unit-vs-veo p:last-child{margin:0}
+.check-row{display:flex;align-items:flex-start;gap:8px;font-size:13.5px;font-weight:700;color:var(--navy);margin-top:8px}
+.check-row input{margin-top:3px}
+.veo-alongside{margin-top:12px}
+.goal-split-list{margin:8px 0 0;padding:0 0 0 18px}
+.goal-split-list li{margin:4px 0;font-size:13px;color:var(--navy)}
+.goal-type-picks{display:grid;gap:8px;margin:10px 0 0;background:var(--mist);border-radius:12px;padding:10px}
+.goal-type-picks button,.goal-type-inline button{
+  border:1.5px solid var(--line);background:#fff;color:var(--navy);border-radius:10px;
+  padding:10px 8px;font-weight:700;font-size:12.5px;font-family:inherit;text-align:left;
+}
+.goal-type-picks button.on,.goal-type-inline button.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+.goal-type-inline{display:grid;gap:6px;flex:1;margin:0 8px}
+.shot-chip{flex-wrap:wrap}
+.shot-chip.needs-type{outline:2px solid #c44536}
+button.linkish{background:none;border:0;padding:0;color:var(--navy);font-weight:800;font-family:inherit;text-decoration:underline;cursor:pointer;font-size:inherit}
+@media (min-width:720px){
+  .string-grid{grid-template-columns:repeat(4,1fr)}
+}
+
+.panel-computed .grid-4{gap:6px}
+.panel-computed .stat{padding:8px 6px}
+.panel-computed .stat .num{font-size:26px}
+
 </style>
 </head>
 <body>
@@ -725,7 +768,7 @@ window.SCFC_CREST = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJQAAADACAYAA
 (function(){
 "use strict";
 
-const STORAGE = "scfc-pp-portal-v9";
+const STORAGE = "scfc-pp-portal-v10";
 const CREST = window.SCFC_CREST;
 
 const POS = {
@@ -1735,7 +1778,7 @@ const TEAMSNAP = {
     { id:"M001", teamId:"u15g", date:"2026-10-08", opp:"Flash",         time:"11:00 AM", venue:"Highmark Field 2",  comp:"League",   result:"0-1", home:true,  minutes:70, shots:2, goals:0, status:"played", avpCreated:5, avpReceived:3 },
     { id:"M002", teamId:"u15g", date:"2026-10-18", opp:"Alliance FC",   time:"10:30 AM", venue:"Alliance Complex",  comp:"League",   result:"2-1", home:false, minutes:70, shots:9, goals:2, status:"played" },
     { id:"M003", teamId:"u15g", date:"2026-11-01", opp:"Spirit",        time:"1:00 PM",  venue:"Highmark Field 1",  comp:"League",   result:"1-1", home:true,  minutes:70, shots:7, goals:1, status:"played" },
-    { id:"M004", teamId:"u15g", date:"2026-11-15", opp:"Northgate",     time:"11:00 AM", venue:"Northgate Park",    comp:"League",   result:"",    home:false, minutes:70, shots:0, goals:0, status:"upcoming" },
+    { id:"M004", teamId:"u15g", date:"2026-11-15", opp:"Northgate",     time:"11:00 AM", venue:"Northgate Park",    comp:"League",   result:"2-1", home:false, minutes:70, shots:15, goals:2, status:"played" },
     { id:"M005", teamId:"u15g", date:"2026-11-22", opp:"Valley United", time:"12:30 PM", venue:"Highmark Field 2",  comp:"League",   result:"",    home:true,  minutes:70, shots:0, goals:0, status:"upcoming" },
     { id:"M006", teamId:"u15g", date:"2026-12-06", opp:"Metro SC",      time:"10:00 AM", venue:"Indoor Center",     comp:"Showcase", result:"",    home:true,  minutes:50, shots:0, goals:0, status:"upcoming" },
 
@@ -1939,8 +1982,9 @@ const SEED_LOGS = {
   ],
   maya:[
     { matchId:"M001", minutes:64, dominant:3, assertive:3, connected:3, reflection:"Only two shots as a team and I did not get one away. Received between once. Need to pin their CB earlier.", veo:"", metrics:{ avpCrePass:1, avpCreDribble:1, avpRecBetween:2, avpRecBehind:0, shots:[], tgt:{shotsOnGoal:0, assists:1, blockedPasses:1, intercepts:1}} },
-    { matchId:"M002", minutes:70, dominant:5, assertive:4, connected:4, reflection:"Scored from Z2 early and stayed in the game. Good Received–Between from Quinn for the second. Missed a Z1 chance late - next time I go near post.", veo:"https://app.veo.co/sample/m002-maya", metrics:{ avpCrePass:2, avpCreDribble:1, avpRecBetween:4, avpRecBehind:1, shots:[{zone:"Z2",outcome:"Goal"},{zone:"Z1",outcome:"Saved"},{zone:"Z3",outcome:"Off Target"},{zone:"Z2",outcome:"Goal"}], tgt:{shotsOnGoal:3, assists:2, blockedPasses:2, intercepts:2}} },
-    { matchId:"M003", minutes:70, dominant:4, assertive:4, connected:4, reflection:"Held the ball better against a physical back line. One shot from Z3 saved. Combined well with Harper on the right.", veo:"", metrics:{ avpCrePass:2, avpCreDribble:1, avpRecBetween:2, avpRecBehind:1, shots:[{zone:"Z3",outcome:"Saved"},{zone:"Z5",outcome:"Blocked"}], tgt:{shotsOnGoal:2, assists:1, blockedPasses:1, intercepts:2}} }
+    { matchId:"M002", minutes:70, dominant:5, assertive:4, connected:4, reflection:"Scored from Z2 early and stayed in the game. Good Received–Between from Quinn for the second. Missed a Z1 chance late - next time I go near post.", veo:"https://app.veo.co/sample/m002-maya", metrics:{ avpCrePass:2, avpCreDribble:1, avpRecBetween:4, avpRecBehind:1, shots:[{zone:"Z2",outcome:"Goal",goalType:"secured"},{zone:"Z1",outcome:"Saved"},{zone:"Z3",outcome:"Off Target"},{zone:"Z2",outcome:"Goal",goalType:"counter"}], tgt:{shotsOnGoal:3, assists:2, blockedPasses:2, intercepts:2}} },
+    { matchId:"M003", minutes:70, dominant:4, assertive:4, connected:4, reflection:"Held the ball better against a physical back line. One shot from Z3 saved. Combined well with Harper on the right.", veo:"", metrics:{ avpCrePass:2, avpCreDribble:1, avpRecBetween:2, avpRecBehind:1, shots:[{zone:"Z3",outcome:"Saved"},{zone:"Z5",outcome:"Blocked"}], tgt:{shotsOnGoal:2, assists:1, blockedPasses:1, intercepts:2}} },
+    { matchId:"M004", minutes:70, dominant:4, assertive:4, connected:4, reflection:"Finished from Z2 after we had the ball for a long spell. Want that same composure next time.", veo:"", pos:"9", metrics:{ avpCrePass:2, avpCreDribble:1, avpRecBetween:3, avpRecBehind:1, shots:[{zone:"Z2",outcome:"Goal",goalType:"secured"},{zone:"Z6",outcome:"Off Target"}], tgt:{shotsOnGoal:2, assists:1, blockedPasses:1, intercepts:1}} }
   ],
   jordan:[
     { matchId:"M001", minutes:70, dominant:3, assertive:2, connected:4, reflection:"We were Connected but I was not Assertive enough stepping into midfield. Progressive passing was safe, not forward enough.", veo:"", metrics:{ progComp:3, progAtt:6, avpRecBetween:1, avpRecBehind:0, avpCrePass:1, avpCreDribble:0, recoveries:5, defActions:7, tgt:{midfieldDribbles:1, strikerClips:1, clearingHeaders:2}, tgtAttNote:"One clip into Maya was on and I kept it safe."} },
@@ -1960,7 +2004,8 @@ const SEED_LOGS = {
   harper:[
     { matchId:"M001", minutes:70, dominant:3, assertive:3, connected:3, reflection:"Did not take their full-back on enough. One Created–Dribble, no end product.", veo:"", metrics:{ avpCrePass:1, avpCreDribble:1, avpRecBetween:1, avpRecBehind:1, shots:[], tgt:{crossesCutbacks:1, shotsOnGoal:0, defenderIntercepts:1, defenderBlockedPasses:0}} },
     { matchId:"M002", minutes:66, dominant:4, assertive:5, connected:4, reflection:"Took her on early and it set the tone. Cutback for Maya's second. Felt Assertive.", veo:"", metrics:{ avpCrePass:3, avpCreDribble:2, avpRecBetween:3, avpRecBehind:2, shots:[{zone:"Z4",outcome:"Saved"},{zone:"Z6",outcome:"Off Target"}], tgt:{crossesCutbacks:3, shotsOnGoal:2, defenderIntercepts:1, defenderBlockedPasses:1}} },
-    { matchId:"M003", minutes:70, dominant:4, assertive:4, connected:4, reflection:"Better underlap when Riley went. Shot from Z5 blocked.", veo:"", metrics:{ avpCrePass:2, avpCreDribble:2, avpRecBetween:3, avpRecBehind:1, shots:[{zone:"Z5",outcome:"Blocked"}], tgt:{crossesCutbacks:4, shotsOnGoal:1, defenderIntercepts:2, defenderBlockedPasses:0}} }
+    { matchId:"M003", minutes:70, dominant:4, assertive:4, connected:4, reflection:"Better underlap when Riley went. Shot from Z5 blocked.", veo:"", metrics:{ avpCrePass:2, avpCreDribble:2, avpRecBetween:3, avpRecBehind:1, shots:[{zone:"Z5",outcome:"Blocked"}], tgt:{crossesCutbacks:4, shotsOnGoal:1, defenderIntercepts:2, defenderBlockedPasses:0}} },
+    { matchId:"M004", minutes:68, dominant:4, assertive:5, connected:4, reflection:"Broke on the counter and finished from the left edge. A 4 to score.", veo:"", pos:"Winger", metrics:{ avpCrePass:2, avpCreDribble:3, avpRecBetween:2, avpRecBehind:2, shots:[{zone:"Z4",outcome:"Goal",goalType:"counter"},{zone:"Z6",outcome:"Blocked"}], tgt:{crossesCutbacks:3, shotsOnGoal:2, defenderIntercepts:1, defenderBlockedPasses:1}} }
   ],
   riley:[
     { matchId:"M001", minutes:70, dominant:3, assertive:2, connected:4, reflection:"Stayed Connected defensively but did not overlap enough. Progressive passing was sideways.", veo:"", metrics:{ progComp:2, progAtt:5, avpRecBetween:1, avpRecBehind:1, avpCrePass:2, avpCreDribble:0, recoveries:4, defActions:6, tgt:{finalThird:2, blockedCrosses:1}} },
@@ -2296,6 +2341,31 @@ const SEED_SHOTS = {
       seedShot("m002-ag-4", "Z2", "On target", 62, "", 10)
     ],
     veo: { attemptsUs:10, attemptsThem:4, goalsUs:2, goalsThem:1, poss:53, passes:348, passSucc:271, passAcc:78, duels:44 }
+  },
+  M004: {
+    us: [
+      seedShot("m004-us-1", "Z2", "Goal", 18, "maya", 9),
+      seedShot("m004-us-2", "Z4", "Goal", 41, "harper", 7),
+      seedShot("m004-us-3", "Z3", "Off target", 27, "quinn", 10),
+      seedShot("m004-us-4", "Z6", "On target", 8, "avery", 8),
+      seedShot("m004-us-5", "Z6", "Blocked", 12, "camille", 11),
+      seedShot("m004-us-6", "Z6", "Off target", 22, "harper", 7),
+      seedShot("m004-us-7", "Z6", "On target", 33, "maya", 9),
+      seedShot("m004-us-8", "Z6", "Blocked", 37, "quinn", 10),
+      seedShot("m004-us-9", "Z6", "Off target", 48, "avery", 8),
+      seedShot("m004-us-10", "Z6", "Blocked", 52, "harper", 7),
+      seedShot("m004-us-11", "Z6", "Off target", 57, "maya", 9),
+      seedShot("m004-us-12", "Z6", "On target", 61, "quinn", 10),
+      seedShot("m004-us-13", "Z6", "Blocked", 64, "camille", 11),
+      seedShot("m004-us-14", "Z6", "Off target", 67, "avery", 8),
+      seedShot("m004-us-15", "Z6", "Off target", 69, "harper", 7)
+    ],
+    against: [
+      seedShot("m004-ag-1", "Z2", "Goal", 29, "", 10),
+      seedShot("m004-ag-2", "Z6", "Off target", 15, "", ""),
+      seedShot("m004-ag-3", "Z5", "Blocked", 55, "", 7)
+    ],
+    veo: { attemptsUs:15, attemptsThem:3, goalsUs:2, goalsThem:1, poss:48, passes:392, passSucc:260, passAcc:66, duels:117 }
   }
 };
 
@@ -2678,10 +2748,12 @@ function handleShotEntryClick(t, ev){
   }
   const act = t.getAttribute("data-act");
   if(act==="open-shot-entry"){
+    ev.preventDefault();
     ui.shotMatch = t.getAttribute("data-id");
     ui.shotSide = "us";
     ui.shotDraft = null;
     ui.veoOpen = false;
+    ui.teamPanelMatch = null;
     ui.page = "summary";
     render(); window.scrollTo(0,0); return true;
   }
@@ -2742,6 +2814,464 @@ function handleShotEntryChange(ev){
 }
 
 
+
+/* =============================================================================
+   TEAM PANEL (VEO) + GOAL TYPES
+   -----------------------------------------------------------------------------
+   Coach-facing per-match entry from the Veo report, grouped under the four
+   moments: Transition to defence (regains), Attacking organisation (shots +
+   AVPs), Transition to attack (secured possessions), and Goals (type split).
+
+   Secured possessions (4+) = pass strings of length 4, 5, 6, 7 and 8+.
+   Total possessions = all strings of 2+ plus the coach's one-pass estimate.
+   Secured possession rate = secured ÷ total.
+   Passes in strings = 2·n2 + 3·n3 + 4·n4 + 5·n5 + 6·n6 + 7·n7 + 8·n8+.
+   Shots per secured uses Shot entry "Our shots" when entered, otherwise Veo
+   attempts. Team Task unit logging is unchanged; the Veo whole-team figure
+   is shown alongside, and can optionally drive Shot Flow / attacking metrics.
+   ============================================================================= */
+const GOAL_TYPES = [
+  { id:"secured", label:"Secured possession (4+ passes)" },
+  { id:"counter", label:"4 to score (counter attack) \u2013 3 passes or fewer" }
+];
+const STRING_KEYS = ["s2","s3","s4","s5","s6","s7","s8"];
+const STRING_LEN = { s2:2, s3:3, s4:4, s5:5, s6:6, s7:7, s8:8 };
+const PANEL_FIELDS = STRING_KEYS.concat([
+  "onePass","passSucc","passTot","fwdSucc","fwdTot",
+  "regains","regainsOpp","regainsFinal",
+  "tTot","tOpp","tFinal","iTot","iOpp","iFinal","lbrTot","lbrOpp","lbrFinal",
+  "duels","attempts","insideBox"
+]);
+
+function emptyTeamPanel(){
+  const o = { useVeoSecured:false };
+  PANEL_FIELDS.forEach(function(k){ o[k] = ""; });
+  return o;
+}
+function panelNum(v){
+  if(v===0) return 0;
+  if(v==null || v==="") return null;
+  const n = +v;
+  return isFinite(n) ? n : null;
+}
+function panelInt(v){ const n = panelNum(v); return n==null ? 0 : n; }
+function normalizeTeamPanel(raw){
+  const o = emptyTeamPanel();
+  raw = raw || {};
+  PANEL_FIELDS.forEach(function(k){ o[k] = (raw[k]===0 || raw[k]) ? raw[k] : ""; });
+  o.useVeoSecured = !!raw.useVeoSecured;
+  return o;
+}
+function teamPanel(mid){
+  if(!data.teamPanel) data.teamPanel = {};
+  data.teamPanel[mid] = normalizeTeamPanel(data.teamPanel[mid]);
+  return data.teamPanel[mid];
+}
+function panelHasVeo(p){
+  if(!p) return false;
+  return STRING_KEYS.some(function(k){ return panelNum(p[k])!=null; }) || panelNum(p.onePass)!=null || panelNum(p.regains)!=null;
+}
+function fmtPctWhole(n){
+  if(n==null || !isFinite(n)) return "\u2014";
+  return Math.round(n)+"%";
+}
+function fmtRate2(n){
+  if(n==null || !isFinite(n)) return "\u2014";
+  return (Math.round(n*100)/100).toFixed(2).replace(/\.?0+$/,"") === String(Math.round(n)) ? String(Math.round(n)) : (Math.round(n*100)/100).toFixed(2).replace(/0$/,"");
+}
+function formatShotPerSec(n){
+  if(n==null || !isFinite(n)) return "\u2014";
+  return (Math.round(n*100)/100).toFixed(2);
+}
+
+function matchShotAttemptSource(mid){
+  const entered = matchShots(mid, "us");
+  if(entered && entered.length){
+    const tot = shotTotals(entered);
+    return { attempts:tot.attempts, inside:tot.inside, source:"entry" };
+  }
+  const rec = (data.shots && data.shots[mid]) ? normalizeShotRecord(data.shots[mid]) : null;
+  const veoAtt = rec ? veoNum(rec.veo.attemptsUs) : null;
+  const p = teamPanel(mid);
+  const panelAtt = panelNum(p.attempts);
+  const panelIn = panelNum(p.insideBox);
+  const attempts = veoAtt!=null ? veoAtt : (panelAtt!=null ? panelAtt : null);
+  const f = fixture(mid);
+  return {
+    attempts: attempts!=null ? attempts : (f && f.status==="played" ? +f.shots||0 : 0),
+    inside: panelIn,
+    source: veoAtt!=null ? "veo" : (panelAtt!=null ? "panel" : "fixture")
+  };
+}
+
+function computeTeamPanel(mid){
+  const p = teamPanel(mid);
+  const n2=panelInt(p.s2), n3=panelInt(p.s3), n4=panelInt(p.s4), n5=panelInt(p.s5), n6=panelInt(p.s6), n7=panelInt(p.s7), n8=panelInt(p.s8);
+  const one = panelInt(p.onePass);
+  const strings2plus = n2+n3+n4+n5+n6+n7+n8;
+  const secured = n4+n5+n6+n7+n8;
+  const totalPoss = strings2plus + one;
+  const rate = totalPoss ? (secured / totalPoss * 100) : null;
+  const passesInStrings = n2*2 + n3*3 + n4*4 + n5*5 + n6*6 + n7*7 + n8*8;
+  const shotSrc = matchShotAttemptSource(mid);
+  const shots = shotSrc.attempts;
+  const shotsPerSecured = secured ? (shots / secured) : null;
+  const insideShare = (shotSrc.inside!=null && shots) ? (shotSrc.inside / shots * 100) : (shotSrc.inside!=null && shots===0 ? 0 : null);
+  const passSucc = panelNum(p.passSucc), passTot = panelNum(p.passTot);
+  const passPct = (passTot && passTot>0 && passSucc!=null) ? (passSucc / passTot * 100) : null;
+  const fwdSucc = panelNum(p.fwdSucc), fwdTot = panelNum(p.fwdTot);
+  const fwdPct = (fwdTot && fwdTot>0 && fwdSucc!=null) ? (fwdSucc / fwdTot * 100) : null;
+  const tSum = panelInt(p.tTot)+panelInt(p.iTot)+panelInt(p.lbrTot);
+  const tOpp = panelInt(p.tOpp)+panelInt(p.iOpp)+panelInt(p.lbrOpp);
+  const tFin = panelInt(p.tFinal)+panelInt(p.iFinal)+panelInt(p.lbrFinal);
+  const typesUsed = ["tTot","iTot","lbrTot","tOpp","iOpp","lbrOpp","tFinal","iFinal","lbrFinal"].some(function(k){ return panelNum(p[k])!=null; });
+  const regains = panelNum(p.regains)!=null ? panelInt(p.regains) : (typesUsed ? tSum : 0);
+  const regainsOpp = panelNum(p.regainsOpp)!=null ? panelInt(p.regainsOpp) : (typesUsed ? tOpp : 0);
+  const regainsFinal = panelNum(p.regainsFinal)!=null ? panelInt(p.regainsFinal) : (typesUsed ? tFin : 0);
+  const oppPct = regains ? (regainsOpp / regains * 100) : null;
+  const typeMismatch = typesUsed && panelNum(p.regains)!=null && (tSum!==panelInt(p.regains) || tOpp!==panelInt(p.regainsOpp) || tFin!==panelInt(p.regainsFinal));
+  return {
+    mid:mid, n2:n2, n3:n3, n4:n4, n5:n5, n6:n6, n7:n7, n8:n8, one:one,
+    secured:secured, totalPoss:totalPoss, rate:rate, passesInStrings:passesInStrings,
+    shots:shots, shotSource:shotSrc.source, inside:shotSrc.inside, shotsPerSecured:shotsPerSecured, insideShare:insideShare,
+    passSucc:passSucc, passTot:passTot, passPct:passPct, fwdSucc:fwdSucc, fwdTot:fwdTot, fwdPct:fwdPct,
+    regains:regains, regainsOpp:regainsOpp, regainsFinal:regainsFinal, oppPct:oppPct,
+    tTot:panelInt(p.tTot), tOpp:panelInt(p.tOpp), tFinal:panelInt(p.tFinal),
+    iTot:panelInt(p.iTot), iOpp:panelInt(p.iOpp), iFinal:panelInt(p.iFinal),
+    lbrTot:panelInt(p.lbrTot), lbrOpp:panelInt(p.lbrOpp), lbrFinal:panelInt(p.lbrFinal),
+    duels:panelNum(p.duels), typesUsed:typesUsed, typeMismatch:typeMismatch,
+    useVeoSecured: !!p.useVeoSecured, hasVeo: panelHasVeo(p)
+  };
+}
+
+function veoSecuredOf(mid){
+  const c = computeTeamPanel(mid);
+  return c.hasVeo ? c.secured : null;
+}
+function effectiveSecured(mid){
+  const p = teamPanel(mid);
+  const veo = veoSecuredOf(mid);
+  if(p.useVeoSecured && veo!=null) return veo;
+  return possTotals(mid).secured||0;
+}
+
+function goalTypeLabel(id){
+  const t = GOAL_TYPES.find(function(x){ return x.id===id; });
+  return t ? t.label : "";
+}
+function playerGoalShots(pid, mid){
+  const l = mid ? logFor(pid, mid) : null;
+  const logs = mid ? (l ? [l] : []) : logsOf(pid);
+  const out = [];
+  logs.forEach(function(log){
+    ((log.metrics && log.metrics.shots) || []).forEach(function(s){
+      if(s && s.outcome==="Goal") out.push({ playerId:pid, matchId:log.matchId, shot:s });
+    });
+  });
+  return out;
+}
+function teamGoalSplit(teamId, mid){
+  const roster = playersOf(teamId);
+  let secured=0, counter=0, unset=0, list=[];
+  roster.forEach(function(p){
+    playerGoalShots(p.id, mid).forEach(function(row){
+      const t = row.shot.goalType;
+      if(t==="secured") secured++;
+      else if(t==="counter") counter++;
+      else unset++;
+      list.push({ player:p, matchId:row.matchId, zone:row.shot.zone, goalType:t||"" });
+    });
+  });
+  return { secured:secured, counter:counter, unset:unset, total:secured+counter+unset, list:list };
+}
+function seasonGoalSplit(teamId){
+  const matches = playedFixtures(teamId);
+  let secured=0, counter=0, unset=0;
+  const per = matches.map(function(f){
+    const s = teamGoalSplit(teamId, f.id);
+    secured += s.secured; counter += s.counter; unset += s.unset;
+    return { id:f.id, opp:f.opp, date:f.date, result:f.result, split:s };
+  });
+  return { secured:secured, counter:counter, unset:unset, total:secured+counter+unset, matches:per };
+}
+
+function renderGoalSplitCard(split, opts){
+  opts = opts||{};
+  if(!split.total && !opts.always) return '<p class="hint">'+(opts.empty||"No player-logged goals yet. When a player ticks a goal type on her match log, the split appears here.")+"</p>";
+  return '<div class="goal-split">' +
+    '<div class="grid-3">' +
+      '<div class="stat gold"><div class="num">'+split.secured+'</div><div class="lbl">Secured possession (4+)</div></div>' +
+      '<div class="stat navy"><div class="num">'+split.counter+'</div><div class="lbl">4 to score (counter)</div></div>' +
+      '<div class="stat"><div class="num">'+split.total+'</div><div class="lbl">Player-logged goals</div></div>' +
+    "</div>" +
+    (split.unset ? '<p class="hint">'+split.unset+" goal"+(split.unset===1?"":"s")+" still need a type ticked.</p>" : "") +
+    (split.list && split.list.length ? '<ul class="goal-split-list">'+split.list.map(function(g){
+      return "<li><strong>"+esc(fullName(g.player))+"</strong> \u00b7 "+esc(g.zone)+" \u00b7 "+(g.goalType?esc(goalTypeLabel(g.goalType)):"Type not set")+"</li>";
+    }).join("")+"</ul>" : "") +
+  "</div>";
+}
+
+function renderSeasonGoalSplit(teamId){
+  const s = seasonGoalSplit(teamId);
+  return '<div class="card" style="margin-bottom:12px"><div class="card-head"><h3>Season goal types</h3><span class="badge-muted badge">From player match logs</span></div>' +
+    '<p class="hint">Each scorer ticks whether the goal came from a secured possession (4+ passes) or a 4 to score counter (3 passes or fewer).</p>' +
+    renderGoalSplitCard(s, { always:true, empty:"No goals typed yet this season." }) +
+  "</div>";
+}
+
+const SEED_TEAM_PANEL = {
+  M004: {
+    s2:26, s3:17, s4:10, s5:9, s6:2, s7:1, s8:0,
+    onePass:50,
+    passSucc:260, passTot:392,
+    fwdSucc:86, fwdTot:136,
+    regains:94, regainsOpp:32, regainsFinal:10,
+    tTot:43, tOpp:19, tFinal:7,
+    iTot:33, iOpp:10, iFinal:2,
+    lbrTot:18, lbrOpp:3, lbrFinal:1,
+    duels:117,
+    attempts:15, insideBox:3,
+    useVeoSecured:true
+  }
+};
+
+function panelField(label, key, p, opts){
+  opts = opts||{};
+  const v = p[key]===0 || p[key] ? p[key] : "";
+  return '<label class="fld"><span>'+esc(label)+'</span><input type="number" data-act="panel-field" data-key="'+key+'" min="'+(opts.min!=null?opts.min:0)+'" '+(opts.max!=null?'max="'+opts.max+'"':'')+' inputmode="numeric" value="'+esc(v)+'"></label>';
+}
+
+function renderTeamPanel(){
+  const mid = ui.teamPanelMatch;
+  const f = fixture(mid);
+  if(!f){ ui.teamPanelMatch=null; return renderSummary(); }
+  const tid = f.teamId || coachScopeTeamId();
+  const team = teamById(tid);
+  const p = teamPanel(mid);
+  const c = computeTeamPanel(mid);
+  const avp = teamAvpMatch(mid);
+  const split = teamGoalSplit(tid, mid);
+  const units = possTotals(mid);
+  function metric(val, lbl, extra){
+    return '<div class="stat"><div class="num">'+val+'</div><div class="lbl">'+esc(lbl)+(extra?" <span class=\"sublbl\">"+esc(extra)+"</span>":"")+"</div></div>";
+  }
+  return '<div class="page-title"><div><h2>Team panel (Veo)</h2><p>'+esc(team?team.name:"Team")+" \u00b7 "+(f.home?"vs":"at")+" "+esc(f.opp)+'</p></div><span class="badge">Sample</span></div>' +
+    '<button type="button" class="btn btn-sm btn-outline back" data-act="close-team-panel" style="margin-bottom:10px">'+ICO.back+" Back to matches</button>" +
+    '<div class="card" style="margin-bottom:12px"><div class="card-head"><h3>'+esc(f.id)+" \u00b7 "+(f.home?"vs":"at")+" "+esc(f.opp)+'</h3><span class="badge-navy badge">'+esc(f.result||"\u2014")+"</span></div>" +
+      '<p class="hint" style="margin-top:-4px;margin-bottom:0">'+fmtDate(f.date)+" \u00b7 "+esc(f.venue)+" \u00b7 "+f.minutes+" min \u00b7 entered from the Veo match report</p></div>" +
+    (mid==="M004" ? '<p class="notice">Fictional fixture with sample Veo figures (mirroring a 15 Nov performance sample). Numbers below are computed from the entered strings, possessions and regains.</p>' : '<p class="notice">Enter headline numbers from this week\'s Veo report. Computed figures update as you type. Fictional sample data.</p>') +
+    '<div class="card panel-computed" id="panel-computed"><div class="card-head"><h3>Computed from Veo</h3><span class="badge">Whole team</span></div>' +
+      '<div class="grid-4">' +
+        metric(c.secured, "Secured possessions", "strings of 4+") +
+        metric(c.totalPoss, "Total possessions", "2+ strings + one-pass est.") +
+        metric(c.rate==null?"\u2014":fmtPctWhole(c.rate), "Secured possession rate") +
+        metric(c.passesInStrings, "Passes in strings") +
+        metric(c.shotsPerSecured==null?"\u2014":formatShotPerSec(c.shotsPerSecured), "Shots per secured", c.shots+" / "+c.secured) +
+        metric(c.insideShare==null?"\u2014":fmtPctWhole(c.insideShare), "Inside-box shot share", (c.inside!=null?c.inside+" of "+c.shots:"")) +
+        metric(c.fwdPct==null?"\u2014":fmtPctWhole(c.fwdPct), "Forward pass success") +
+        metric(c.oppPct==null?"\u2014":fmtPctWhole(c.oppPct), "Regains in opp. half") +
+      "</div></div>" +
+
+    /* 1. Transition to defence */
+    '<div class="card moment-card" data-moment="def"><div class="moment-kicker">Transition to defence</div><h3>Regains</h3>' +
+      '<p class="hint">From the Veo defensive actions map: tackles + interceptions + loose ball recoveries. Total, in the opponent\'s half, and in the final third. Type breakdown is optional.</p>' +
+      '<div class="panel-fields grid-3">' +
+        panelField("Regains (total)", "regains", p) +
+        panelField("In opponent's half", "regainsOpp", p) +
+        panelField("In final third", "regainsFinal", p) +
+      "</div>" +
+      '<div class="grid-4" style="margin:10px 0">' +
+        metric(c.regains, "Regains") +
+        metric(c.regainsOpp, "Opp. half") +
+        metric(c.regainsFinal, "Final third") +
+        metric(c.oppPct==null?"\u2014":fmtPctWhole(c.oppPct), "Opp. half %") +
+      "</div>" +
+      '<div class="fld-label">By type (optional) \u2014 T / I / LBR</div>' +
+      '<div class="regain-types">' +
+        '<div class="rh"></div><div class="rh">Total</div><div class="rh">Opp. half</div><div class="rh">Final 3rd</div>' +
+        '<div class="rl">Tackles</div>'+panelField("Tackles total","tTot",p)+panelField("Tackles opp. half","tOpp",p)+panelField("Tackles final third","tFinal",p) +
+        '<div class="rl">Interceptions</div>'+panelField("Interceptions total","iTot",p)+panelField("Interceptions opp. half","iOpp",p)+panelField("Interceptions final third","iFinal",p) +
+        '<div class="rl">Loose ball recoveries</div>'+panelField("LBR total","lbrTot",p)+panelField("LBR opp. half","lbrOpp",p)+panelField("LBR final third","lbrFinal",p) +
+      "</div>" +
+      (c.typeMismatch ? '<p class="veo-flag-summary mismatch-flag">Type totals do not add up to the headline regain figures.</p>' : "") +
+    "</div>" +
+
+    /* 2. Attacking organisation */
+    '<div class="card moment-card" data-moment="ao"><div class="moment-kicker">Attacking organisation</div><h3>Shots and AVPs</h3>' +
+      '<p class="hint">Shot locations come from Shot entry / the xG zone map, with a Veo totals check. AVPs are the existing player-logged (or official sheet) team figures.</p>' +
+      '<div class="panel-fields grid-2">' +
+        panelField("Veo attempts (us)", "attempts", p) +
+        panelField("Veo inside-box shots", "insideBox", p) +
+      "</div>" +
+      '<div class="grid-4" style="margin:10px 0">' +
+        metric(c.shots, "Attempts used", c.shotSource==="entry"?"From Shot entry": c.shotSource==="veo"?"From Veo totals":"From fixture / panel") +
+        metric(c.inside!=null?c.inside:"\u2014", "Inside the box") +
+        metric(c.insideShare==null?"\u2014":fmtPctWhole(c.insideShare), "Inside-box share") +
+        metric(c.shotsPerSecured==null?"\u2014":formatShotPerSec(c.shotsPerSecured), "Shots / secured") +
+      "</div>" +
+      '<p class="hint" style="margin:0 0 8px"><a href="#" data-act="open-shot-entry" data-id="'+esc(mid)+'">Open Shot entry</a> to plot zones. Existing Veo shot-count checks still apply there.</p>' +
+      '<div class="fld-label">Team AVPs this match</div>' +
+      '<div class="grid-4">' +
+        metric(avp.created, "Created") +
+        metric(avp.received, "Received") +
+        metric(avp.total, "Combined") +
+        metric(avp.logged, "Players logged") +
+      "</div>" +
+      (avp.official ? '<p class="hint">Team AVP totals for this match come from the official sheet.</p>' : (avp.logged? '<p class="hint">Summed from player match logs. AVPs per Shot uses received AVPs only.</p>' : '<p class="hint">No player AVPs logged for this match yet.</p>')) +
+    "</div>" +
+
+    /* 3. Transition to attack */
+    '<div class="card moment-card" data-moment="att"><div class="moment-kicker">Transition to attack</div><h3>Secured possessions</h3>' +
+      '<p class="hint">From Veo: count of pass strings of 4 or more passes. Total possessions = all pass strings (2+) plus a coach-entered one-pass possessions estimate. Secured possession rate = secured \u00f7 total.</p>' +
+      '<div class="fld-label">Pass strings by length</div>' +
+      '<div class="panel-fields string-grid">' +
+        panelField("2 passes", "s2", p) +
+        panelField("3 passes", "s3", p) +
+        panelField("4 passes", "s4", p) +
+        panelField("5 passes", "s5", p) +
+        panelField("6 passes", "s6", p) +
+        panelField("7 passes", "s7", p) +
+        panelField("8+ passes", "s8", p) +
+        panelField("One-pass estimate", "onePass", p) +
+      "</div>" +
+      '<div class="grid-4" style="margin:10px 0">' +
+        metric(c.secured, "Secured (4+)") +
+        metric(c.totalPoss, "Total possessions") +
+        metric(c.rate==null?"\u2014":fmtPctWhole(c.rate), "Secured rate") +
+        metric(c.passesInStrings, "Passes in strings") +
+      "</div>" +
+      '<div class="fld-label">Passing (Veo)</div>' +
+      '<div class="panel-fields grid-2">' +
+        panelField("Successful passes", "passSucc", p) +
+        panelField("Total passes", "passTot", p) +
+        panelField("Forward passes successful", "fwdSucc", p) +
+        panelField("Forward passes total", "fwdTot", p) +
+        panelField("Duels", "duels", p) +
+      "</div>" +
+      '<div class="grid-4" style="margin:10px 0">' +
+        metric(c.passPct==null?"\u2014":fmtPctWhole(c.passPct), "Pass success", (c.passSucc!=null&&c.passTot!=null)?(c.passSucc+" / "+c.passTot):"") +
+        metric(c.fwdPct==null?"\u2014":fmtPctWhole(c.fwdPct), "Forward pass success", (c.fwdSucc!=null&&c.fwdTot!=null)?(c.fwdSucc+" / "+c.fwdTot):"") +
+        metric(c.duels==null?"\u2014":c.duels, "Duels") +
+        metric(c.shotsPerSecured==null?"\u2014":formatShotPerSec(c.shotsPerSecured), "Shots / secured") +
+      "</div>" +
+      '<div class="unit-vs-veo">' +
+        '<p><strong>Team Task (units):</strong> '+units.secured+" secured \u00b7 "+units.unsecured+" unsecured \u00b7 possession security "+(units.total?units.security.toFixed(1)+"%":"\u2014")+"</p>" +
+        '<p><strong>Veo (whole team):</strong> '+c.secured+" secured \u00b7 "+c.totalPoss+" total possessions \u00b7 secured rate "+(c.rate==null?"\u2014":fmtPctWhole(c.rate))+"</p>" +
+        '<p class="hint">These are different measures. Team Task sums each unit\'s window (secured vs unsecured). The Veo figure is 4+ pass strings over all possessions, including the one-pass estimate.</p>' +
+        '<label class="check-row"><input type="checkbox" data-act="toggle-veo-secured" '+(p.useVeoSecured?"checked":"")+'> Use the Veo secured figure (4+) for Shot Flow and attacking metrics on this match</label>' +
+      "</div>" +
+    "</div>" +
+
+    /* 4. Goals */
+    '<div class="card moment-card" data-moment="goals"><div class="moment-kicker">Goals</div><h3>How the goals were scored</h3>' +
+      '<p class="hint">When a player logs a goal in her match log, she ticks whether it came from a secured possession (4+ passes) or a 4 to score counter (3 passes or fewer). Coaches see the split here; players still set their own position targets as before.</p>' +
+      renderGoalSplitCard(split, { always:true }) +
+    "</div>";
+}
+
+function shotEntryAndPanelFooter(f){
+  const rec = shotRecord(f.id);
+  const us = rec.us.length, ag = rec.against.length;
+  const flags = veoMismatches(f.id);
+  const c = computeTeamPanel(f.id);
+  const tid = f.teamId;
+  const split = teamGoalSplit(tid, f.id);
+  return '<div class="match-tools">' +
+    '<div class="shot-entry-launch">' +
+      '<p class="hint">Shot entry is used weekly with the Veo match report. Our shot locations come from Veo\'s shot map (entered by hand). Veo does not give opponent locations, so shots against are self-recorded.</p>' +
+      '<div class="shot-entry-meta">'+us+" our shot"+(us===1?"":"s")+" \u00b7 "+ag+" against"+(flags.length?' \u00b7 <span class="mismatch-flag">Veo check</span>':"")+"</div>" +
+    "</div>" +
+    (c.hasVeo
+      ? '<div class="panel-launch-meta">Veo panel \u00b7 '+c.secured+" secured \u00b7 "+(c.rate==null?"\u2014":fmtPctWhole(c.rate))+" rate"+(split.total?" \u00b7 "+split.secured+" secured goals / "+split.counter+" counters":"")+"</div>"
+      : '<div class="panel-launch-meta">Team panel (Veo) \u2014 enter this week\'s report</div>') +
+    '<div class="tool-btns">' +
+      '<button type="button" class="btn btn-navy" data-act="open-shot-entry" data-id="'+esc(f.id)+'">Shot entry</button>' +
+      '<button type="button" class="btn btn-navy" data-act="open-team-panel" data-id="'+esc(f.id)+'">Team panel (Veo)</button>' +
+    "</div></div>";
+}
+
+function renderVeoAlongside(mid){
+  const c = computeTeamPanel(mid);
+  if(!c.hasVeo) return '<div class="card veo-alongside"><p class="hint" style="margin:0">No Veo team panel figures for this match yet. A coach can enter them from <button type="button" class="linkish" data-act="open-team-panel" data-id="'+esc(mid)+'">Team panel (Veo)</button> on the Matches page.</p></div>';
+  const units = possTotals(mid);
+  const p = teamPanel(mid);
+  return '<div class="card veo-alongside"><div class="card-head"><h3>Veo whole-team possessions</h3><span class="badge">From Team panel</span></div>' +
+    '<div class="grid-4">' +
+      '<div class="stat"><div class="num">'+c.secured+'</div><div class="lbl">Veo secured (4+)</div></div>' +
+      '<div class="stat"><div class="num">'+c.totalPoss+'</div><div class="lbl">Veo total possessions</div></div>' +
+      '<div class="stat gold"><div class="num">'+(c.rate==null?"\u2014":fmtPctWhole(c.rate))+'</div><div class="lbl">Secured possession rate</div></div>' +
+      '<div class="stat navy"><div class="num">'+units.secured+'</div><div class="lbl">Team Task unit secured</div></div>' +
+    "</div>" +
+    '<p class="hint" style="margin-top:8px">Team Task keeps the thirds-by-unit log (defensive / midfield / attacking windows). The Veo figure is the whole-team count of 4+ pass strings. They are shown together so both can be used.</p>' +
+    (ui.role==="coach"
+      ? '<label class="check-row"><input type="checkbox" data-act="toggle-veo-secured" '+(p.useVeoSecured?"checked":"")+'> Use the Veo secured figure (4+) for Shot Flow and attacking metrics on this match</label>' +
+        (p.useVeoSecured ? '<p class="notice" style="margin-top:8px">Shot Flow for this match uses Veo secured possessions ('+c.secured+").</p>" : "")
+      : (p.useVeoSecured ? '<p class="hint">This match\'s Shot Flow uses the Veo secured figure ('+c.secured+").</p>" : "")) +
+  "</div>";
+}
+
+function savePanelField(key, value){
+  const mid = ui.teamPanelMatch || ui.possMatch;
+  if(!mid || !key) return;
+  const rec = teamPanel(mid);
+  rec[key] = value==="" ? "" : (isFinite(+value) ? +value : value);
+  data.teamPanel[mid] = rec;
+  saveData();
+}
+function toggleUseVeoSecured(mid, value){
+  mid = mid || ui.teamPanelMatch || ui.possMatch;
+  if(!mid) return;
+  const rec = teamPanel(mid);
+  rec.useVeoSecured = arguments.length>1 ? !!value : !rec.useVeoSecured;
+  data.teamPanel[mid] = rec;
+  saveData();
+  toast(rec.useVeoSecured ? "Shot Flow will use Veo secured possessions" : "Shot Flow will use Team Task unit totals");
+}
+
+function handleTeamPanelClick(t, ev){
+  const act = t.getAttribute("data-act");
+  if(act==="open-team-panel"){
+    ev.preventDefault();
+    ui.teamPanelMatch = t.getAttribute("data-id");
+    ui.shotMatch = null; ui.shotDraft = null;
+    ui.page = "summary";
+    render(); window.scrollTo(0,0); return true;
+  }
+  if(act==="close-team-panel"){
+    ui.teamPanelMatch = null; render(); window.scrollTo(0,0); return true;
+  }
+  if(act==="goal-type"){
+    if(!ui.draft) return true;
+    syncDraftFromDom();
+    const i = t.getAttribute("data-i");
+    const val = t.getAttribute("data-val");
+    if(i==null || i===""){
+      ui.draft._goalType = val;
+      maybeAddShot();
+    }else{
+      const shots = ui.draft.shots||[];
+      if(shots[+i]) shots[+i].goalType = val;
+    }
+    render(); return true;
+  }
+  return false;
+}
+function handleTeamPanelChange(ev){
+  const t = ev.target;
+  if(t.matches("input[data-act='panel-field']")){
+    savePanelField(t.getAttribute("data-key"), t.value);
+    render();
+    return true;
+  }
+  if(t.matches("input[data-act='toggle-veo-secured']")){
+    const mid = ui.teamPanelMatch || ui.possMatch;
+    toggleUseVeoSecured(mid, t.checked);
+    render(); return true;
+  }
+  return false;
+}
+
+
 function deepClone(o){ return JSON.parse(JSON.stringify(o)); }
 
 function buildSeed(){
@@ -2749,7 +3279,7 @@ function buildSeed(){
   PLAYERS.forEach(p => { idp[p.id] = deepClone(SEED_IDP[p.id] || genericIdp(p)); });
   const logs = {};
   PLAYERS.forEach(p => { logs[p.id] = deepClone(SEED_LOGS[p.id] || []); });
-  return { idp, logs, possessions: deepClone(SEED_POSSESSIONS), fixtures: deepClone(FIXTURES), positions: deepClone(SEED_POSITIONS), shots: deepClone(SEED_SHOTS) };
+  return { idp, logs, possessions: deepClone(SEED_POSSESSIONS), fixtures: deepClone(FIXTURES), positions: deepClone(SEED_POSITIONS), shots: deepClone(SEED_SHOTS), teamPanel: deepClone(SEED_TEAM_PANEL) };
 }
 
 function loadData(){
@@ -2764,7 +3294,8 @@ function loadData(){
       possessions: Object.assign(seed.possessions, d.possessions||{}),
       fixtures: d.fixtures && d.fixtures.length ? d.fixtures : seed.fixtures,
       positions: Object.assign(deepClone(seed.positions), d.positions||{}),
-      shots: Object.assign(deepClone(seed.shots), d.shots||{})
+      shots: Object.assign(deepClone(seed.shots), d.shots||{}),
+      teamPanel: Object.assign(deepClone(seed.teamPanel), d.teamPanel||{})
     };
   }catch(e){ return buildSeed(); }
 }
@@ -2830,10 +3361,10 @@ function possTotals(mid){
   return { secured, unsecured, total, security: total? (secured/total*100):0 };
 }
 function shotFlow(mid){
-  const f = fixture(mid); const t = possTotals(mid);
+  const f = fixture(mid);
   const mins = f?.minutes||0, attempts = f?.shots||0;
   if(!mins) return 0;
-  return t.secured * attempts / mins;
+  return effectiveSecured(mid) * attempts / mins;
 }
 function toast(msg){
   ui.toast = msg;
@@ -3188,7 +3719,8 @@ function openLog(matchId){
     saves: m.saves,
     shots: m.shots ? deepClone(m.shots) : [],
     _zone: null,
-    _outcome: null
+    _outcome: null,
+    _goalType: null
   }, m);
   render();
 }
@@ -3702,7 +4234,8 @@ function openLog(matchId){
     veo: existing ? existing.veo : "",
     shots: m.shots.slice(),
     _zone: null,
-    _outcome: null
+    _outcome: null,
+    _goalType: null
   }, m);
   render();
 }
@@ -4288,7 +4821,8 @@ function openLog(matchId){
     tgtAttNote: m.tgtAttNote,
     tgtDefNote: m.tgtDefNote,
     _zone: null,
-    _outcome: null
+    _outcome: null,
+    _goalType: null
   }, m);
   render();
 }
@@ -4661,6 +5195,7 @@ function renderCoachPlayer(){
 
 function renderSummary(){
   if(ui.shotMatch) return renderShotEntry();
+  if(ui.teamPanelMatch) return renderTeamPanel();
   const tid = coachScopeTeamId();
   const team = teamById(tid);
   const roster = playersOf(tid);
@@ -4668,6 +5203,7 @@ function renderSummary(){
   return '<div class="page-title"><div><h2>Team match summary</h2><p>'+esc(team?team.name:"Team")+' \u00b7 results, possession security and attacking metrics</p></div><span class="badge">Sample</span></div>' +
     renderTeamScopeBar() +
     renderSeasonAttacking(tid) +
+    renderSeasonGoalSplit(tid) +
     matches.map(function(f){
       const t = possTotals(f.id);
       const sf = shotFlow(f.id);
@@ -4681,7 +5217,7 @@ function renderSummary(){
         '<p class="hint" style="margin-top:8px">'+f.shots+" shots \u00b7 "+f.goals+" goals \u00b7 "+logged+" of "+roster.length+" players logged \u00b7 Shot Flow = "+t.secured+" x "+f.shots+" / "+f.minutes+"</p>" +
         renderAttackingMetrics(f.id, { season:true, teamId:tid }) +
         (function(){ const ta = teamAvpMatch(f.id); return renderAvpGauge(ta, { team:true, title:"Team AVP per 90", scope:f.id+" \u00b7 official match minutes "+f.minutes+(ta.official?" \u00b7 sheet "+ta.created+" created, "+ta.received+" received":""), logged:ta.logged }); })() +
-        shotEntryCardFooter(f) +
+        shotEntryAndPanelFooter(f) +
       "</div>";
     }).join("") +
     (tid==="u15g" ? '<p class="notice">M001 vs Flash (Oct 8, 2026) is the worked example: 105 secured, 122 unsecured, 2 shots, 0 goals, 70 minutes, Shot Flow 3.00, Possessions per Shot 52.5, AVPs per Shot 1.5 (3 received \u00f7 2 shots), possession security 46.3%.</p>' : "");
@@ -4746,6 +5282,7 @@ function renderPossession(){
         '<div class="stat navy"><div class="num">'+t.total+'</div><div class="lbl">All possessions</div></div></div>' +
       '<p class="hint" style="margin-top:8px">'+esc(units[0].name)+' '+esc(win.def.label)+' \u00b7 '+esc(units[1].name)+' '+esc(win.mid.label)+' \u00b7 '+esc(units[2].name)+' '+esc(win.att.label)+'</p>' +
       '<div class="formula">Possession security = secured \u00f7 (secured + unsecured)</div></div>' +
+    renderVeoAlongside(selected) +
     renderAttackingMetrics(selected, { season: ui.role==="coach", teamId: tid }) +
     (function(){ const ta = teamAvpMatch(selected); return renderAvpGauge(ta, { team:true, title:"Team AVP per 90", scope:(f?f.id+" \u00b7 official match minutes "+f.minutes+(ta.official?" \u00b7 sheet "+ta.created+" created, "+ta.received+" received":""):"This match"), logged:ta.logged }); })();
 }
@@ -4835,7 +5372,7 @@ function attackingMetrics(mid){
   const t = possTotals(mid);
   const mins = f ? +f.minutes||0 : 0;
   const shots = f ? +f.shots||0 : 0;
-  const secured = t.secured||0;
+  const secured = effectiveSecured(mid);
   const avp = teamAvpMatch(mid);
   const shotFlowVal = mins ? (secured * shots / mins) : null;
   const possPerShot = shots ? (secured / shots) : null;
@@ -5228,7 +5765,8 @@ function openLog(matchId){
     tgtAttNote: m.tgtAttNote,
     tgtDefNote: m.tgtDefNote,
     _zone: null,
-    _outcome: null
+    _outcome: null,
+    _goalType: null
   }, m);
   render();
 }
@@ -5461,6 +5999,7 @@ function onClick(ev){
   const act = t.getAttribute("data-act");
 
   if(handleShotEntryClick(t, ev)) return;
+  if(handleTeamPanelClick(t, ev)) return;
 
   if(t.classList.contains("sheet-backdrop")){ ui.more=false; render(); return; }
   if(act==="close-vid" || act==="close-point-vid" || act==="close-bench-info"){
@@ -5523,13 +6062,13 @@ function onClick(ev){
     const page = t.getAttribute("data-page");
     if(page==="more"){ ui.more=true; render(); return; }
     ui.page=page; ui.more=false; ui.switcher=false; ui.logMode=null; ui.draft=null;
-    if(page!=="summary"){ ui.shotMatch=null; ui.shotDraft=null; }
+    if(page!=="summary"){ ui.shotMatch=null; ui.shotDraft=null; ui.teamPanelMatch=null; }
     if(page==="squad"){ ui.coachPlayerId=null; ui.coachTeamId=null; }
     render(); window.scrollTo(0,0); return;
   }
   if(act==="close-more"){ ui.more=false; render(); return; }
   if(act==="reset"){
-    data = buildSeed(); applyPositions(); saveData(); ui.more=false; ui.logMode=null; ui.draft=null; ui.shotMatch=null; ui.shotDraft=null;
+    data = buildSeed(); applyPositions(); saveData(); ui.more=false; ui.logMode=null; ui.draft=null; ui.shotMatch=null; ui.shotDraft=null; ui.teamPanelMatch=null;
     toast("Sample data restored"); render(); return;
   }
   if(act==="new-log"){ openLog(null); window.scrollTo(0,0); return; }
@@ -5633,10 +6172,16 @@ function onClick(ev){
 
 function maybeAddShot(){
   if(ui.draft && ui.draft._zone && ui.draft._outcome){
+    if(ui.draft._outcome==="Goal" && !ui.draft._goalType){
+      toast("Tick how the goal was scored");
+      return;
+    }
     ui.draft.shots = ui.draft.shots||[];
-    ui.draft.shots.push({ zone:ui.draft._zone, outcome:ui.draft._outcome });
-    toast("Shot added: "+ui.draft._zone+" · "+ui.draft._outcome);
-    ui.draft._zone=null; ui.draft._outcome=null;
+    const shot = { zone:ui.draft._zone, outcome:ui.draft._outcome };
+    if(ui.draft._outcome==="Goal" && ui.draft._goalType) shot.goalType = ui.draft._goalType;
+    ui.draft.shots.push(shot);
+    toast("Shot added: "+ui.draft._zone+" · "+ui.draft._outcome+(shot.goalType?" · "+goalTypeLabel(shot.goalType):""));
+    ui.draft._zone=null; ui.draft._outcome=null; ui.draft._goalType=null;
   }
 }
 
@@ -5693,6 +6238,7 @@ function onInput(ev){
 }
 function onChange(ev){
   if(handleShotEntryChange(ev)) return;
+  if(handleTeamPanelChange(ev)) return;
   const sl = ev.target.closest("input[data-act='idp-slider']");
   if(sl){ saveData(); toast("Progress updated"); return; }
   if(ev.target.matches("select[data-act='poss-match']")){
@@ -5738,23 +6284,86 @@ function onChange(ev){
       const sf = fixture(ui.shotMatch);
       if(!sf || sf.teamId!==ui.coachTeamId){ ui.shotMatch=null; ui.shotDraft=null; }
     }
+    if(ui.teamPanelMatch){
+      const pf = fixture(ui.teamPanelMatch);
+      if(!pf || pf.teamId!==ui.coachTeamId){ ui.teamPanelMatch=null; }
+    }
     render();
   }
 }
+
+
+function renderMetricsFields(form, m){
+  const p = player();
+  const pos = (ui.draft && ui.draft.pos) || posCode(p);
+  const set = hasPos(pos);
+  m = normalizeMetrics(m);
+  if(!set){
+    return '<div class="notice">Ask your coach to set your position. Until then you can still log AVP counts, a short reflection, and Dominant / Assertive / Connected ratings.</div>' +
+      '<div><div class="fld-label">AVP events</div><div class="grid-2">' +
+        '<label class="fld"><span>Created\u2013Pass</span>'+stepper("avpCrePass", m.avpCrePass)+"</label>" +
+        '<label class="fld"><span>Created\u2013Dribble</span>'+stepper("avpCreDribble", m.avpCreDribble)+"</label>" +
+        '<label class="fld"><span>Received\u2013Between</span>'+stepper("avpRecBetween", m.avpRecBetween)+"</label>" +
+        '<label class="fld"><span>Received\u2013Behind</span>'+stepper("avpRecBehind", m.avpRecBehind)+"</label></div></div>";
+  }
+  const pr = prof(pos);
+  let html = '<div class="notice">Log your attacking and defensive match targets with the +/- counters, plus AVP counts. Reflection and Dominant / Assertive / Connected ratings stay common to every position'+(pr.shots?". Shot zone and outcome are optional for this role.":".")+"</div>" +
+    '<div class="goals-pair">' +
+      renderTargetCard(pos, "attacking", m, { counters:true }) +
+      renderTargetCard(pos, "defensive", m, { counters:true }) +
+    "</div>" +
+    '<div><div class="fld-label">AVP events</div><div class="grid-2">' +
+      '<label class="fld"><span>Created\u2013Pass</span>'+stepper("avpCrePass", m.avpCrePass)+"</label>" +
+      '<label class="fld"><span>Created\u2013Dribble</span>'+stepper("avpCreDribble", m.avpCreDribble)+"</label>" +
+      '<label class="fld"><span>Received\u2013Between</span>'+stepper("avpRecBetween", m.avpRecBetween)+"</label>" +
+      '<label class="fld"><span>Received\u2013Behind</span>'+stepper("avpRecBehind", m.avpRecBehind)+"</label></div></div>";
+  if(pr.shots){
+    const sel = ui.draft && ui.draft._zone || null;
+    const out = ui.draft && ui.draft._outcome || null;
+    const gtype = ui.draft && ui.draft._goalType || null;
+    const shots = (ui.draft && ui.draft.shots) || m.shots || [];
+    html += '<div><div class="fld-label">Shots (optional) - tap a zone, then an outcome</div>' +
+      '<p class="hint">Optional extra for attacking roles. If the outcome is a goal, tick whether it came from a secured possession (4+ passes) or a 4 to score counter (3 passes or fewer). Position targets are still yours to track as before.</p>' +
+      '<div class="pitch-wrap" data-shot-pitch="1">'+pitchSVG({ selected: sel })+"</div>"+zoneLegend() +
+      '<div class="outcome-picks">' +
+        OUTCOMES.map(function(o){ return '<button type="button" data-act="shot-outcome" data-val="'+o.id+'" class="'+(out===o.id?"on":"")+'">'+o.label+"</button>"; }).join("") +
+      "</div>" +
+      (out==="Goal" || (sel && out==="Goal")
+        ? '<div class="goal-type-picks"><div class="fld-label">How was this goal scored?</div>' +
+            GOAL_TYPES.map(function(g){ return '<button type="button" data-act="goal-type" data-val="'+g.id+'" class="'+(gtype===g.id?"on":"")+'">'+esc(g.label)+"</button>"; }).join("") +
+          "</div>"
+        : "") +
+      '<div class="shot-list">' +
+        (shots.length ? shots.map(function(s,i){
+          const goal = s.outcome==="Goal";
+          return '<div class="shot-chip'+(goal && !s.goalType?" needs-type":"")+'"><span style="background:var(--'+s.zone.toLowerCase()+');width:10px;height:10px;border-radius:2px"></span>'+s.zone+" \u00b7 "+esc(s.outcome) +
+            (goal ? '<div class="goal-type-inline">'+GOAL_TYPES.map(function(g){ return '<button type="button" data-act="goal-type" data-i="'+i+'" data-val="'+g.id+'" class="'+(s.goalType===g.id?"on":"")+'">'+esc(g.label)+"</button>"; }).join("")+"</div>" : "") +
+            '<button type="button" data-act="del-shot" data-i="'+i+'" aria-label="Remove shot">Remove</button></div>';
+        }).join("") : '<p class="hint">No shots logged yet.</p>') +
+      "</div></div>";
+  }
+  return html;
+}
+
 
 ui.shotMatch = ui.shotMatch || null;
 ui.shotSide = ui.shotSide || "us";
 ui.shotDraft = ui.shotDraft || null;
 ui.veoOpen = !!ui.veoOpen;
+ui.teamPanelMatch = ui.teamPanelMatch || null;
 
 bind();
 render();
 
 window.SCFCPortal = {
   loginPlayer: function(id){ ui.role="player"; ui.playerId=id||"avery"; ui.page="dashboard"; ui.logMode=null; ui.vid=null; ui.pointVid=null; ui.benchInfo=false; render(); window.scrollTo(0,0); },
-  loginCoach: function(){ ui.role="coach"; ui.page="squad"; ui.coachPlayerId=null; ui.coachTeamId=null; ui.coachAssign=false; ui.vid=null; ui.pointVid=null; ui.benchInfo=false; render(); window.scrollTo(0,0); },
+  loginCoach: function(){ ui.role="coach"; ui.page="squad"; ui.coachPlayerId=null; ui.coachTeamId=null; ui.coachAssign=false; ui.vid=null; ui.pointVid=null; ui.benchInfo=false; ui.teamPanelMatch=null; render(); window.scrollTo(0,0); },
   go: function(page, extra){ Object.assign(ui, extra||{}, { page: page }); render(); },
-  ui: ui
+  ui: ui,
+  computeTeamPanel: computeTeamPanel,
+  teamGoalSplit: teamGoalSplit,
+  seasonGoalSplit: seasonGoalSplit,
+  effectiveSecured: effectiveSecured
 };
 })();
 </script>

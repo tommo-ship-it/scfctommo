@@ -779,7 +779,7 @@ window.SCFC_CREST = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJQAAADACAYAA
 (function(){
 "use strict";
 
-const STORAGE = "scfc-pp-portal-v11";
+const STORAGE = "scfc-pp-portal-v12";
 const CREST = window.SCFC_CREST;
 
 const POS = {
@@ -1977,66 +1977,66 @@ function emptyMetrics(form){
 
 const SEED_LOGS = {
   avery:[
-    { matchId:"M001", minutes:70, dominant:3, assertive:3, connected:4, reflection:"We struggled to secure the first pass after a regain. I recycled too often when a line-breaking ball to Maya was on. Connected with Sage in the middle third; need to be more Assertive arriving in the box.", veo:"https://app.veo.co/sample/m001-avery", metrics:{ securedContrib:7, lineBreakComp:2, lineBreakAtt:5, avpCrePass:3, avpCreDribble:2, avpRecBetween:2, avpRecBehind:1, tgt:{boxRuns:1, regains:1}, tgtAttNote:"Arrived once, too late to affect the box."} },
-    { matchId:"M002", minutes:68, dominant:4, assertive:4, connected:4, reflection:"Better. Two line-breaking passes into Quinn led to the first goal. Arrived once at the top of the box - still want a second arrival. Stayed Connected after their equaliser chance.", veo:"https://app.veo.co/sample/m002-avery", metrics:{ securedContrib:11, lineBreakComp:5, lineBreakAtt:7, avpCrePass:4, avpCreDribble:2, avpRecBetween:4, avpRecBehind:1, tgt:{boxRuns:4, regains:3}} },
-    { matchId:"M003", minutes:70, dominant:4, assertive:3, connected:5, reflection:"Helped the unit keep possessions secured in the second half. First pass under pressure was cleaner. Still dropped off the late box run when Harper broke the line.", veo:"", metrics:{ securedContrib:9, lineBreakComp:3, lineBreakAtt:6, avpCrePass:3, avpCreDribble:2, avpRecBetween:3, avpRecBehind:1, tgt:{boxRuns:3, regains:2}, tgtAttNote:"Dropped off the late box run when Harper broke the line."} }
+    { matchId:"M001", minutes:70, dominant:3, progressive:3, connected:4, reflection:"We struggled to secure the first pass after a regain. I recycled too often when a line-breaking ball to Maya was on. Connected with Sage in the middle third; need to be more Progressive arriving in the box.", veo:"https://app.veo.co/sample/m001-avery", metrics:{ securedContrib:7, lineBreakComp:2, lineBreakAtt:5, avpCrePass:3, avpCreDribble:2, avpRecBetween:2, avpRecBehind:1, tgt:{boxRuns:1, regains:1}, tgtAttNote:"Arrived once, too late to affect the box."} },
+    { matchId:"M002", minutes:68, dominant:4, progressive:4, connected:4, reflection:"Better. Two line-breaking passes into Quinn led to the first goal. Arrived once at the top of the box - still want a second arrival. Stayed Connected after their equaliser chance.", veo:"https://app.veo.co/sample/m002-avery", metrics:{ securedContrib:11, lineBreakComp:5, lineBreakAtt:7, avpCrePass:4, avpCreDribble:2, avpRecBetween:4, avpRecBehind:1, tgt:{boxRuns:4, regains:3}} },
+    { matchId:"M003", minutes:70, dominant:4, progressive:3, connected:5, reflection:"Helped the unit keep possessions secured in the second half. First pass under pressure was cleaner. Still dropped off the late box run when Harper broke the line.", veo:"", metrics:{ securedContrib:9, lineBreakComp:3, lineBreakAtt:6, avpCrePass:3, avpCreDribble:2, avpRecBetween:3, avpRecBehind:1, tgt:{boxRuns:3, regains:2}, tgtAttNote:"Dropped off the late box run when Harper broke the line."} }
   ],
   eden:[
-    { matchId:"M001", minutes:70, dominant:3, assertive:3, connected:3, reflection:"Conceded from a cross I might have claimed. Distribution into the 6 was safe but I did not start enough attacks. Voice was quieter after the goal.", veo:"", metrics:{ conceded:1, saves:{Z1:1,Z2:2,Z3:1,Z4:1,Z5:0,Z6:1}, shortSucc:14, shortAtt:16, longSucc:3, longAtt:7, claims:2, crossesFaced:8, punches:1, tgt:{switches:3, claimedCrosses:0, impactedCrosses:1}, tgtAttNote:"Did not switch enough after the first pressure.", tgtDefNote:"The goal came from a cross I might have claimed."} },
-    { matchId:"M002", minutes:70, dominant:4, assertive:4, connected:4, reflection:"Claimed two high balls early and the back line settled. Short distribution into Sage started the second goal. One long switch was off.", veo:"https://app.veo.co/sample/m002-eden", metrics:{ conceded:1, saves:{Z1:2,Z2:3,Z3:1,Z4:0,Z5:1,Z6:0}, shortSucc:18, shortAtt:20, longSucc:4, longAtt:6, claims:4, crossesFaced:7, punches:1, tgt:{switches:6, claimedCrosses:2, impactedCrosses:1}} },
-    { matchId:"M003", minutes:70, dominant:4, assertive:4, connected:5, reflection:"Organising was clearer. One strong claim at the near post. Connected well with Jordan on the build.", veo:"", metrics:{ conceded:1, saves:{Z1:1,Z2:2,Z3:2,Z4:1,Z5:1,Z6:1}, shortSucc:16, shortAtt:18, longSucc:5, longAtt:8, claims:3, crossesFaced:6, punches:0, tgt:{switches:5, claimedCrosses:1, impactedCrosses:1}} }
+    { matchId:"M001", minutes:70, dominant:3, progressive:3, connected:3, reflection:"Conceded from a cross I might have claimed. Distribution into the 6 was safe but I did not start enough attacks. Voice was quieter after the goal.", veo:"", metrics:{ conceded:1, saves:{Z1:1,Z2:2,Z3:1,Z4:1,Z5:0,Z6:1}, shortSucc:14, shortAtt:16, longSucc:3, longAtt:7, claims:2, crossesFaced:8, punches:1, tgt:{switches:3, claimedCrosses:0, impactedCrosses:1}, tgtAttNote:"Did not switch enough after the first pressure.", tgtDefNote:"The goal came from a cross I might have claimed."} },
+    { matchId:"M002", minutes:70, dominant:4, progressive:4, connected:4, reflection:"Claimed two high balls early and the back line settled. Short distribution into Sage started the second goal. One long switch was off.", veo:"https://app.veo.co/sample/m002-eden", metrics:{ conceded:1, saves:{Z1:2,Z2:3,Z3:1,Z4:0,Z5:1,Z6:0}, shortSucc:18, shortAtt:20, longSucc:4, longAtt:6, claims:4, crossesFaced:7, punches:1, tgt:{switches:6, claimedCrosses:2, impactedCrosses:1}} },
+    { matchId:"M003", minutes:70, dominant:4, progressive:4, connected:5, reflection:"Organising was clearer. One strong claim at the near post. Connected well with Jordan on the build.", veo:"", metrics:{ conceded:1, saves:{Z1:1,Z2:2,Z3:2,Z4:1,Z5:1,Z6:1}, shortSucc:16, shortAtt:18, longSucc:5, longAtt:8, claims:3, crossesFaced:6, punches:0, tgt:{switches:5, claimedCrosses:1, impactedCrosses:1}} }
   ],
   maya:[
-    { matchId:"M001", minutes:64, dominant:3, assertive:3, connected:3, reflection:"Only two shots as a team and I did not get one away. Received between once. Need to pin their CB earlier.", veo:"", metrics:{ avpCrePass:1, avpCreDribble:1, avpRecBetween:2, avpRecBehind:0, shots:[], tgt:{shotsOnGoal:0, assists:1, blockedPasses:1, intercepts:1}} },
-    { matchId:"M002", minutes:70, dominant:5, assertive:4, connected:4, reflection:"Scored from Z2 early and stayed in the game. Good Received–Between from Quinn for the second. Missed a Z1 chance late - next time I go near post.", veo:"https://app.veo.co/sample/m002-maya", metrics:{ avpCrePass:2, avpCreDribble:1, avpRecBetween:4, avpRecBehind:1, shots:[{zone:"Z2",outcome:"Goal",goalType:"secured"},{zone:"Z1",outcome:"Saved"},{zone:"Z3",outcome:"Off Target"},{zone:"Z2",outcome:"Goal",goalType:"counter"}], tgt:{shotsOnGoal:3, assists:2, blockedPasses:2, intercepts:2}} },
-    { matchId:"M003", minutes:70, dominant:4, assertive:4, connected:4, reflection:"Held the ball better against a physical back line. One shot from Z3 saved. Combined well with Harper on the right.", veo:"", metrics:{ avpCrePass:2, avpCreDribble:1, avpRecBetween:2, avpRecBehind:1, shots:[{zone:"Z3",outcome:"Saved"},{zone:"Z5",outcome:"Blocked"}], tgt:{shotsOnGoal:2, assists:1, blockedPasses:1, intercepts:2}} },
-    { matchId:"M004", minutes:70, dominant:4, assertive:4, connected:4, reflection:"Finished from Z2 after we had the ball for a long spell. Want that same composure next time.", veo:"", pos:"9", metrics:{ avpCrePass:2, avpCreDribble:1, avpRecBetween:3, avpRecBehind:1, shots:[{zone:"Z2",outcome:"Goal",goalType:"secured"},{zone:"Z6",outcome:"Off Target"}], tgt:{shotsOnGoal:2, assists:1, blockedPasses:1, intercepts:1}} }
+    { matchId:"M001", minutes:64, dominant:3, progressive:3, connected:3, reflection:"Only two shots as a team and I did not get one away. Received between once. Need to pin their CB earlier.", veo:"", metrics:{ avpCrePass:1, avpCreDribble:1, avpRecBetween:2, avpRecBehind:0, shots:[], tgt:{shotsOnGoal:0, assists:1, blockedPasses:1, intercepts:1}} },
+    { matchId:"M002", minutes:70, dominant:5, progressive:4, connected:4, reflection:"Scored from Z2 early and stayed in the game. Good Received–Between from Quinn for the second. Missed a Z1 chance late - next time I go near post.", veo:"https://app.veo.co/sample/m002-maya", metrics:{ avpCrePass:2, avpCreDribble:1, avpRecBetween:4, avpRecBehind:1, shots:[{zone:"Z2",outcome:"Goal",goalType:"secured"},{zone:"Z1",outcome:"Saved"},{zone:"Z3",outcome:"Off Target"},{zone:"Z2",outcome:"Goal",goalType:"counter"}], tgt:{shotsOnGoal:3, assists:2, blockedPasses:2, intercepts:2}} },
+    { matchId:"M003", minutes:70, dominant:4, progressive:4, connected:4, reflection:"Held the ball better against a physical back line. One shot from Z3 saved. Combined well with Harper on the right.", veo:"", metrics:{ avpCrePass:2, avpCreDribble:1, avpRecBetween:2, avpRecBehind:1, shots:[{zone:"Z3",outcome:"Saved"},{zone:"Z5",outcome:"Blocked"}], tgt:{shotsOnGoal:2, assists:1, blockedPasses:1, intercepts:2}} },
+    { matchId:"M004", minutes:70, dominant:4, progressive:4, connected:4, reflection:"Finished from Z2 after we had the ball for a long spell. Want that same composure next time.", veo:"", pos:"9", metrics:{ avpCrePass:2, avpCreDribble:1, avpRecBetween:3, avpRecBehind:1, shots:[{zone:"Z2",outcome:"Goal",goalType:"secured"},{zone:"Z6",outcome:"Off Target"}], tgt:{shotsOnGoal:2, assists:1, blockedPasses:1, intercepts:1}} }
   ],
   jordan:[
-    { matchId:"M001", minutes:70, dominant:3, assertive:2, connected:4, reflection:"We were Connected but I was not Assertive enough stepping into midfield. Progressive passing was safe, not forward enough.", veo:"", metrics:{ progComp:3, progAtt:6, avpRecBetween:1, avpRecBehind:0, avpCrePass:1, avpCreDribble:0, recoveries:5, defActions:7, tgt:{midfieldDribbles:1, strikerClips:1, clearingHeaders:2}, tgtAttNote:"One clip into Maya was on and I kept it safe."} },
-    { matchId:"M002", minutes:70, dominant:4, assertive:4, connected:4, reflection:"Stepped in twice and found Sage. Won my aerial duels. Better balance.", veo:"", metrics:{ progComp:6, progAtt:8, avpRecBetween:1, avpRecBehind:0, avpCrePass:2, avpCreDribble:1, recoveries:7, defActions:9, tgt:{midfieldDribbles:2, strikerClips:2, clearingHeaders:4}} },
-    { matchId:"M003", minutes:70, dominant:4, assertive:3, connected:5, reflection:"Line stayed together. One recovery I was proud of after a bounce. Progressive pass into Quinn in the second half.", veo:"", metrics:{ progComp:5, progAtt:7, avpRecBetween:1, avpRecBehind:0, avpCrePass:2, avpCreDribble:1, recoveries:6, defActions:8, tgt:{midfieldDribbles:1, strikerClips:2, clearingHeaders:3}} }
+    { matchId:"M001", minutes:70, dominant:3, progressive:2, connected:4, reflection:"We were Connected but I was not Progressive enough stepping into midfield. Progressive passing was safe, not forward enough.", veo:"", metrics:{ progComp:3, progAtt:6, avpRecBetween:1, avpRecBehind:0, avpCrePass:1, avpCreDribble:0, recoveries:5, defActions:7, tgt:{midfieldDribbles:1, strikerClips:1, clearingHeaders:2}, tgtAttNote:"One clip into Maya was on and I kept it safe."} },
+    { matchId:"M002", minutes:70, dominant:4, progressive:4, connected:4, reflection:"Stepped in twice and found Sage. Won my aerial duels. Better balance.", veo:"", metrics:{ progComp:6, progAtt:8, avpRecBetween:1, avpRecBehind:0, avpCrePass:2, avpCreDribble:1, recoveries:7, defActions:9, tgt:{midfieldDribbles:2, strikerClips:2, clearingHeaders:4}} },
+    { matchId:"M003", minutes:70, dominant:4, progressive:3, connected:5, reflection:"Line stayed together. One recovery I was proud of after a bounce. Progressive pass into Quinn in the second half.", veo:"", metrics:{ progComp:5, progAtt:7, avpRecBetween:1, avpRecBehind:0, avpCrePass:2, avpCreDribble:1, recoveries:6, defActions:8, tgt:{midfieldDribbles:1, strikerClips:2, clearingHeaders:3}} }
   ],
   sage:[
-    { matchId:"M001", minutes:70, dominant:4, assertive:3, connected:4, reflection:"Tried to secure possessions but we broke too early. Two line-breaking attempts, one completed.", veo:"", metrics:{ securedContrib:10, lineBreakComp:1, lineBreakAtt:4, avpCrePass:4, avpCreDribble:2, avpRecBetween:1, avpRecBehind:0, tgt:{weakSideBumps:1, oppHalfRegains:2}} },
-    { matchId:"M002", minutes:70, dominant:4, assertive:4, connected:5, reflection:"The midfield unit was Connected. Several first passes after regains stuck. Found Quinn twice between the lines.", veo:"", metrics:{ securedContrib:14, lineBreakComp:4, lineBreakAtt:6, avpCrePass:6, avpCreDribble:2, avpRecBetween:2, avpRecBehind:0, tgt:{weakSideBumps:4, oppHalfRegains:4}} },
-    { matchId:"M003", minutes:70, dominant:4, assertive:4, connected:4, reflection:"Solid screening. Could have played one more line-breaker into Maya.", veo:"", metrics:{ securedContrib:12, lineBreakComp:3, lineBreakAtt:5, avpCrePass:5, avpCreDribble:1, avpRecBetween:2, avpRecBehind:0, tgt:{weakSideBumps:3, oppHalfRegains:3}} }
+    { matchId:"M001", minutes:70, dominant:4, progressive:3, connected:4, reflection:"Tried to secure possessions but we broke too early. Two line-breaking attempts, one completed.", veo:"", metrics:{ securedContrib:10, lineBreakComp:1, lineBreakAtt:4, avpCrePass:4, avpCreDribble:2, avpRecBetween:1, avpRecBehind:0, tgt:{weakSideBumps:1, oppHalfRegains:2}} },
+    { matchId:"M002", minutes:70, dominant:4, progressive:4, connected:5, reflection:"The midfield unit was Connected. Several first passes after regains stuck. Found Quinn twice between the lines.", veo:"", metrics:{ securedContrib:14, lineBreakComp:4, lineBreakAtt:6, avpCrePass:6, avpCreDribble:2, avpRecBetween:2, avpRecBehind:0, tgt:{weakSideBumps:4, oppHalfRegains:4}} },
+    { matchId:"M003", minutes:70, dominant:4, progressive:4, connected:4, reflection:"Solid screening. Could have played one more line-breaker into Maya.", veo:"", metrics:{ securedContrib:12, lineBreakComp:3, lineBreakAtt:5, avpCrePass:5, avpCreDribble:1, avpRecBetween:2, avpRecBehind:0, tgt:{weakSideBumps:3, oppHalfRegains:3}} }
   ],
   quinn:[
-    { matchId:"M001", minutes:62, dominant:3, assertive:3, connected:3, reflection:"Hard to find space. One Received–Between. Need to show earlier.", veo:"", metrics:{ avpCrePass:2, avpCreDribble:1, avpRecBetween:2, avpRecBehind:1, shots:[{zone:"Z6",outcome:"Off Target"}], tgt:{boxRuns:1, regains:0}} },
-    { matchId:"M002", minutes:70, dominant:4, assertive:4, connected:5, reflection:"Created both goals with passes into Maya. Received between the lines all afternoon.", veo:"", metrics:{ avpCrePass:5, avpCreDribble:2, avpRecBetween:6, avpRecBehind:1, shots:[{zone:"Z3",outcome:"Saved"},{zone:"Z2",outcome:"Blocked"}], tgt:{boxRuns:4, regains:3}} },
-    { matchId:"M003", minutes:70, dominant:4, assertive:3, connected:4, reflection:"Good combinations with Harper. Shot from Z3. Want more Created–Pass in the second half.", veo:"", metrics:{ avpCrePass:3, avpCreDribble:2, avpRecBetween:5, avpRecBehind:1, shots:[{zone:"Z3",outcome:"Off Target"}], tgt:{boxRuns:3, regains:2}} }
+    { matchId:"M001", minutes:62, dominant:3, progressive:3, connected:3, reflection:"Hard to find space. One Received–Between. Need to show earlier.", veo:"", metrics:{ avpCrePass:2, avpCreDribble:1, avpRecBetween:2, avpRecBehind:1, shots:[{zone:"Z6",outcome:"Off Target"}], tgt:{boxRuns:1, regains:0}} },
+    { matchId:"M002", minutes:70, dominant:4, progressive:4, connected:5, reflection:"Created both goals with passes into Maya. Received between the lines all afternoon.", veo:"", metrics:{ avpCrePass:5, avpCreDribble:2, avpRecBetween:6, avpRecBehind:1, shots:[{zone:"Z3",outcome:"Saved"},{zone:"Z2",outcome:"Blocked"}], tgt:{boxRuns:4, regains:3}} },
+    { matchId:"M003", minutes:70, dominant:4, progressive:3, connected:4, reflection:"Good combinations with Harper. Shot from Z3. Want more Created–Pass in the second half.", veo:"", metrics:{ avpCrePass:3, avpCreDribble:2, avpRecBetween:5, avpRecBehind:1, shots:[{zone:"Z3",outcome:"Off Target"}], tgt:{boxRuns:3, regains:2}} }
   ],
   harper:[
-    { matchId:"M001", minutes:70, dominant:3, assertive:3, connected:3, reflection:"Did not take their full-back on enough. One Created–Dribble, no end product.", veo:"", metrics:{ avpCrePass:1, avpCreDribble:1, avpRecBetween:1, avpRecBehind:1, shots:[], tgt:{crossesCutbacks:1, shotsOnGoal:0, defenderIntercepts:1, defenderBlockedPasses:0}} },
-    { matchId:"M002", minutes:66, dominant:4, assertive:5, connected:4, reflection:"Took her on early and it set the tone. Cutback for Maya's second. Felt Assertive.", veo:"", metrics:{ avpCrePass:3, avpCreDribble:2, avpRecBetween:3, avpRecBehind:2, shots:[{zone:"Z4",outcome:"Saved"},{zone:"Z6",outcome:"Off Target"}], tgt:{crossesCutbacks:3, shotsOnGoal:2, defenderIntercepts:1, defenderBlockedPasses:1}} },
-    { matchId:"M003", minutes:70, dominant:4, assertive:4, connected:4, reflection:"Better underlap when Riley went. Shot from Z5 blocked.", veo:"", metrics:{ avpCrePass:2, avpCreDribble:2, avpRecBetween:3, avpRecBehind:1, shots:[{zone:"Z5",outcome:"Blocked"}], tgt:{crossesCutbacks:4, shotsOnGoal:1, defenderIntercepts:2, defenderBlockedPasses:0}} },
-    { matchId:"M004", minutes:68, dominant:4, assertive:5, connected:4, reflection:"Broke on the counter and finished from the left edge. A 4 to score.", veo:"", pos:"Winger", metrics:{ avpCrePass:2, avpCreDribble:3, avpRecBetween:2, avpRecBehind:2, shots:[{zone:"Z4",outcome:"Goal",goalType:"counter"},{zone:"Z6",outcome:"Blocked"}], tgt:{crossesCutbacks:3, shotsOnGoal:2, defenderIntercepts:1, defenderBlockedPasses:1}} }
+    { matchId:"M001", minutes:70, dominant:3, progressive:3, connected:3, reflection:"Did not take their full-back on enough. One Created–Dribble, no end product.", veo:"", metrics:{ avpCrePass:1, avpCreDribble:1, avpRecBetween:1, avpRecBehind:1, shots:[], tgt:{crossesCutbacks:1, shotsOnGoal:0, defenderIntercepts:1, defenderBlockedPasses:0}} },
+    { matchId:"M002", minutes:66, dominant:4, progressive:5, connected:4, reflection:"Took her on early and it set the tone. Cutback for Maya's second. Felt Progressive.", veo:"", metrics:{ avpCrePass:3, avpCreDribble:2, avpRecBetween:3, avpRecBehind:2, shots:[{zone:"Z4",outcome:"Saved"},{zone:"Z6",outcome:"Off Target"}], tgt:{crossesCutbacks:3, shotsOnGoal:2, defenderIntercepts:1, defenderBlockedPasses:1}} },
+    { matchId:"M003", minutes:70, dominant:4, progressive:4, connected:4, reflection:"Better underlap when Riley went. Shot from Z5 blocked.", veo:"", metrics:{ avpCrePass:2, avpCreDribble:2, avpRecBetween:3, avpRecBehind:1, shots:[{zone:"Z5",outcome:"Blocked"}], tgt:{crossesCutbacks:4, shotsOnGoal:1, defenderIntercepts:2, defenderBlockedPasses:0}} },
+    { matchId:"M004", minutes:68, dominant:4, progressive:5, connected:4, reflection:"Broke on the counter and finished from the left edge. A 4 to score.", veo:"", pos:"Winger", metrics:{ avpCrePass:2, avpCreDribble:3, avpRecBetween:2, avpRecBehind:2, shots:[{zone:"Z4",outcome:"Goal",goalType:"counter"},{zone:"Z6",outcome:"Blocked"}], tgt:{crossesCutbacks:3, shotsOnGoal:2, defenderIntercepts:1, defenderBlockedPasses:1}} }
   ],
   riley:[
-    { matchId:"M001", minutes:70, dominant:3, assertive:2, connected:4, reflection:"Stayed Connected defensively but did not overlap enough. Progressive passing was sideways.", veo:"", metrics:{ progComp:2, progAtt:5, avpRecBetween:1, avpRecBehind:1, avpCrePass:2, avpCreDribble:0, recoveries:4, defActions:6, tgt:{finalThird:2, blockedCrosses:1}} },
-    { matchId:"M002", minutes:70, dominant:4, assertive:4, connected:4, reflection:"Overlapped Harper and the cutback came on. Two recoveries I liked.", veo:"", metrics:{ progComp:5, progAtt:7, avpRecBetween:2, avpRecBehind:2, avpCrePass:3, avpCreDribble:1, recoveries:6, defActions:7, tgt:{finalThird:6, blockedCrosses:2}} },
-    { matchId:"M003", minutes:70, dominant:4, assertive:3, connected:4, reflection:"Solid. Want more progressive passes into Quinn.", veo:"", metrics:{ progComp:4, progAtt:6, avpRecBetween:2, avpRecBehind:1, avpCrePass:2, avpCreDribble:1, recoveries:5, defActions:6, tgt:{finalThird:5, blockedCrosses:1}} }
+    { matchId:"M001", minutes:70, dominant:3, progressive:2, connected:4, reflection:"Stayed Connected defensively but did not overlap enough. Progressive passing was sideways.", veo:"", metrics:{ progComp:2, progAtt:5, avpRecBetween:1, avpRecBehind:1, avpCrePass:2, avpCreDribble:0, recoveries:4, defActions:6, tgt:{finalThird:2, blockedCrosses:1}} },
+    { matchId:"M002", minutes:70, dominant:4, progressive:4, connected:4, reflection:"Overlapped Harper and the cutback came on. Two recoveries I liked.", veo:"", metrics:{ progComp:5, progAtt:7, avpRecBetween:2, avpRecBehind:2, avpCrePass:3, avpCreDribble:1, recoveries:6, defActions:7, tgt:{finalThird:6, blockedCrosses:2}} },
+    { matchId:"M003", minutes:70, dominant:4, progressive:3, connected:4, reflection:"Solid. Want more progressive passes into Quinn.", veo:"", metrics:{ progComp:4, progAtt:6, avpRecBetween:2, avpRecBehind:1, avpCrePass:2, avpCreDribble:1, recoveries:5, defActions:6, tgt:{finalThird:5, blockedCrosses:1}} }
   ],
   tess:[
-    { matchId:"M001", minutes:70, dominant:3, assertive:3, connected:4, reflection:"Stayed compact with Jordan. Wanted one more forward pass after a regain.", veo:"", metrics:{ progComp:3, progAtt:5, avpRecBetween:1, avpRecBehind:0, avpCrePass:1, avpCreDribble:0, recoveries:5, defActions:6, tgt:{midfieldDribbles:1, strikerClips:0, clearingHeaders:2}} },
-    { matchId:"M002", minutes:70, dominant:4, assertive:4, connected:4, reflection:"Stepped into midfield once and found Sage. Aerials were cleaner.", veo:"", metrics:{ progComp:5, progAtt:7, avpRecBetween:1, avpRecBehind:0, avpCrePass:2, avpCreDribble:1, recoveries:6, defActions:8, tgt:{midfieldDribbles:1, strikerClips:2, clearingHeaders:3}} },
-    { matchId:"M003", minutes:70, dominant:4, assertive:3, connected:4, reflection:"Held the line. One recovery I liked on the bounce.", veo:"", metrics:{ progComp:4, progAtt:6, avpRecBetween:1, avpRecBehind:0, avpCrePass:2, avpCreDribble:0, recoveries:5, defActions:7, tgt:{midfieldDribbles:2, strikerClips:1, clearingHeaders:3}} }
+    { matchId:"M001", minutes:70, dominant:3, progressive:3, connected:4, reflection:"Stayed compact with Jordan. Wanted one more forward pass after a regain.", veo:"", metrics:{ progComp:3, progAtt:5, avpRecBetween:1, avpRecBehind:0, avpCrePass:1, avpCreDribble:0, recoveries:5, defActions:6, tgt:{midfieldDribbles:1, strikerClips:0, clearingHeaders:2}} },
+    { matchId:"M002", minutes:70, dominant:4, progressive:4, connected:4, reflection:"Stepped into midfield once and found Sage. Aerials were cleaner.", veo:"", metrics:{ progComp:5, progAtt:7, avpRecBetween:1, avpRecBehind:0, avpCrePass:2, avpCreDribble:1, recoveries:6, defActions:8, tgt:{midfieldDribbles:1, strikerClips:2, clearingHeaders:3}} },
+    { matchId:"M003", minutes:70, dominant:4, progressive:3, connected:4, reflection:"Held the line. One recovery I liked on the bounce.", veo:"", metrics:{ progComp:4, progAtt:6, avpRecBetween:1, avpRecBehind:0, avpCrePass:2, avpCreDribble:0, recoveries:5, defActions:7, tgt:{midfieldDribbles:2, strikerClips:1, clearingHeaders:3}} }
   ],
   britt:[
-    { matchId:"M001", minutes:70, dominant:3, assertive:2, connected:4, reflection:"Defended the channel well but I did not overlap enough.", veo:"", metrics:{ progComp:2, progAtt:4, avpRecBetween:1, avpRecBehind:0, avpCrePass:1, avpCreDribble:1, recoveries:4, defActions:5, tgt:{finalThird:2, blockedCrosses:0}} },
-    { matchId:"M002", minutes:70, dominant:4, assertive:4, connected:4, reflection:"Got forward with Harper's side. Two combinations I would keep.", veo:"", metrics:{ progComp:4, progAtt:6, avpRecBetween:2, avpRecBehind:1, avpCrePass:2, avpCreDribble:1, recoveries:5, defActions:6, tgt:{finalThird:5, blockedCrosses:2}} },
-    { matchId:"M003", minutes:70, dominant:4, assertive:3, connected:4, reflection:"Solid defensively. Want one more underlap into the 10.", veo:"", metrics:{ progComp:3, progAtt:5, avpRecBetween:1, avpRecBehind:1, avpCrePass:2, avpCreDribble:1, recoveries:5, defActions:6, tgt:{finalThird:4, blockedCrosses:2}} }
+    { matchId:"M001", minutes:70, dominant:3, progressive:2, connected:4, reflection:"Defended the channel well but I did not overlap enough.", veo:"", metrics:{ progComp:2, progAtt:4, avpRecBetween:1, avpRecBehind:0, avpCrePass:1, avpCreDribble:1, recoveries:4, defActions:5, tgt:{finalThird:2, blockedCrosses:0}} },
+    { matchId:"M002", minutes:70, dominant:4, progressive:4, connected:4, reflection:"Got forward with Harper's side. Two combinations I would keep.", veo:"", metrics:{ progComp:4, progAtt:6, avpRecBetween:2, avpRecBehind:1, avpCrePass:2, avpCreDribble:1, recoveries:5, defActions:6, tgt:{finalThird:5, blockedCrosses:2}} },
+    { matchId:"M003", minutes:70, dominant:4, progressive:3, connected:4, reflection:"Solid defensively. Want one more underlap into the 10.", veo:"", metrics:{ progComp:3, progAtt:5, avpRecBetween:1, avpRecBehind:1, avpCrePass:2, avpCreDribble:1, recoveries:5, defActions:6, tgt:{finalThird:4, blockedCrosses:2}} }
   ],
   nora:[
-    { matchId:"M001", minutes:70, dominant:3, assertive:3, connected:4, reflection:"Connected with Sage. Did not arrive in the box late enough.", veo:"", metrics:{ avpCrePass:3, avpCreDribble:1, avpRecBetween:2, avpRecBehind:0, tgt:{boxRuns:1, regains:1}} },
-    { matchId:"M002", minutes:70, dominant:4, assertive:4, connected:4, reflection:"Better late runs. Found Quinn once between the lines.", veo:"", metrics:{ avpCrePass:3, avpCreDribble:2, avpRecBetween:3, avpRecBehind:1, tgt:{boxRuns:3, regains:2}} },
-    { matchId:"M003", minutes:70, dominant:4, assertive:3, connected:4, reflection:"Useful in the middle third. Want more Created–Dribble when I have space.", veo:"", metrics:{ avpCrePass:3, avpCreDribble:1, avpRecBetween:2, avpRecBehind:1, tgt:{boxRuns:2, regains:2}} }
+    { matchId:"M001", minutes:70, dominant:3, progressive:3, connected:4, reflection:"Connected with Sage. Did not arrive in the box late enough.", veo:"", metrics:{ avpCrePass:3, avpCreDribble:1, avpRecBetween:2, avpRecBehind:0, tgt:{boxRuns:1, regains:1}} },
+    { matchId:"M002", minutes:70, dominant:4, progressive:4, connected:4, reflection:"Better late runs. Found Quinn once between the lines.", veo:"", metrics:{ avpCrePass:3, avpCreDribble:2, avpRecBetween:3, avpRecBehind:1, tgt:{boxRuns:3, regains:2}} },
+    { matchId:"M003", minutes:70, dominant:4, progressive:3, connected:4, reflection:"Useful in the middle third. Want more Created–Dribble when I have space.", veo:"", metrics:{ avpCrePass:3, avpCreDribble:1, avpRecBetween:2, avpRecBehind:1, tgt:{boxRuns:2, regains:2}} }
   ],
   camille:[
-    { matchId:"M001", minutes:58, dominant:3, assertive:3, connected:3, reflection:"Came off the bench and linked once. Need to pin their CB sooner.", veo:"", metrics:{ avpCrePass:1, avpCreDribble:0, avpRecBetween:2, avpRecBehind:0, shots:[], tgt:{shotsOnGoal:0, assists:1, blockedPasses:1, intercepts:0}} },
-    { matchId:"M002", minutes:70, dominant:4, assertive:4, connected:4, reflection:"Held the ball better and combined with Harper. One shot from Z3 blocked.", veo:"", metrics:{ avpCrePass:1, avpCreDribble:1, avpRecBetween:3, avpRecBehind:1, shots:[{zone:"Z3",outcome:"Blocked"}], tgt:{shotsOnGoal:2, assists:3, blockedPasses:2, intercepts:1}} },
-    { matchId:"M003", minutes:70, dominant:4, assertive:3, connected:4, reflection:"Came short more often. Still want a chance in Z2.", veo:"", metrics:{ avpCrePass:1, avpCreDribble:1, avpRecBetween:2, avpRecBehind:0, shots:[], tgt:{shotsOnGoal:1, assists:2, blockedPasses:2, intercepts:1}} }
+    { matchId:"M001", minutes:58, dominant:3, progressive:3, connected:3, reflection:"Came off the bench and linked once. Need to pin their CB sooner.", veo:"", metrics:{ avpCrePass:1, avpCreDribble:0, avpRecBetween:2, avpRecBehind:0, shots:[], tgt:{shotsOnGoal:0, assists:1, blockedPasses:1, intercepts:0}} },
+    { matchId:"M002", minutes:70, dominant:4, progressive:4, connected:4, reflection:"Held the ball better and combined with Harper. One shot from Z3 blocked.", veo:"", metrics:{ avpCrePass:1, avpCreDribble:1, avpRecBetween:3, avpRecBehind:1, shots:[{zone:"Z3",outcome:"Blocked"}], tgt:{shotsOnGoal:2, assists:3, blockedPasses:2, intercepts:1}} },
+    { matchId:"M003", minutes:70, dominant:4, progressive:3, connected:4, reflection:"Came short more often. Still want a chance in Z2.", veo:"", metrics:{ avpCrePass:1, avpCreDribble:1, avpRecBetween:2, avpRecBehind:0, shots:[], tgt:{shotsOnGoal:1, assists:2, blockedPasses:2, intercepts:1}} }
   ]
 };
 
@@ -2045,7 +2045,7 @@ const TUTORIALS = [
   { id:"t2", title:"Understanding AVP events", dur:"6:05", blurb:"Created–Pass, Created–Dribble, Received–Between, and Received–Behind. What counts, what doesn't, and how to log them honestly." },
   { id:"t3", title:"Shot zones Z1-Z6", dur:"5:10", blurb:"The SCFC Shot Zone Map: First 6, Second 6, Third 6, left and right edges, plus Z6 for attempts from outside the box. Four outcomes: Goal, Saved, Blocked, Off Target." },
   { id:"t4", title:"Building your IDP", dur:"7:15", blurb:"Writing goals across technical, tactical, physical and psychological pillars. Targets, weekly actions, and how term reviews work." },
-  { id:"t5", title:"Living Dominant, Assertive, Connected", dur:"5:40", blurb:"What the club identity looks like in each position, and how to rate yourself after a match without inflating the numbers." },
+  { id:"t5", title:"Living Dominant, Progressive, Connected", dur:"5:40", blurb:"What the club identity looks like in each position, and how to rate yourself after a match without inflating the numbers." },
   { id:"t6", title:"Team panel and headline metrics", dur:"6:30", blurb:"How coaches enter Veo pass strings on the Team panel, how secured possessions (4+ pass strings) are counted, and how headline metrics (secured rate, shots per secured, shot quality, opponent-half regains) are calculated." },
   { id:"t7", title:"Using Veo clips to reflect", dur:"4:55", blurb:"Paste a clip link into your match log. What to look for, and how coaches will use the same clip in your IDP conversation." }
 ];
@@ -2057,7 +2057,7 @@ function simpleLog(matchId, minutes, avp, tgt, opts){
     matchId: matchId,
     minutes: minutes,
     dominant: opts.d||3,
-    assertive: opts.a||3,
+    progressive: opts.a||3,
     connected: opts.c||4,
     reflection: opts.r || "Sample match log — fictional player.",
     veo: "",
@@ -2174,17 +2174,17 @@ const POS_PROFILES = {
     lead:"The last line and the first pass. You organise the box, start the attack, and set the tone for the unit behind the ball.",
     dac:[
       ["Dominant","Own the six-yard box, the restart, and the voice. Claim what is yours."],
-      ["Assertive","Start higher when we build. Step off the line with a decision already made."],
+      ["Progressive","Start higher when we build. Step off the line with a decision already made."],
       ["Connected","Every distribution has a teammate in mind. Organise so the back line can play."]
     ],
     does:["Command the penalty area and organise the defensive unit.","Start attacks with short and long distribution.","Claim or punch crosses; deal with shots by zone.","Play as the first attacker when the press is on."],
-    records:"After each match you log saves by zone (Z1-Z6), short and long distribution (successful / attempted), claims and crosses faced, punches, and goals conceded - plus the shared reflection and Dominant / Assertive / Connected ratings."
+    records:"After each match you log saves by zone (Z1-Z6), short and long distribution (successful / attempted), claims and crosses faced, punches, and goals conceded - plus the shared reflection and Dominant / Progressive / Connected ratings."
   },
   CB:{
     lead:"Command the defensive line. Win your space, play forward when it is on, and never leave the unit isolated.",
     dac:[
       ["Dominant","Win first contact - aerial and ground - and defend the box as if it is yours."],
-      ["Assertive","Step into midfield to intercept or progress when the line is set behind you."],
+      ["Progressive","Step into midfield to intercept or progress when the line is set behind you."],
       ["Connected","Check the full-back and the 6 before you step. Cover is part of the action."]
     ],
     does:["Defend the central channel and dominate aerial duels.","Play progressive passes out of the first press.","Receive and create AVP events when we build from the back.","Recover and add defensive actions (tackles, interceptions, blocks)."],
@@ -2194,7 +2194,7 @@ const POS_PROFILES = {
     lead:"Width in possession, steel out of it. You unbalance their back line and still recover goal-side.",
     dac:[
       ["Dominant","Win your 1v1, both ways. Don't get isolated in the channel."],
-      ["Assertive","Overlap or underlap with a purpose - arrive, don't jog there."],
+      ["Progressive","Overlap or underlap with a purpose - arrive, don't jog there."],
       ["Connected","The winger, the 6 and the near center back should always know where you are."]
     ],
     does:["Hold the width and combine with the winger.","Deliver progressive passes and occasional AVP creation.","Recover goal-side within two actions of a lost duel.","Add defensive actions in our third and the middle third."],
@@ -2204,7 +2204,7 @@ const POS_PROFILES = {
     lead:"The pivot. You screen, you secure, and you play the pass that breaks a line.",
     dac:[
       ["Dominant","Own the space in front of the back four. First to the second ball."],
-      ["Assertive","Play forward. A safe pass is not always the right pass."],
+      ["Progressive","Play forward. A safe pass is not always the right pass."],
       ["Connected","You are the link. Body open, pictures already painted before the ball arrives."]
     ],
     does:["Screen the back line and secure first contact after a regain.","Contribute to secured possessions (4+ consecutive passes).","Play passes that break a line of pressure.","Create with the forward pass (AVP Created–Pass)."],
@@ -2214,7 +2214,7 @@ const POS_PROFILES = {
     lead:"The box-to-box engine. You connect the 6 to the 10, and you arrive when the cutback comes.",
     dac:[
       ["Dominant","Carry your influence into both boxes, not only the middle third."],
-      ["Assertive","Arrive, press, and take the line-breaking pass when you see it."],
+      ["Progressive","Arrive, press, and take the line-breaking pass when you see it."],
       ["Connected","Combinations with the 6, 10 and wide players - always a picture, always an angle."]
     ],
     does:["Link the pivot to the attacking unit.","Contribute to secured possessions and break lines from midfield.","Arrive in the box for cutbacks and second balls.","Create with the forward pass (AVP Created–Pass)."],
@@ -2224,7 +2224,7 @@ const POS_PROFILES = {
     lead:"The creator between the lines. You receive to play forward, and you occupy the spaces others open.",
     dac:[
       ["Dominant","Live between their midfield and their back line. Make that space yours."],
-      ["Assertive","Ask for the ball under pressure. Don't hide when the first pass is tight."],
+      ["Progressive","Ask for the ball under pressure. Don't hide when the first pass is tight."],
       ["Connected","The 9, the 8 and the winger should feel you as a constant option."]
     ],
     does:["Receive between the lines and play the killer pass or the shot.","Create AVP events - especially Created–Pass and Received–Between.","Arrive in shooting zones Z1-Z6 with a clear outcome.","Press the first ball from the front when the trigger is on."],
@@ -2234,7 +2234,7 @@ const POS_PROFILES = {
     lead:"Isolate and unbalance. You take the defender on, and you stay Connected to the full-back and the 9.",
     dac:[
       ["Dominant","Win your 1v1. The end line and the cutback belong to you."],
-      ["Assertive","Take her on early. Don't wait until the last 20 minutes to be brave."],
+      ["Progressive","Take her on early. Don't wait until the last 20 minutes to be brave."],
       ["Connected","Know when to hold the width and when to come inside for the overlap."]
     ],
     does:["Isolate the full-back and create with dribble or pass.","Receive between and behind as the attacking shape rotates.","Shoot from wide and central zones when the chance is real.","Recover into a compact midfield when we lose it."],
@@ -2244,7 +2244,7 @@ const POS_PROFILES = {
     lead:"The reference point. You pin the last line, finish in the box, and bring others into the game.",
     dac:[
       ["Dominant","Own Z1 and Z2. Make their center backs uncomfortable for 70 minutes."],
-      ["Assertive","Take the early shot. Spin in behind when the 10 has the ball."],
+      ["Progressive","Take the early shot. Spin in behind when the 10 has the ball."],
       ["Connected","Hold, lay, and pin - so the 10 and the winger can play."]
     ],
     does:["Finish from the SCFC shot zones with composure.","Receive between the lines and in behind the last defender.","Create for others when you are marked.","Lead the first press from the front."],
@@ -3267,7 +3267,7 @@ function loadData(){
     if(!raw) return buildSeed();
     const d = JSON.parse(raw);
     const seed = buildSeed();
-    return {
+    const out = {
       idp: Object.assign(seed.idp, d.idp||{}),
       logs: Object.assign(seed.logs, d.logs||{}),
       fixtures: d.fixtures && d.fixtures.length ? d.fixtures : seed.fixtures,
@@ -3275,6 +3275,10 @@ function loadData(){
       shots: Object.assign(deepClone(seed.shots), d.shots||{}),
       teamPanel: Object.assign(deepClone(seed.teamPanel), d.teamPanel||{})
     };
+    Object.keys(out.logs||{}).forEach(function(pid){
+      (out.logs[pid]||[]).forEach(migrateSelfReview);
+    });
+    return out;
   }catch(e){ return buildSeed(); }
 }
 function saveData(){ try{ localStorage.setItem(STORAGE, JSON.stringify(data)); }catch(e){} }
@@ -3325,10 +3329,30 @@ function idpAvg(pid){
 }
 function logsOf(pid){ return data.logs[pid]||[]; }
 function logFor(pid, mid){ return logsOf(pid).find(l => l.matchId===mid); }
+function selfReviewScore(log, key){
+  if(!log) return 0;
+  if(key==="progressive"){
+    if(log.progressive!=null && log.progressive!=="") return +log.progressive||0;
+    return +log.assertive||0;
+  }
+  return +log[key]||0;
+}
+function migrateSelfReview(log){
+  if(!log || typeof log!=="object") return log;
+  if((log.progressive==null || log.progressive==="") && log.assertive!=null && log.assertive!==""){
+    log.progressive = +log.assertive||0;
+  }
+  return log;
+}
 function identityAvg(pid){
   const ls = logsOf(pid);
   if(!ls.length) return { d:0,a:0,c:0, n:0 };
-  return { d: avg(ls.map(l=>l.dominant)), a: avg(ls.map(l=>l.assertive)), c: avg(ls.map(l=>l.connected)), n: ls.length };
+  return {
+    d: avg(ls.map(function(l){ return selfReviewScore(l,"dominant"); })),
+    a: avg(ls.map(function(l){ return selfReviewScore(l,"progressive"); })),
+    c: avg(ls.map(function(l){ return selfReviewScore(l,"connected"); })),
+    n: ls.length
+  };
 }
 function shotFlow(mid){
   const f = fixture(mid);
@@ -3438,7 +3462,7 @@ function renderLogin(){
       '<div class="sub">Steel City FC  ·  Girls</div>' +
       "<h1>Performance Phase</h1>" +
       '<p class="tagline">Player portal for the season record and the Individual Development Plan.</p>' +
-      '<div class="identity-row"><span class="chip-id">Dominant</span><span class="chip-id">Assertive</span><span class="chip-id">Connected</span></div>' +
+      '<div class="identity-row"><span class="chip-id">Dominant</span><span class="chip-id">Progressive</span><span class="chip-id">Connected</span></div>' +
       '<div class="login-card">' +
         "<h2>Clickable prototype</h2>" +
         '<p class="note">No password. Choose a role to walk through sample data the way a player or a coach would.</p>' +
@@ -3446,7 +3470,7 @@ function renderLogin(){
           '<button class="btn btn-gold btn-block" data-act="login-player">Enter as player</button>' +
           '<button class="btn btn-ghost btn-block" data-act="login-coach">Enter as coach</button>' +
         "</div></div>" +
-      '<p class="login-foot">Sample squad · fictional names<br><strong>Dominant, Assertive, Connected</strong></p>' +
+      '<p class="login-foot">Sample squad · fictional names<br><strong>Dominant, Progressive, Connected</strong></p>' +
     "</div></div>";
 }
 
@@ -3507,7 +3531,7 @@ function renderNav(desktop){
     all.map(function(it){
       return '<button class="nav-item '+(ui.page===it.id?"active":"")+'" data-act="nav" data-page="'+it.id+'">'+(ICO[it.icon]||"")+"<span>"+it.label+"</span></button>";
     }).join("") +
-    (desktop ? '<div class="sep"></div><div class="side-foot">Prototype · sample data<br>Dominant · Assertive · Connected</div>' : "") +
+    (desktop ? '<div class="sep"></div><div class="side-foot">Prototype · sample data<br>Dominant · Progressive · Connected</div>' : "") +
   "</nav>";
 }
 
@@ -3554,8 +3578,8 @@ function renderDashboard(){
       '<div class="stat gold"><div class="num">'+(idpSet?idp+"%":"\u2014")+'</div><div class="lbl">'+(idpSet?"IDP progress":"IDP not set yet")+"</div></div>" +
       '<div class="stat navy"><div class="num">'+(id.n?((id.d+id.a+id.c)/3).toFixed(1):"—")+'</div><div class="lbl">Identity avg</div></div>' +
     "</div>" +
-    '<div class="card"><div class="card-head"><h3>Dominant · Assertive · Connected</h3><span class="badge-muted badge">Season average</span></div><div class="id-meters">' +
-      dotsRow("Dominant", id.d)+dotsRow("Assertive", id.a)+dotsRow("Connected", id.c) +
+    '<div class="card"><div class="card-head"><h3>Dominant · Progressive · Connected</h3><span class="badge-muted badge">Season average</span></div><div class="id-meters">' +
+      dotsRow("Dominant", id.d)+dotsRow("Progressive", id.a)+dotsRow("Connected", id.c) +
     "</div></div>" +
     '<div class="card"><div class="card-head"><h3>IDP progress</h3><button class="btn btn-sm btn-outline" data-act="nav" data-page="idp">Open IDP</button></div>' +
       (idpSet
@@ -3681,7 +3705,7 @@ function openLog(matchId){
     matchId: matchId || "",
     minutes: existing ? existing.minutes : (fx? fx.minutes : 70),
     dominant: existing ? existing.dominant : 0,
-    assertive: existing ? existing.assertive : 0,
+    progressive: existing ? selfReviewScore(existing,"progressive") : 0,
     connected: existing ? existing.connected : 0,
     reflection: existing ? existing.reflection : "",
     veo: existing ? existing.veo : "",
@@ -3701,7 +3725,7 @@ function syncDraftFromDom(){
   d.saves = ui.draft.saves;
   d.shots = ui.draft.shots;
   d.dominant = ui.draft.dominant;
-  d.assertive = ui.draft.assertive;
+  d.progressive = ui.draft.progressive;
   d.connected = ui.draft.connected;
   d._zone = ui.draft._zone;
   d._outcome = ui.draft._outcome;
@@ -3726,9 +3750,9 @@ function renderLogForm(){
       "</select></label>" +
       '<label class="fld"><span>Minutes played</span>'+stepper("minutes", d.minutes, 0, 120)+"</label>" +
       renderMetricsFields(form, Object.assign(emptyMetrics(form), d, { saves:d.saves, shots:d.shots })) +
-      rateRow("dominant", d.dominant, "Did I impose my game on the opponent and own my actions?", "Dominant") +
-      rateRow("assertive", d.assertive, "Did I take initiative - the pass, the run, the duel, the claim?", "Assertive") +
-      rateRow("connected", d.connected, "Did I play with and for my unit, in possession and out of it?", "Connected") +
+      rateRow("dominant", d.dominant, "I felt I played well today", "Dominant") +
+      rateRow("progressive", d.progressive, "I felt good about myself today", "Progressive") +
+      rateRow("connected", d.connected, "I was vocal and worked with my team mates today", "Connected") +
       '<label class="fld"><span>Reflection</span><textarea name="reflection" placeholder="What went well, what I need next time, one moment I want to watch back…">'+esc(d.reflection||"")+"</textarea></label>" +
       '<label class="fld"><span>Veo clip link (optional)</span><input type="url" name="veo" value="'+esc(d.veo||"")+'" placeholder="https://app.veo.co/…"><p class="hint">Paste a clip to revisit with your coach at the next IDP check-in.</p></label>' +
       '<button class="btn btn-gold btn-block" data-act="save-log">Save match log</button>' +
@@ -3759,7 +3783,7 @@ function renderSeason(){
   const played = playedFixtures().slice().reverse();
   return '<div class="page-title"><div><h2>My Season</h2><p>Match log for a '+esc(POS[p.pos].label)+'</p></div>' +
     '<button class="btn btn-gold btn-sm" data-act="new-log">Log a match</button></div>' +
-    '<p class="notice" style="margin-bottom:12px">Every position logs the same core: attacking and defensive match targets (with +/- counters), and AVP counts (Created–Pass, Created–Dribble, Received–Between, Received–Behind). Reflection and Dominant / Assertive / Connected ratings stay common. '+(prof(p.pos).shots?"Shot zone and outcome are an optional extra for this attacking role. ":"")+'Switch the sample player in the header to see the targets change.</p>' +
+    '<p class="notice" style="margin-bottom:12px">Every position logs the same core: attacking and defensive match targets (with +/- counters), and AVP counts (Created–Pass, Created–Dribble, Received–Between, Received–Behind). Reflection and Dominant / Progressive / Connected ratings stay common. '+(prof(p.pos).shots?"Shot zone and outcome are an optional extra for this attacking role. ":"")+'Switch the sample player in the header to see the targets change.</p>' +
     renderAvpGauge(playerAvpSeason(p.id), { pos:p.pos, title:"AVP per 90", scope:"Season to date · from logged matches" }) +
     renderMatchTargetsBlock(p.id, p.pos, { title:"Your match targets" }) +
     '<div class="timeline">' +
@@ -3767,8 +3791,8 @@ function renderSeason(){
         const log = logFor(p.id, f.id);
         return '<article class="match-card"><header data-act="open-log" data-id="'+f.id+'"><div class="mid"><div class="opp">'+(f.home?"vs":"at")+" "+esc(f.opp)+'</div><div class="meta">'+esc(f.id)+" · "+fmtDate(f.date)+" · "+esc(f.comp)+" · "+esc(f.venue)+'</div></div><div class="score">'+esc(f.result||"—")+"</div></header><div class=\"body\">" +
           (log
-            ? '<div class="grid-2" style="margin-bottom:8px"><div class="stat"><div class="num">'+log.minutes+'</div><div class="lbl">Minutes</div></div><div class="stat gold"><div class="num">'+(((log.dominant+log.assertive+log.connected)/3).toFixed(1))+'</div><div class="lbl">Identity avg</div></div></div>' +
-              '<div class="id-meters" style="margin-bottom:8px">'+dotsRow("Dominant", log.dominant)+dotsRow("Assertive", log.assertive)+dotsRow("Connected", log.connected)+"</div>" +
+            ? '<div class="grid-2" style="margin-bottom:8px"><div class="stat"><div class="num">'+log.minutes+'</div><div class="lbl">Minutes</div></div><div class="stat gold"><div class="num">'+(((log.dominant+log.progressive+log.connected)/3).toFixed(1))+'</div><div class="lbl">Identity avg</div></div></div>' +
+              '<div class="id-meters" style="margin-bottom:8px">'+dotsRow("Dominant", selfReviewScore(log,"dominant"))+dotsRow("Progressive", selfReviewScore(log,"progressive"))+dotsRow("Connected", selfReviewScore(log,"connected"))+"</div>" +
               renderAvpGauge(playerAvpMatch(p.id, f.id), { pos:p.pos, compact:true, title:"This match", scope:f.id }) +
               '<div class="tgt-match-row">'+renderTargetCard(p.pos,"attacking", normalizeMetrics(log.metrics))+renderTargetCard(p.pos,"defensive", normalizeMetrics(log.metrics))+"</div>" +
               '<p style="font-size:13.5px;margin:6px 0 8px"><strong>Data. </strong>'+esc(targetSummaryForLog(p.pos, log.metrics)+" · "+metricsSummary(form, log.metrics))+"</p>" +
@@ -3971,7 +3995,7 @@ function renderCoachPlayer(){
       '<div class="stat navy"><div class="num">'+(id.n?((id.d+id.a+id.c)/3).toFixed(1):"—")+'</div><div class="lbl">Identity</div></div></div>' +
     renderAvpGauge(playerAvpSeason(p.id), { pos:p.pos, title:"AVP per 90", scope:"Season to date · from logged matches" }) +
     renderMatchTargetsBlock(p.id, p.pos, { title:"Match targets" }) +
-    '<div class="card"><h3>Identity averages</h3><div class="id-meters">'+dotsRow("Dominant", id.d)+dotsRow("Assertive", id.a)+dotsRow("Connected", id.c)+"</div></div>" +
+    '<div class="card"><h3>Identity averages</h3><div class="id-meters">'+dotsRow("Dominant", id.d)+dotsRow("Progressive", id.a)+dotsRow("Connected", id.c)+"</div></div>" +
     '<div class="card" style="margin-top:12px"><div class="card-head"><h3>Recent logs</h3></div>' +
       (ls.length ? ls.slice().reverse().map(function(l){
         const f = fixture(l.matchId);
@@ -4129,7 +4153,7 @@ function renderPosition(){
       '<div style="overflow-x:auto"><table class="metrics-table"><thead><tr><th>Measure</th><th>Source</th><th>What it tells us</th></tr></thead><tbody>' +
         pr.metrics.map(function(row){ return "<tr><td><strong>"+esc(row[0])+"</strong></td><td>"+srcPill(row[1])+"</td><td>"+esc(row[2])+"</td></tr>"; }).join("") +
       "</tbody></table></div>" +
-      '<p class="notice" style="margin-top:12px">In this prototype the match log records the two position goals, AVP counts for every position'+(pr.shots?", and optional shot location and outcome":"")+", plus the shared reflection and Dominant / Assertive / Connected ratings. The table above is the club measurement list from the profile.</p>" +
+      '<p class="notice" style="margin-top:12px">In this prototype the match log records the two position goals, AVP counts for every position'+(pr.shots?", and optional shot location and outcome":"")+", plus the shared reflection and Dominant / Progressive / Connected ratings. The table above is the club measurement list from the profile.</p>" +
     "</div>" +
     (ui.role==="coach"
       ? '<p class="notice" style="margin-top:12px">Coach view of '+esc(pr.title)+". Use the tabs to move between positions and open a point to paste its video link.</p>"
@@ -4151,7 +4175,7 @@ function renderMetricsFields(form, m){
       '<div class="fld-label" style="margin-top:10px">How I met this goal (this match)</div>' +
       '<div class="rate" data-rate="'+name+'">'+[1,2,3,4,5].map(function(n){ return '<button type="button" data-val="'+n+'" class="'+(+val===n?"on":"")+'">'+n+"</button>"; }).join("")+"</div></div>";
   }
-  let html = '<div class="notice">Every position logs the same core data: one attacking goal, one defensive goal, and AVP counts. Reflection and Dominant / Assertive / Connected ratings stay common to every position.</div>' +
+  let html = '<div class="notice">Every position logs the same core data: one attacking goal, one defensive goal, and AVP counts. Reflection and Dominant / Progressive / Connected ratings stay common to every position.</div>' +
     '<div class="goals-pair">'+goalBlock("Attacking", g.attacking, "goalAtt", m.goalAtt)+goalBlock("Defensive", g.defensive, "goalDef", m.goalDef)+"</div>" +
     '<div><div class="fld-label">AVP events</div><div class="grid-2">' +
       '<label class="fld"><span>Created–Pass</span>'+stepper("avpCrePass", m.avpCrePass)+"</label>" +
@@ -4195,7 +4219,7 @@ function openLog(matchId){
     matchId: matchId || "",
     minutes: existing ? existing.minutes : (fx? fx.minutes : 70),
     dominant: existing ? existing.dominant : 0,
-    assertive: existing ? existing.assertive : 0,
+    progressive: existing ? selfReviewScore(existing,"progressive") : 0,
     connected: existing ? existing.connected : 0,
     reflection: existing ? existing.reflection : "",
     veo: existing ? existing.veo : "",
@@ -4213,7 +4237,7 @@ function syncDraftFromDom(){
   const d = readDraftFromForm(root);
   d.shots = ui.draft.shots;
   d.dominant = ui.draft.dominant;
-  d.assertive = ui.draft.assertive;
+  d.progressive = ui.draft.progressive;
   d.connected = ui.draft.connected;
   d.goalAtt = ui.draft.goalAtt;
   d.goalDef = ui.draft.goalDef;
@@ -4705,7 +4729,7 @@ function renderMetricsFields(form, m){
   const p = player();
   const pr = prof(p.pos);
   m = normalizeMetrics(m);
-  let html = '<div class="notice">Log your attacking and defensive match targets with the +/- counters, plus AVP counts. Reflection and Dominant / Assertive / Connected ratings stay common to every position'+(pr.shots?". Shot zone and outcome are optional for this role.":".")+"</div>" +
+  let html = '<div class="notice">Log your attacking and defensive match targets with the +/- counters, plus AVP counts. Reflection and Dominant / Progressive / Connected ratings stay common to every position'+(pr.shots?". Shot zone and outcome are optional for this role.":".")+"</div>" +
     '<div class="goals-pair">' +
       renderTargetCard(p.pos, "attacking", m, { counters:true }) +
       renderTargetCard(p.pos, "defensive", m, { counters:true }) +
@@ -4779,7 +4803,7 @@ function openLog(matchId){
     matchId: matchId || "",
     minutes: existing ? existing.minutes : (fx? fx.minutes : 70),
     dominant: existing ? existing.dominant : 0,
-    assertive: existing ? existing.assertive : 0,
+    progressive: existing ? selfReviewScore(existing,"progressive") : 0,
     connected: existing ? existing.connected : 0,
     reflection: existing ? existing.reflection : "",
     veo: existing ? existing.veo : "",
@@ -4800,7 +4824,7 @@ function syncDraftFromDom(){
   const d = readDraftFromForm(root);
   d.shots = ui.draft.shots;
   d.dominant = ui.draft.dominant;
-  d.assertive = ui.draft.assertive;
+  d.progressive = ui.draft.progressive;
   d.connected = ui.draft.connected;
   d.pos = ui.draft.pos || "";
   d.tgtAttNote = (root.querySelector('[name="tgtAttNote"]')||{}).value || "";
@@ -4838,7 +4862,7 @@ function renderPosition(){
       '<div style="overflow-x:auto"><table class="metrics-table"><thead><tr><th>Measure</th><th>Source</th><th>What it tells us</th></tr></thead><tbody>' +
         pr.metrics.map(function(row){ return "<tr><td><strong>"+esc(row[0])+"</strong></td><td>"+srcPill(row[1])+"</td><td>"+esc(row[2])+"</td></tr>"; }).join("") +
       "</tbody></table></div>" +
-      '<p class="notice" style="margin-top:12px">In this prototype the match log records the two match targets, AVP counts for every position'+(pr.shots?", and optional shot location and outcome":"")+", plus the shared reflection and Dominant / Assertive / Connected ratings. The table above is the club measurement list from the profile.</p>" +
+      '<p class="notice" style="margin-top:12px">In this prototype the match log records the two match targets, AVP counts for every position'+(pr.shots?", and optional shot location and outcome":"")+", plus the shared reflection and Dominant / Progressive / Connected ratings. The table above is the club measurement list from the profile.</p>" +
     "</div>" +
     (ui.role==="coach"
       ? '<p class="notice" style="margin-top:12px">Coach view of '+esc(pr.title)+". Use the tabs to move between positions and open a point to paste its video link.</p>"
@@ -5149,7 +5173,7 @@ function renderCoachPlayer(){
       '<div class="stat navy"><div class="num">'+(id.n?((id.d+id.a+id.c)/3).toFixed(1):"\u2014")+'</div><div class="lbl">Identity</div></div></div>' +
     renderAvpGauge(playerAvpSeason(p.id), { pos:p.pos, title:"AVP per 90", scope:"Season to date \u00b7 from logged matches" }) +
     renderMatchTargetsBlock(p.id, p.pos, { title:"Match targets" }) +
-    '<div class="card"><h3>Identity averages</h3><div class="id-meters">'+dotsRow("Dominant", id.d)+dotsRow("Assertive", id.a)+dotsRow("Connected", id.c)+"</div></div>" +
+    '<div class="card"><h3>Identity averages</h3><div class="id-meters">'+dotsRow("Dominant", id.d)+dotsRow("Progressive", id.a)+dotsRow("Connected", id.c)+"</div></div>" +
     '<div class="card" style="margin-top:12px"><div class="card-head"><h3>Recent logs</h3></div>' +
       (ls.length ? ls.slice().reverse().map(function(l){
         const f = fixture(l.matchId);
@@ -5716,7 +5740,7 @@ function renderCoachPlayer(){
       '<div class="stat navy"><div class="num">'+(id.n?((id.d+id.a+id.c)/3).toFixed(1):"\u2014")+'</div><div class="lbl">Identity</div></div></div>' +
     renderAvpGauge(playerAvpSeason(p.id), { pos:p.pos, title:"AVP per 90", scope:"Season to date \u00b7 from logged matches" }) +
     renderMatchTargetsBlock(p.id, p.pos, { title:"Match targets" }) +
-    '<div class="card"><h3>Identity averages</h3><div class="id-meters">'+dotsRow("Dominant", id.d)+dotsRow("Assertive", id.a)+dotsRow("Connected", id.c)+"</div></div>" +
+    '<div class="card"><h3>Identity averages</h3><div class="id-meters">'+dotsRow("Dominant", id.d)+dotsRow("Progressive", id.a)+dotsRow("Connected", id.c)+"</div></div>" +
     '<div class="card" style="margin-top:12px"><div class="card-head"><h3>Recent logs</h3></div>' +
       (ls.length ? ls.slice().reverse().map(function(l){
         const f = fixture(l.matchId);
@@ -5735,7 +5759,7 @@ function renderMetricsFields(form, m){
   const set = hasPos(pos);
   m = normalizeMetrics(m);
   if(!set){
-    return '<div class="notice">Ask your coach to set your position. Until then you can still log AVP counts, a short reflection, and Dominant / Assertive / Connected ratings.</div>' +
+    return '<div class="notice">Ask your coach to set your position. Until then you can still log AVP counts, a short reflection, and Dominant / Progressive / Connected ratings.</div>' +
       '<div><div class="fld-label">AVP events</div><div class="grid-2">' +
         '<label class="fld"><span>Created\u2013Pass</span>'+stepper("avpCrePass", m.avpCrePass)+"</label>" +
         '<label class="fld"><span>Created\u2013Dribble</span>'+stepper("avpCreDribble", m.avpCreDribble)+"</label>" +
@@ -5743,7 +5767,7 @@ function renderMetricsFields(form, m){
         '<label class="fld"><span>Received\u2013Behind</span>'+stepper("avpRecBehind", m.avpRecBehind)+"</label></div></div>";
   }
   const pr = prof(pos);
-  let html = '<div class="notice">Log your attacking and defensive match targets with the +/- counters, plus AVP counts. Reflection and Dominant / Assertive / Connected ratings stay common to every position'+(pr.shots?". Shot zone and outcome are optional for this role.":".")+"</div>" +
+  let html = '<div class="notice">Log your attacking and defensive match targets with the +/- counters, plus AVP counts. Reflection and Dominant / Progressive / Connected ratings stay common to every position'+(pr.shots?". Shot zone and outcome are optional for this role.":".")+"</div>" +
     '<div class="goals-pair">' +
       renderTargetCard(pos, "attacking", m, { counters:true }) +
       renderTargetCard(pos, "defensive", m, { counters:true }) +
@@ -5782,7 +5806,7 @@ function openLog(matchId){
     matchId: matchId || "",
     minutes: existing ? existing.minutes : (fx? fx.minutes : 70),
     dominant: existing ? existing.dominant : 0,
-    assertive: existing ? existing.assertive : 0,
+    progressive: existing ? selfReviewScore(existing,"progressive") : 0,
     connected: existing ? existing.connected : 0,
     reflection: existing ? existing.reflection : "",
     veo: existing ? existing.veo : "",
@@ -5810,7 +5834,7 @@ function saveLog(){
   const metrics = draftToMetrics(form, d);
   const entry = {
     matchId:d.matchId, minutes:+d.minutes||0,
-    dominant:+d.dominant||0, assertive:+d.assertive||0, connected:+d.connected||0,
+    dominant:+d.dominant||0, progressive:+d.progressive||0, connected:+d.connected||0,
     reflection:d.reflection||"", veo:d.veo||"", pos: posToStore, metrics: metrics
   };
   const list = data.logs[p.id] || (data.logs[p.id]=[]);
@@ -5842,9 +5866,9 @@ function renderLogForm(){
       "</select></label>" +
       '<label class="fld"><span>Minutes played</span>'+stepper("minutes", d.minutes, 0, 120)+"</label>" +
       renderMetricsFields(form, Object.assign(emptyMetrics(form), d, { saves:d.saves, shots:d.shots })) +
-      rateRow("dominant", d.dominant, "Did I impose my game on the opponent and own my actions?", "Dominant") +
-      rateRow("assertive", d.assertive, "Did I take initiative - the pass, the run, the duel, the claim?", "Assertive") +
-      rateRow("connected", d.connected, "Did I play with and for my unit, in possession and out of it?", "Connected") +
+      rateRow("dominant", d.dominant, "I felt I played well today", "Dominant") +
+      rateRow("progressive", d.progressive, "I felt good about myself today", "Progressive") +
+      rateRow("connected", d.connected, "I was vocal and worked with my team mates today", "Connected") +
       '<label class="fld"><span>Reflection</span><textarea name="reflection" placeholder="What went well, what I need next time, one moment I want to watch back\u2026">'+esc(d.reflection||"")+"</textarea></label>" +
       '<label class="fld"><span>Veo clip link (optional)</span><input type="url" name="veo" value="'+esc(d.veo||"")+'" placeholder="https://app.veo.co/\u2026"><p class="hint">Paste a clip to revisit with your coach at the next IDP check-in.</p></label>' +
       '<button class="btn btn-gold btn-block" data-act="save-log">Save match log</button>' +
@@ -5860,8 +5884,8 @@ function renderSeason(){
   return '<div class="page-title"><div><h2>My Season</h2><p>'+(set?"Match log for a "+esc(posLabel(p)):"Position not set")+'</p></div>' +
     '<button class="btn btn-gold btn-sm" data-act="new-log">Log a match</button></div>' +
     (set
-      ? '<p class="notice" style="margin-bottom:12px">Every position logs the same core: attacking and defensive match targets (with +/- counters), and AVP counts. Reflection and Dominant / Assertive / Connected ratings stay common. '+(prof(p.pos).shots?"Shot zone and outcome are an optional extra for this attacking role. ":"")+"Your position is set by your coach.</p>"
-      : '<p class="notice" style="margin-bottom:12px">Ask your coach to set your position. You can still log AVP counts, a reflection, and Dominant / Assertive / Connected ratings. Match targets and role-specific extras appear once a position is assigned. Past logs keep the position they were logged under.</p>') +
+      ? '<p class="notice" style="margin-bottom:12px">Every position logs the same core: attacking and defensive match targets (with +/- counters), and AVP counts. Reflection and Dominant / Progressive / Connected ratings stay common. '+(prof(p.pos).shots?"Shot zone and outcome are an optional extra for this attacking role. ":"")+"Your position is set by your coach.</p>"
+      : '<p class="notice" style="margin-bottom:12px">Ask your coach to set your position. You can still log AVP counts, a reflection, and Dominant / Progressive / Connected ratings. Match targets and role-specific extras appear once a position is assigned. Past logs keep the position they were logged under.</p>') +
     renderAvpGauge(playerAvpSeason(p.id), { pos:p.pos, title:"AVP per 90", scope:"Season to date \u00b7 from logged matches" }) +
     renderMatchTargetsBlock(p.id, p.pos, { title:"Your match targets" }) +
     '<div class="timeline">' +
@@ -5870,8 +5894,8 @@ function renderSeason(){
         const lp = log ? logPosOf(log, p) : posCode(p);
         return '<article class="match-card"><header data-act="open-log" data-id="'+f.id+'"><div class="mid"><div class="opp">'+(f.home?"vs":"at")+" "+esc(f.opp)+'</div><div class="meta">'+esc(f.id)+" \u00b7 "+fmtDate(f.date)+" \u00b7 "+esc(f.comp)+" \u00b7 "+esc(f.venue)+'</div></div><div class="score">'+esc(f.result||"\u2014")+"</div></header><div class=\"body\">" +
           (log
-            ? '<div class="grid-2" style="margin-bottom:8px"><div class="stat"><div class="num">'+log.minutes+'</div><div class="lbl">Minutes</div></div><div class="stat gold"><div class="num">'+(((log.dominant+log.assertive+log.connected)/3).toFixed(1))+'</div><div class="lbl">Identity avg</div></div></div>' +
-              '<div class="id-meters" style="margin-bottom:8px">'+dotsRow("Dominant", log.dominant)+dotsRow("Assertive", log.assertive)+dotsRow("Connected", log.connected)+"</div>" +
+            ? '<div class="grid-2" style="margin-bottom:8px"><div class="stat"><div class="num">'+log.minutes+'</div><div class="lbl">Minutes</div></div><div class="stat gold"><div class="num">'+(((log.dominant+log.progressive+log.connected)/3).toFixed(1))+'</div><div class="lbl">Identity avg</div></div></div>' +
+              '<div class="id-meters" style="margin-bottom:8px">'+dotsRow("Dominant", selfReviewScore(log,"dominant"))+dotsRow("Progressive", selfReviewScore(log,"progressive"))+dotsRow("Connected", selfReviewScore(log,"connected"))+"</div>" +
               (lp?'<p class="hint" style="margin-bottom:8px">Logged as '+esc(posAssignLabel(lp))+"</p>":"") +
               renderAvpGauge(playerAvpMatch(p.id, f.id), { pos:lp, compact:true, title:"This match", scope:f.id }) +
               (lp ? '<div class="tgt-match-row">'+renderTargetCard(lp,"attacking", normalizeMetrics(log.metrics))+renderTargetCard(lp,"defensive", normalizeMetrics(log.metrics))+"</div>" +
@@ -5907,8 +5931,8 @@ function renderDashboard(){
       '<div class="stat gold"><div class="num">'+(idpSet?idp+"%":"\u2014")+'</div><div class="lbl">'+(idpSet?"IDP progress":"IDP not set yet")+"</div></div>" +
       '<div class="stat navy"><div class="num">'+(id.n?((id.d+id.a+id.c)/3).toFixed(1):"\u2014")+'</div><div class="lbl">Identity avg</div></div>' +
     "</div>" +
-    '<div class="card"><div class="card-head"><h3>Dominant \u00b7 Assertive \u00b7 Connected</h3><span class="badge-muted badge">Season average</span></div><div class="id-meters">' +
-      dotsRow("Dominant", id.d)+dotsRow("Assertive", id.a)+dotsRow("Connected", id.c) +
+    '<div class="card"><div class="card-head"><h3>Dominant \u00b7 Progressive \u00b7 Connected</h3><span class="badge-muted badge">Season average</span></div><div class="id-meters">' +
+      dotsRow("Dominant", id.d)+dotsRow("Progressive", id.a)+dotsRow("Connected", id.c) +
     "</div></div>" +
     '<div class="card"><div class="card-head"><h3>IDP progress</h3><button class="btn btn-sm btn-outline" data-act="nav" data-page="idp">Open IDP</button></div>' +
       (idpSet
@@ -5996,7 +6020,7 @@ function renderPosition(){
       '<div style="overflow-x:auto"><table class="metrics-table"><thead><tr><th>Measure</th><th>Source</th><th>What it tells us</th></tr></thead><tbody>' +
         pr.metrics.map(function(row){ return "<tr><td><strong>"+esc(row[0])+"</strong></td><td>"+srcPill(row[1])+"</td><td>"+esc(row[2])+"</td></tr>"; }).join("") +
       "</tbody></table></div>" +
-      '<p class="notice" style="margin-top:12px">In this prototype the match log records the two match targets, AVP counts for every position'+(pr.shots?", and optional shot location and outcome":"")+", plus the shared reflection and Dominant / Assertive / Connected ratings. The table above is the club measurement list from the profile.</p>" +
+      '<p class="notice" style="margin-top:12px">In this prototype the match log records the two match targets, AVP counts for every position'+(pr.shots?", and optional shot location and outcome":"")+", plus the shared reflection and Dominant / Progressive / Connected ratings. The table above is the club measurement list from the profile.</p>" +
     "</div>" +
     (ui.role==="coach"
       ? '<p class="notice" style="margin-top:12px">Coach view of '+esc(pr.title)+". Use the tabs to move between positions and open a point to paste its video link.</p>"
@@ -6225,7 +6249,7 @@ function saveLog(){
   const metrics = draftToMetrics(form, d);
   const entry = {
     matchId:d.matchId, minutes:+d.minutes||0,
-    dominant:+d.dominant||0, assertive:+d.assertive||0, connected:+d.connected||0,
+    dominant:+d.dominant||0, progressive:+d.progressive||0, connected:+d.connected||0,
     reflection:d.reflection||"", veo:d.veo||"", pos: posToStore, metrics: metrics
   };
   const list = data.logs[p.id] || (data.logs[p.id]=[]);
@@ -6327,7 +6351,7 @@ function renderMetricsFields(form, m){
   const set = hasPos(pos);
   m = normalizeMetrics(m);
   if(!set){
-    return '<div class="notice">Ask your coach to set your position. Until then you can still log AVP counts, a short reflection, and Dominant / Assertive / Connected ratings.</div>' +
+    return '<div class="notice">Ask your coach to set your position. Until then you can still log AVP counts, a short reflection, and Dominant / Progressive / Connected ratings.</div>' +
       '<div><div class="fld-label">AVP events</div><div class="grid-2">' +
         '<label class="fld"><span>Created\u2013Pass</span>'+stepper("avpCrePass", m.avpCrePass)+"</label>" +
         '<label class="fld"><span>Created\u2013Dribble</span>'+stepper("avpCreDribble", m.avpCreDribble)+"</label>" +
@@ -6335,7 +6359,7 @@ function renderMetricsFields(form, m){
         '<label class="fld"><span>Received\u2013Behind</span>'+stepper("avpRecBehind", m.avpRecBehind)+"</label></div></div>";
   }
   const pr = prof(pos);
-  let html = '<div class="notice">Log your attacking and defensive match targets with the +/- counters, plus AVP counts. Reflection and Dominant / Assertive / Connected ratings stay common to every position'+(pr.shots?". Shot zone and outcome are optional for this role.":".")+"</div>" +
+  let html = '<div class="notice">Log your attacking and defensive match targets with the +/- counters, plus AVP counts. Reflection and Dominant / Progressive / Connected ratings stay common to every position'+(pr.shots?". Shot zone and outcome are optional for this role.":".")+"</div>" +
     '<div class="goals-pair">' +
       renderTargetCard(pos, "attacking", m, { counters:true }) +
       renderTargetCard(pos, "defensive", m, { counters:true }) +
